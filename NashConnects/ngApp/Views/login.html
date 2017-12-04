@@ -1,0 +1,38 @@
+﻿<section class="hero is-fullheight" id="login">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-one-third-desktop is-10-mobile">
+                    <div class="box has-text-centered">
+                        <figure class="image login-logo">
+                            <!--<img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />-->
+                        </figure>
+                        <div ng-show="error" class="notification is-danger">
+                            {{error}}
+                        </div>
+                        <h1>{{vm.message}}</h1>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.username" class="input" type="text" placeholder="Username">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.password" class="input" type="password" placeholder="Password">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <button class="button is-primary" ng-click="vm.login()" ng-class="{'is-loading':inProgress}">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
