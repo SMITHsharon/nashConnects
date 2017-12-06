@@ -9,7 +9,8 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container body-content ng-app="nashConnects">
+    <div class="container body-content" ng-app="nashConnects">
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -76,9 +77,11 @@
                     </div>
                 </div>
             </div>
+        @RenderBody()
+
+
         </div>
 
-        @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

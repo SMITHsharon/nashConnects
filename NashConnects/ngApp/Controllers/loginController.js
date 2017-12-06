@@ -1,5 +1,5 @@
 ﻿app.controller("loginController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
-    console.log("in login controller");
+    
     let vm = this;
 
     vm.message = "This is login";

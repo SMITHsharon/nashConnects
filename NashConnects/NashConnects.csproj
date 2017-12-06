@@ -255,7 +255,9 @@
     <Content Include="Global.asax" />
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
+    <Content Include="ngApp\Controllers\homeController.js" />
     <Content Include="ngApp\Controllers\loginController.js" />
+    <Content Include="ngApp\Views\home.html" />
     <Content Include="ngApp\Views\login.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
