@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace NashConnects.Models
@@ -16,6 +17,10 @@ namespace NashConnects.Models
             // Add custom user claims here
             return userIdentity;
         }
+        [StringLength(25)]
+        public string FName { get; set; }
+        [StringLength(25)]
+        public string LName { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +34,10 @@ namespace NashConnects.Models
         {
             return new ApplicationDbContext();
         }
+            public System.Data.Entity.DbSet<NashConnects.Models.Freelancer> Freelancers { get; set; }
+
+            public System.Data.Entity.DbSet<NashConnects.Models.NonProfit> NonProfits { get; set; }
+
+            public System.Data.Entity.DbSet<NashConnects.Models.Event> Events { get; set; }
     }
 }
