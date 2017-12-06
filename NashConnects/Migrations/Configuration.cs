@@ -17,6 +17,8 @@ namespace NashConnects.Migrations
         protected override void Seed(Models.ApplicationDbContext context)
         {
             var adminRole = new IdentityRole("Admin");
+            var flRole = new IdentityRole("Freelance");
+            var npRole = new IdentityRole("NonProfit");
             context.Roles.AddOrUpdate(r => r.Name, adminRole);
             context.SaveChanges();
 
