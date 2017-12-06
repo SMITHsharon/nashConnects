@@ -16,6 +16,14 @@ namespace NashConnects
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular")
+                .Include("~/Scripts/angular.js",
+                    "~/Scripts/angular-route.js",
+                    "~/ngApp/app.js",
+                    "~/ngApp/appConfig.js")
+                .IncludeDirectory("~/ngApp/Controllers", "*.js", true)
+                .IncludeDirectory("~/ngApp/Factories", "*.js", true));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
