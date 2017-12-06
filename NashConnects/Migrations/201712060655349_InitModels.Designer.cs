@@ -13,7 +13,7 @@ namespace NashConnects.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712060207237_InitModels"; }
+            get { return "201712060655349_InitModels"; }
         }
         
         string IMigrationMetadata.Source

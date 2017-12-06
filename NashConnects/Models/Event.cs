@@ -9,7 +9,7 @@ namespace NashConnects.Models
     public class Event
     {
         [Key]
-        public int EId { get; set; }
+        public int EventId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -23,8 +23,6 @@ namespace NashConnects.Models
 
         [Required]
         public string Description { get; set; }
-
-        public virtual List<NonProfit> Events { get; set; }
-        public virtual List<Freelancer> RegisteredEventss { get; set; }
+        public virtual List<Freelancer> RegisteredFreeLancers { get; set; }
     }
 }

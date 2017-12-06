@@ -6,10 +6,10 @@ using System.Web;
 
 namespace NashConnects.Models
 {
-    public class NonProfit
+    public class NonProfit : ApplicationUser
     {
         [Key]
-        public int NPId { get; set; }
+        public int NonProfitId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -21,10 +21,11 @@ namespace NashConnects.Models
         [Required]
         [StringLength(300)]
         public string Description { get; set; }
-        public int RecommondCount { get; set; }
+        public int NPRecommendCount { get; set; }
         public bool Active { get; set; }
 
-        public virtual List<Freelancer> NPRecommendations { get; set; }
-        public virtual ApplicationUser Users { get; set; }
+        public virtual List<Freelancer> FLRecommendations { get; set; }
+        public virtual List<NonProfit> NPRecommendations { get; set; }
+        public virtual List<Event> Events { get; set; }
     }
 }

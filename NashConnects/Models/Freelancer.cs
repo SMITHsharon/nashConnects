@@ -6,10 +6,10 @@ using System.Web;
 
 namespace NashConnects.Models
 {
-    public class Freelancer
+    public class Freelancer : ApplicationUser
     {
         [System.ComponentModel.DataAnnotations.Key]
-        public int FLId { get; set; }
+        public int FreelancerId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -21,12 +21,11 @@ namespace NashConnects.Models
 
         public bool Newsletter { get; set; }
         public bool Public { get; set; }
-        public int RecommondCount { get; set; }
+        public int FLRecommendCount { get; set; }
         public bool Active { get; set; }
 
         public virtual List<Freelancer> FLRecommendations { get; set; }
         public virtual List<NonProfit> NPRecommendations { get; set; }
         public virtual List<Event> RegisteredEvents { get; set; }
-        public virtual ApplicationUser Users { get; set; }
     }
 }

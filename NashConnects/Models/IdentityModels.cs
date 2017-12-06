@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 
 namespace NashConnects.Models
 {
@@ -29,15 +30,23 @@ namespace NashConnects.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-            public System.Data.Entity.DbSet<NashConnects.Models.Freelancer> Freelancers { get; set; }
+        public System.Data.Entity.DbSet<NashConnects.Models.Freelancer> Freelancers { get; set; }
 
-            public System.Data.Entity.DbSet<NashConnects.Models.NonProfit> NonProfits { get; set; }
+        public System.Data.Entity.DbSet<NashConnects.Models.NonProfit> NonProfits { get; set; }
 
-            public System.Data.Entity.DbSet<NashConnects.Models.Event> Events { get; set; }
+        public System.Data.Entity.DbSet<NashConnects.Models.Event> Events { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Freelancer>().HasMany(x => x.FLRecommendations).WithMany();
+            modelBuilder.Entity<NonProfit>().HasMany(x => x.NPRecommendations).WithMany();
+        }
     }
 }
