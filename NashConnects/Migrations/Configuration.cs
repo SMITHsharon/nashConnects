@@ -25,7 +25,7 @@ namespace NashConnects.Migrations
             var user = new ApplicationUser
             {
                 UserName = "Sharon",
-                Email = "sharon@gmail.com"
+                Email = "sharon@gmail.com",
             };
 
             userManager.CreateAsync(user, "password").Wait();

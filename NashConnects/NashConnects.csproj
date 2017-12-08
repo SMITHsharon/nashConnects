@@ -237,10 +237,17 @@
     <Compile Include="Migrations\201712030639406_IdentitySetup.Designer.cs">
       <DependentUpon>201712030639406_IdentitySetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712080710124_InitTableStructures.cs" />
+    <Compile Include="Migrations\201712080710124_InitTableStructures.Designer.cs">
+      <DependentUpon>201712080710124_InitTableStructures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Event..cs" />
+    <Compile Include="Models\Freelancer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\NonProfit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -338,6 +345,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712030639406_IdentitySetup.resx">
       <DependentUpon>201712030639406_IdentitySetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712080710124_InitTableStructures.resx">
+      <DependentUpon>201712080710124_InitTableStructures.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
