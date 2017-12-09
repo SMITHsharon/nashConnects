@@ -16,8 +16,8 @@ namespace NashConnects.Models
 
         public bool PublicReveal { get; set; }
 
-        //public virtual List<Freelancer> FLFLRecommendations { get; set; }
-        //public virtual List<NonProfit> FLNPRecommendations { get; set; }
+        public virtual List<Freelancer> FLFLRecommendations { get; set; }
+        public virtual List<NonProfit> NPRecommendations { get; set; }
         public virtual List<Event> RegEvents { get; set; }
         
     }

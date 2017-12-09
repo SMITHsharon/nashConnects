@@ -66,10 +66,26 @@ namespace NashConnects.Models
                         .WithMany(f => f.RegEvents)
                         .Map(ef =>
                             {
-                                ef.MapLeftKey("FLRefId");
-                                ef.MapRightKey("EventRefId");
-                                ef.ToTable("FLRegEvent");
+                                ef.MapLeftKey("FLRegId");
+                                ef.MapRightKey("EventRegId");
+                                ef.ToTable("FLRegEvents");
                             });
+
+            modelBuilder.Entity<Freelancer>()
+                        .HasMany(fl => fl.FLFLRecommendations).WithMany();
+
+            modelBuilder.Entity<Freelancer>()
+                        .HasMany(fl => fl.NPRecommendations)
+                        .WithMany(np => np.FLRecommendations)
+                        .Map(m =>
+                            {
+                                m.MapLeftKey("FLRecId");
+                                m.MapRightKey("NPRecId");
+                                m.ToTable("FLNPRecommendations");
+                            });
+
+            modelBuilder.Entity<NonProfit>()
+                        .HasMany(np => np.NPNPRecommndations).WithMany();
         }
         
     }

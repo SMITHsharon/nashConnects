@@ -245,6 +245,18 @@
     <Compile Include="Migrations\201712090743367_FLRegEvents.Designer.cs">
       <DependentUpon>201712090743367_FLRegEvents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712091612457_FLFLRecommendationsTable.cs" />
+    <Compile Include="Migrations\201712091612457_FLFLRecommendationsTable.Designer.cs">
+      <DependentUpon>201712091612457_FLFLRecommendationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091720358_FLNPRecommendationsTable.cs" />
+    <Compile Include="Migrations\201712091720358_FLNPRecommendationsTable.Designer.cs">
+      <DependentUpon>201712091720358_FLNPRecommendationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091731552_NPNPRecommendationsTable.cs" />
+    <Compile Include="Migrations\201712091731552_NPNPRecommendationsTable.Designer.cs">
+      <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -355,6 +367,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712090743367_FLRegEvents.resx">
       <DependentUpon>201712090743367_FLRegEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091612457_FLFLRecommendationsTable.resx">
+      <DependentUpon>201712091612457_FLFLRecommendationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091720358_FLNPRecommendationsTable.resx">
+      <DependentUpon>201712091720358_FLNPRecommendationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091731552_NPNPRecommendationsTable.resx">
+      <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

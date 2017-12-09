@@ -15,7 +15,8 @@ namespace NashConnects.Models
         [StringLength(50)]
         public string CalendarLink { get; set; }
 
-        public List<Event> Events { get; set; }
-        
+        public virtual List<Event> Events { get; set; }
+        public virtual List<Freelancer> FLRecommendations { get; set; }
+        public virtual List<NonProfit> NPNPRecommndations { get; set; }
     }
 }
