@@ -14,7 +14,7 @@ namespace NashConnects.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Models.ApplicationDbContext context)
+        protected override void Seed(NashConnects.Models.ApplicationDbContext context)
         {
             var adminRole = new IdentityRole("Admin");
             context.Roles.AddOrUpdate(r => r.Name, adminRole);
@@ -25,7 +25,10 @@ namespace NashConnects.Migrations
             var user = new ApplicationUser
             {
                 UserName = "Sharon",
-                Email = "sharon@gmail.com"
+                Email = "sharon@gmail.com",
+                FName = "Sharon",
+                LName = "Smith",
+                WebsiteURL = "xxx.com",
             };
 
             userManager.CreateAsync(user, "password").Wait();
@@ -33,6 +36,7 @@ namespace NashConnects.Migrations
             var addedUser = context.Users.First(x => x.UserName == user.UserName);
 
             userManager.AddToRoleAsync(addedUser.Id, "Admin").Wait();
+            
 
             //  This method will be called after migrating to the latest version.
 

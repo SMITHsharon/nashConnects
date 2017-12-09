@@ -7,13 +7,13 @@ namespace NashConnects.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class IdentitySetup : IMigrationMetadata
+    public sealed partial class NPNPRecommendationsTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IdentitySetup));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NPNPRecommendationsTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712030639406_IdentitySetup"; }
+            get { return "201712091731552_NPNPRecommendationsTable"; }
         }
         
         string IMigrationMetadata.Source

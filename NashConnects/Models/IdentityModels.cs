@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace NashConnects.Models
 {
@@ -16,6 +18,23 @@ namespace NashConnects.Models
             // Add custom user claims here
             return userIdentity;
         }
+        
+        [Required]
+        [StringLength(25)]
+        public string FName { get; set; }
+        [Required]
+        [StringLength(25)]
+        public string LName { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string WebsiteURL { get; set; }
+
+        [StringLength(300)]
+        public string Description { get; set; }
+
+        public int RecommendCount { get; set; }
+        public bool Active { get; set; }
+        
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +48,45 @@ namespace NashConnects.Models
         {
             return new ApplicationDbContext();
         }
+        
+        public System.Data.Entity.DbSet<NashConnects.Models.Freelancer> Freelancers { get; set; }
+
+        public System.Data.Entity.DbSet<NashConnects.Models.NonProfit> NonProfits { get; set; }
+
+        public System.Data.Entity.DbSet<NashConnects.Models.Event> Events { get; set; }
+        
+
+        // define the many-to-mamy for Freelancers Registered for Events
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Event>()
+                        .HasMany(e => e.Freelancers)
+                        .WithMany(f => f.RegEvents)
+                        .Map(ef =>
+                            {
+                                ef.MapLeftKey("FLRegId");
+                                ef.MapRightKey("EventRegId");
+                                ef.ToTable("FLRegEvents");
+                            });
+
+            modelBuilder.Entity<Freelancer>()
+                        .HasMany(fl => fl.FLFLRecommendations).WithMany();
+
+            modelBuilder.Entity<Freelancer>()
+                        .HasMany(fl => fl.NPRecommendations)
+                        .WithMany(np => np.FLRecommendations)
+                        .Map(m =>
+                            {
+                                m.MapLeftKey("FLRecId");
+                                m.MapRightKey("NPRecId");
+                                m.ToTable("FLNPRecommendations");
+                            });
+
+            modelBuilder.Entity<NonProfit>()
+                        .HasMany(np => np.NPNPRecommndations).WithMany();
+        }
+        
     }
 }
