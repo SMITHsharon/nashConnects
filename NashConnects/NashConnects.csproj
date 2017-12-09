@@ -228,6 +228,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FLAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -278,8 +279,10 @@
     <Content Include="Global.asax" />
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
+    <Content Include="ngApp\Controllers\flAccountController.js" />
     <Content Include="ngApp\Controllers\homeController.js" />
     <Content Include="ngApp\Controllers\loginController.js" />
+    <Content Include="ngApp\Views\flProfile.html" />
     <Content Include="ngApp\Views\home.html" />
     <Content Include="ngApp\Views\login.html" />
     <Content Include="Scripts\angular-mocks.js" />

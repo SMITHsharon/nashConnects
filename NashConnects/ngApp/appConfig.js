@@ -13,12 +13,12 @@
             controller: "loginController",
             controllerAs: 'vm'
         });
-        //.when("/profile/freelance",
-        //{
-        //    //templateUrl: "/ngApp/Views/FLprofile.html",
-        //    //controller: "FLAccountController",
-        //    //controllerAs: 'vm'
-        //})
+        .when("/profile/freelance",
+        {
+            templateUrl: "/ngApp/Views/flProfile.html",
+            controller: "FLAccountController",
+            controllerAs: 'vm'
+        })
         //.when("/profile/nonprofit",
         //{
         //    //templateUrl: "/ngApp/Views/xxx.html",
