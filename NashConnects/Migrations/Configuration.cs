@@ -26,6 +26,9 @@ namespace NashConnects.Migrations
             {
                 UserName = "Sharon",
                 Email = "sharon@gmail.com",
+                FName = "Sharon",
+                LName = "Smith",
+                WebsiteURL = "xxx.com",
             };
 
             userManager.CreateAsync(user, "password").Wait();
