@@ -8,6 +8,7 @@ namespace NashConnects.Models
 {
     public class NonProfit : ApplicationUser
     {
+        
         [Key]
         public int NonProfitId { get; set; }
 
@@ -15,5 +16,6 @@ namespace NashConnects.Models
         public string CalendarLink { get; set; }
 
         public List<Event> Events { get; set; }
+        
     }
 }

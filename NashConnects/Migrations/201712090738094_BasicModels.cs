@@ -3,7 +3,7 @@ namespace NashConnects.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitTableStructures : DbMigration
+    public partial class BasicModels : DbMigration
     {
         public override void Up()
         {
@@ -23,17 +23,17 @@ namespace NashConnects.Migrations
                 .Index(t => t.NonProfit_Id);
             
             CreateTable(
-                "dbo.FLRegEvent",
+                "dbo.FreelancerEvents",
                 c => new
                     {
-                        FLRefId = c.Int(nullable: false),
-                        EventRefId = c.String(nullable: false, maxLength: 128),
+                        Freelancer_Id = c.String(nullable: false, maxLength: 128),
+                        Event_EventId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.FLRefId, t.EventRefId })
-                .ForeignKey("dbo.Events", t => t.FLRefId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.EventRefId, cascadeDelete: true)
-                .Index(t => t.FLRefId)
-                .Index(t => t.EventRefId);
+                .PrimaryKey(t => new { t.Freelancer_Id, t.Event_EventId })
+                .ForeignKey("dbo.AspNetUsers", t => t.Freelancer_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Events", t => t.Event_EventId, cascadeDelete: true)
+                .Index(t => t.Freelancer_Id)
+                .Index(t => t.Event_EventId);
             
             AddColumn("dbo.AspNetUsers", "FName", c => c.String(nullable: false, maxLength: 25));
             AddColumn("dbo.AspNetUsers", "LName", c => c.String(nullable: false, maxLength: 25));
@@ -43,24 +43,22 @@ namespace NashConnects.Migrations
             AddColumn("dbo.AspNetUsers", "Active", c => c.Boolean(nullable: false));
             AddColumn("dbo.AspNetUsers", "FreelancerId", c => c.Int());
             AddColumn("dbo.AspNetUsers", "Newsletter", c => c.Boolean());
-            AddColumn("dbo.AspNetUsers", "Public", c => c.Boolean());
+            AddColumn("dbo.AspNetUsers", "PublicReveal", c => c.Boolean());
             AddColumn("dbo.AspNetUsers", "NonProfitId", c => c.Int());
             AddColumn("dbo.AspNetUsers", "CalendarLink", c => c.String(maxLength: 50));
-            AddColumn("dbo.AspNetUsers", "Discriminator", c => c.String(nullable: false, maxLength: 128));
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Events", "NonProfit_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.FLRegEvent", "EventRefId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.FLRegEvent", "FLRefId", "dbo.Events");
-            DropIndex("dbo.FLRegEvent", new[] { "EventRefId" });
-            DropIndex("dbo.FLRegEvent", new[] { "FLRefId" });
+            DropForeignKey("dbo.FreelancerEvents", "Event_EventId", "dbo.Events");
+            DropForeignKey("dbo.FreelancerEvents", "Freelancer_Id", "dbo.AspNetUsers");
+            DropIndex("dbo.FreelancerEvents", new[] { "Event_EventId" });
+            DropIndex("dbo.FreelancerEvents", new[] { "Freelancer_Id" });
             DropIndex("dbo.Events", new[] { "NonProfit_Id" });
-            DropColumn("dbo.AspNetUsers", "Discriminator");
             DropColumn("dbo.AspNetUsers", "CalendarLink");
             DropColumn("dbo.AspNetUsers", "NonProfitId");
-            DropColumn("dbo.AspNetUsers", "Public");
+            DropColumn("dbo.AspNetUsers", "PublicReveal");
             DropColumn("dbo.AspNetUsers", "Newsletter");
             DropColumn("dbo.AspNetUsers", "FreelancerId");
             DropColumn("dbo.AspNetUsers", "Active");
@@ -69,7 +67,7 @@ namespace NashConnects.Migrations
             DropColumn("dbo.AspNetUsers", "WebsiteURL");
             DropColumn("dbo.AspNetUsers", "LName");
             DropColumn("dbo.AspNetUsers", "FName");
-            DropTable("dbo.FLRegEvent");
+            DropTable("dbo.FreelancerEvents");
             DropTable("dbo.Events");
         }
     }

@@ -18,6 +18,7 @@ namespace NashConnects.Models
             // Add custom user claims here
             return userIdentity;
         }
+        
         [Required]
         [StringLength(25)]
         public string FName { get; set; }
@@ -33,7 +34,7 @@ namespace NashConnects.Models
 
         public int RecommendCount { get; set; }
         public bool Active { get; set; }
-
+        
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -47,12 +48,15 @@ namespace NashConnects.Models
         {
             return new ApplicationDbContext();
         }
+        
         public System.Data.Entity.DbSet<NashConnects.Models.Freelancer> Freelancers { get; set; }
 
         public System.Data.Entity.DbSet<NashConnects.Models.NonProfit> NonProfits { get; set; }
 
         public System.Data.Entity.DbSet<NashConnects.Models.Event> Events { get; set; }
+        
 
+        // define the many-to-mamy for Freelancers Registered for Events
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -67,5 +71,6 @@ namespace NashConnects.Models
                                 ef.ToTable("FLRegEvent");
                             });
         }
+        
     }
 }

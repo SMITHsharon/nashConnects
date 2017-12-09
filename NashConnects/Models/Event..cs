@@ -8,6 +8,7 @@ namespace NashConnects.Models
 {
     public class Event
     {
+        
         [Key]
         public int EventId { get; set; }
 
@@ -26,5 +27,6 @@ namespace NashConnects.Models
         public string Description { get; set; }
 
         public virtual List<Freelancer> Freelancers { get; set; }
+        
     }
 }

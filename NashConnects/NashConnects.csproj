@@ -233,13 +233,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712030639406_IdentitySetup.cs" />
-    <Compile Include="Migrations\201712030639406_IdentitySetup.Designer.cs">
-      <DependentUpon>201712030639406_IdentitySetup.cs</DependentUpon>
+    <Compile Include="Migrations\201712090647048_IdentitySetup.cs" />
+    <Compile Include="Migrations\201712090647048_IdentitySetup.Designer.cs">
+      <DependentUpon>201712090647048_IdentitySetup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712080710124_InitTableStructures.cs" />
-    <Compile Include="Migrations\201712080710124_InitTableStructures.Designer.cs">
-      <DependentUpon>201712080710124_InitTableStructures.cs</DependentUpon>
+    <Compile Include="Migrations\201712090738094_BasicModels.cs" />
+    <Compile Include="Migrations\201712090738094_BasicModels.Designer.cs">
+      <DependentUpon>201712090738094_BasicModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712090743367_FLRegEvents.cs" />
+    <Compile Include="Migrations\201712090743367_FLRegEvents.Designer.cs">
+      <DependentUpon>201712090743367_FLRegEvents.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -343,11 +347,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712030639406_IdentitySetup.resx">
-      <DependentUpon>201712030639406_IdentitySetup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712090647048_IdentitySetup.resx">
+      <DependentUpon>201712090647048_IdentitySetup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712080710124_InitTableStructures.resx">
-      <DependentUpon>201712080710124_InitTableStructures.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712090738094_BasicModels.resx">
+      <DependentUpon>201712090738094_BasicModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712090743367_FLRegEvents.resx">
+      <DependentUpon>201712090743367_FLRegEvents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
