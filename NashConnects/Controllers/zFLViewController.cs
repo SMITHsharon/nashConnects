@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-namespace NashConnects.Controllers
+namespace NashConnects.Controllers 
 {
-    [RoutePrefix("api/profile/account")]
-    public class FLAccountController : ApiController
+    [RoutePrefix("api/freelance/profile")]
+    public class zFLViewController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()

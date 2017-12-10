@@ -12,19 +12,63 @@
             templateUrl: "/ngApp/Views/login.html",
             controller: "loginController",
             controllerAs: 'vm'
-        });
-        .when("/profile/freelance",
+        })
+        .when("/freelance/register",
         {
-            templateUrl: "/ngApp/Views/flProfile.html",
-            controller: "FLAccountController",
+            // for user to register as Freelance
+            templateUrl: "/ngApp/Views/flAccount.html",
+            controller: "flRegisterController",
             controllerAs: 'vm'
         })
-        //.when("/profile/nonprofit",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
+        .when("/nonprofit/register",
+        {
+            // for user to register as NonProfit
+            templateUrl: "/ngApp/Views/npAccount.html",
+            controller: "npRegisterController",
+            controllerAs: 'vm'
+        })
+        .when("/freelancers/list",
+        {
+            //for user to view a list of Freelancers
+            templateUrl: "/ngApp/Views/flList.html",
+            controller: "flListController",
+            controllerAs: 'vm'
+        })
+        .when("/freelance/profile/:id",
+        {
+            //for user to view a Freelance profile
+            templateUrl: "/ngApp/Views/flProfile.html",
+            controller: "flViewController",
+            controllerAs: 'vm'
+        })
+        .when("/nonprofits/list",
+        {
+            //for user to view a list of NonProfits
+            templateUrl: "/ngApp/Views/npList.html",
+            controller: "npListController",
+            controllerAs: 'vm'
+        })
+        .when("/nonprofit/profile/:id",
+        {
+            //for user to view a NonProfit profile
+            templateUrl: "/ngApp/Views/npProfile.html",
+            controller: "npViewController",
+            controllerAs: 'vm'
+        })
+        .when("/freelance/account/:id",
+        {
+            // for user to edit Freelance profile
+            templateUrl: "/ngApp/Views/flAccount.html",
+            controller: "flEditController",
+            controllerAs: 'vm'
+        })
+        .when("/nonprofit/account/:id",
+        {
+            // for user to edit NonProfit profile
+            templateUrl: "/ngApp/Views/npAccount.html",
+            controller: "npEditController",
+            controllerAs: 'vm'
+        });
         //.when("/nonprofit/approve",
         //{
         //    // reuse non-profit profile screen
@@ -32,31 +76,7 @@
         //    //controller: "xxxController",
         //    //controllerAs: 'vm'
         //})
-        //.when("/profile/online",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
         //.when("/profile/nonprofit",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/nonprofits/list",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/onlines/list",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/freelancers/list",
         //{
         //    //templateUrl: "/ngApp/Views/xxx.html",
         //    //controller: "xxxController",

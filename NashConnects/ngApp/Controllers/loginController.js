@@ -1,5 +1,12 @@
 ﻿app.controller("loginController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
-    
+
+    //.when("/login",
+    //{
+    //    templateUrl: "/ngApp/Views/login.html",
+    //    controller:  "loginController",
+    //    controllerAs: 'vm'
+    //})
+
     let vm = this;
 
     vm.message = "This is login";

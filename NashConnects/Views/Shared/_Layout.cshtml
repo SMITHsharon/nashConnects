@@ -21,62 +21,70 @@
                     </button>
 
                 </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav mr-auto">
-                            <li>
-                                <h4 id="logo"><a href="#!/">Nash Freelance Connects</a></h4>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Admin
-                                </a> 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#!/nonprofit/approve">Non-Profit Approvals</a>
-                                    <a class="dropdown-item" href="#!/freelancers/list">List Newsletter Subscribers</a>
-                                    <a class="dropdown-item" href="#!/category/add">Add Categories</a>
-                                    <a class="dropdown-item" href="#!/category/edit/:id">Edit Categories</a>
-                                </div>
-                            </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Resources
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#!/nonprofit/list">Nash Non-Profits</a>
-                                    <a class="dropdown-item" href="#!/onlines/list">Online Resources</a>
-                                    <a class="dropdown-item" href="#!/freelancers/list">Nash Freelancers</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#!/events/list">Events</a>
-                                </div>
-                            </li>
-                        </ul>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li>
+                            <h4 id="logo"><a href="#!/">Nash Freelance Connects</a></h4>
+                        </li>
 
-                        <ul class="nav navbar-nav pull-right">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Apply
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!/profile/freelance">Freelance</a>
-                                        <a class="dropdown-item" href="#!/profile/nonprofit">Non-Profit</a>
-                                    </div>
-                                </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a> 
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <!-- <a class="dropdown-item" href="#!/nonprofit/approve">Non-Profit Approvals</a> -->
+                                <a class="dropdown-item" href="#!/freelancers/list">List Newsletter Subscribers</a>
+                                <!-- <a class="dropdown-item" href="#!/category/add">Add Categories</a> -->
+                                <!-- <a class="dropdown-item" href="#!/category/edit/:id">Edit Categories</a> -->
+                            </div>
+                        </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Account
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="#!/login">Sign In</a>
-                                            <a class="dropdown-item" href="#!/profile/freelance/:id">Freelance Profile</a>
-                                            <a class="dropdown-item" href="#!/profile/nonprofit/:id">Non-Profit Profile</a>
-                                        </div>
-                                </li>
-                            </ul>
-                    </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Resources
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#!/freelancers/list">Nash Freelancers</a>
+                                <a class="dropdown-item" href="#!/nonprofits/list">Nash Non-Profits</a>
+                                <!-- <a class="dropdown-item" href="#!/onlines/list">Online Resources</a> -->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#!/events/list">Events</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav pull-right">
+                        <!--
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Register
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#!/freelance/register">Freelance</a>
+                                <a class="dropdown-item" href="#!/nonprofit/register">Non-Profit</a>
+                            </div>
+                        </li>
+                        -->
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Account
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#!/login">Sign In</a>
+                                <a class="dropdown-item" href="#!/freelance/account/:id">Freelance Profile</a>
+                                <a class="dropdown-item" href="#!/nonprofit/account/:id">Non-Profit Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#!/freelance/register">Register Freelance</a> 
+                                <a class="dropdown-item" href="#!/nonprofit/register">Register Non-Profit</a> 
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+
         @RenderBody()
 
 
