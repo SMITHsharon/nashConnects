@@ -1,8 +1,16 @@
 ﻿app.controller("homeController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
-    console.log("in homeController");
+
+    //.when("/",
+    //{
+    //    templateUrl: "/ngApp/Views/home.html",
+    //    controller:  "homeController",
+    //    controllerAs: 'vm'
+    //})
+
+    console.log("in Home Controller");
     let vm = this;
 
-    vm.message = "This is home";
+    vm.message = "This is Home";
 
     
 }
