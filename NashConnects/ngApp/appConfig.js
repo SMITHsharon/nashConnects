@@ -27,6 +27,13 @@
             controller: "npRegisterController",
             controllerAs: 'vm'
         })
+        //.when("/nonprofit/approve",
+        //{
+        //    // reuse non-profit profile screen
+        //    //templateUrl: "/ngApp/Views/npAccount.html",
+        //    //controller: "xxxController",
+        //    //controllerAs: 'vm'
+        //})
         .when("/freelancers/list",
         {
             //for user to view a list of Freelancers
@@ -68,38 +75,28 @@
             templateUrl: "/ngApp/Views/npAccount.html",
             controller: "npEditController",
             controllerAs: 'vm'
-        });
-        //.when("/nonprofit/approve",
-        //{
-        //    // reuse non-profit profile screen
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/profile/nonprofit",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/event/add",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/events/list",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/event/detail/:id",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
+        })
+        .when("/event/add",
+        {
+            // for user to add an Event
+            templateUrl: "/ngApp/Views/EventNew.html",
+            controller: "eventAddController",
+            controllerAs: 'vm'
+        })
+        .when("/events/list",
+        {
+            // for user to list Events
+            templateUrl: "/ngApp/Views/EventsList.html",
+            controller: "eventListController",
+            controllerAs: 'vm'
+        })
+        .when("/event/detail/:id",
+        {
+            // for user to list Events
+            templateUrl: "/ngApp/Views/EventDetail.html",
+            controller: "eventViewController",
+            controllerAs: 'vm'
+        })
         //.when("/category/add",
         //{
         //    //templateUrl: "/ngApp/Views/xxx.html",
@@ -111,8 +108,14 @@
         //    //templateUrl: "/ngApp/Views/xxx.html",
         //    //controller: "xxxController",
         //    //controllerAs: 'vm'
-        //});
-        //.othersise("/");
+        //})
+        .when("/logout",
+        {
+            templateUrl: "/ngApp/Views/home.html",
+            controller: "logoutController",
+            controllerAs: 'vm'
+        })
+        .otherwise("/freelancers/list");
             
 }]);
 
