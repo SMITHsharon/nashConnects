@@ -11,8 +11,69 @@
                             {{error}}
                         </div>
                         <h1>{{vm.message}}</h1>
-
-                    </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.username" class="input" type="text" placeholder="username">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.fName" class="input" type="text" placeholder="first name">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.lName" class="input" type="text" placeholder="last name">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.email" class="input" type="email" placeholder="email">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.websiteURL" class="input" type="text" placeholder="website url">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <textarea rows="4" cols="50" ng-model="vm.desc" class="input" type="text" placeholder="description">
+                                </textarea>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <form>
+                            <div>
+                                <input type="checkbox" id="subscribeNewsletter" name="subscribe" value="newsletter" checked>
+                                <label for="subscribeNewsletter">subscribe to our newsletter?</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="makePublic" name="makePublic" value="makePublic" checked>
+                                <label for="makePublic">make info public?</label>
+                            </div>
+                        </form>
+                            <div class="field">
+                                <button class="button is-primary" ng-click="vm.submit()" ng-class="{'is-loading':inProgress}">Submit</button>
+                            </div>
+</div>
                 </div>
             </div>
         </div>

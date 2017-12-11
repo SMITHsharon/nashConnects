@@ -11,7 +11,7 @@
     console.log("in Freelancers Edit Controller");
     let vm = this;
 
-    vm.message = "This is Nash Freelancers Profile // Edit Controller";
+    vm.message = "Freelance Profile";
 
 
 }

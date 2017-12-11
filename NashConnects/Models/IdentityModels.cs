@@ -18,13 +18,19 @@ namespace NashConnects.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        //[Required]
+        //[StringLength(20)]
+        //public string UserName { get; set; }
         
         [Required]
         [StringLength(25)]
         public string FName { get; set; }
+
         [Required]
         [StringLength(25)]
         public string LName { get; set; }
+
         [Required]
         [StringLength(50)]
         public string WebsiteURL { get; set; }

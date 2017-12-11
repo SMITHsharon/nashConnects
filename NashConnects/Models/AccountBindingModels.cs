@@ -48,6 +48,25 @@ namespace NashConnects.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //ADDED THESE TO THIS MODEL ?????
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        [Display(Name = "First Name")]
+        public string FName { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        [Display(Name = "Last Name")]
+        public string LName { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string WebsiteURL { get; set; }
+
     }
 
     public class RegisterExternalBindingModel

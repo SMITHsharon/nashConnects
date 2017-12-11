@@ -11,7 +11,7 @@
     console.log("in NonProfits Edit Controller");
     let vm = this;
 
-    vm.message = "This is Non-Profit Profile // Edit Controller";
+    vm.message = "Non-Profit Profile";
 
 
 }
