@@ -38,6 +38,9 @@ namespace NashConnects.Models
         [StringLength(300)]
         public string Description { get; set; }
 
+        [StringLength(50)]
+        public string Category { get; set; }
+
         public int RecommendCount { get; set; }
         public bool Active { get; set; }
         
