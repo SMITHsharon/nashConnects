@@ -26,8 +26,8 @@ namespace NashConnects.Migrations
             {
                 UserName = "Sharon",
                 Email = "sharon@gmail.com",
-                FName = "Sharon",
-                LName = "Smith",
+                FirstName = "Sharon",
+                LastName = "Smith",
                 WebsiteURL = "xxx.com",
             };
 

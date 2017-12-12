@@ -329,7 +329,11 @@ namespace NashConnects.Controllers
             }
 
             //var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email, FName = model.FName, LName = model.LName, WebsiteURL = model.WebsiteURL };
+            var user = new ApplicationUser()
+            {
+                UserName = model.UserName,
+                WebsiteURL = model.WebsiteURL
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

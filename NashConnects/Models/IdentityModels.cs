@@ -19,17 +19,11 @@ namespace NashConnects.Models
             return userIdentity;
         }
 
-        //[Required]
-        //[StringLength(20)]
-        //public string UserName { get; set; }
-        
-        [Required]
         [StringLength(25)]
-        public string FName { get; set; }
+        public string FirstName { get; set; }
 
-        [Required]
         [StringLength(25)]
-        public string LName { get; set; }
+        public string LastName { get; set; }
 
         [Required]
         [StringLength(50)]

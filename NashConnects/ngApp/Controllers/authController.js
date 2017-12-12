@@ -25,7 +25,9 @@
     vm.loginmessage = "Sign In ...";
     vm.registermessage = "Register ...";
     vm.username = "";
+    vm.websiteURL = "";
     vm.password = "";
+    vm.confirmPassword = "";
 
     vm.login = function () {
 
@@ -35,6 +37,7 @@
         $http({
             method: 'POST',
             url: "/Token",
+            //AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             transformRequest: function (obj) {
                 var str = [];
@@ -50,7 +53,8 @@
                 $location.path("/");
 
                 vm.inProgress = false;
-            }, function (result) {
+            })
+            .catch((result) => {
                 vm.error = result.data.error_description;
                 vm.inProgress = false;
             });
@@ -64,28 +68,39 @@
         console.log(vm.username, vm.password, vm.confirmpassword);
         vm.error = "";
         vm.inProgress = true;
-
-        /*
+        
         $http({
             method: 'POST',
-            ???
-            ???
+            url: "/api/Account/Register",
+            data:
+            {
+                UserName: vm.username,
+                WebsiteURL: vm.websiteURL,
+                Password: vm.password,
+                confirmPassword: vm.confirmPassword
+            }
         })
-            .then(function (result) {
+            .then((result) => {
+                console.log("resultz in Register", result);
+                //sessionStorage.setItem('token', result.data.access_token);
+                //currentToken = sessionStorage.getItem('token');
+                //$rootScope.UserName = result.config.data.UserName;
+                //console.log("currentToken :", currentToken);
+                console.log("regestration Done welcome :", result.config.data.UserName);
+                $scope.authenticate = false;
+                //login ... 
 
-                ???
-
-                login ... 
-
-                var id = User.Identity.GetUserId();
-                $location.url('/freelance/account/:id')
+                //var id = User.Identity.GetUserId();
+                //$location.url('/freelance/account/:id')
 
                 vm.inProgress = false;
-            }, function (result) {
+            })
+            .catch((result) => {
                 vm.error = result.data.error_description;
+                console.log("error in register :", result.data.Message);
                 vm.inProgress = false;
             });
-        */
+        
 
         
     }

@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201712091731552_NPNPRecommendationsTable.Designer.cs">
       <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712120500034_revUserModel.cs" />
+    <Compile Include="Migrations\201712120500034_revUserModel.Designer.cs">
+      <DependentUpon>201712120500034_revUserModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712091731552_NPNPRecommendationsTable.resx">
       <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712120500034_revUserModel.resx">
+      <DependentUpon>201712120500034_revUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
