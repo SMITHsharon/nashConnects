@@ -7,8 +7,8 @@ namespace NashConnects.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.AspNetUsers", "FirstName", c => c.String(maxLength: 25));
-            AddColumn("dbo.AspNetUsers", "LastName", c => c.String(maxLength: 25));
+            AddColumn("dbo.AspNetUsers", "FirstName", c => c.String(nullable: false, maxLength: 25));
+            AddColumn("dbo.AspNetUsers", "LastName", c => c.String(nullable: false, maxLength: 25));
             AddColumn("dbo.AspNetUsers", "Category", c => c.String(maxLength: 50));
             DropColumn("dbo.AspNetUsers", "FName");
             DropColumn("dbo.AspNetUsers", "LName");

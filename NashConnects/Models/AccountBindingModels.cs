@@ -50,7 +50,15 @@ namespace NashConnects.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(25)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(75)]
         public string WebsiteURL { get; set; }
     }
 

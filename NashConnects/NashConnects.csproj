@@ -262,9 +262,13 @@
     <Compile Include="Migrations\201712091731552_NPNPRecommendationsTable.Designer.cs">
       <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712120500034_revUserModel.cs" />
-    <Compile Include="Migrations\201712120500034_revUserModel.Designer.cs">
-      <DependentUpon>201712120500034_revUserModel.cs</DependentUpon>
+    <Compile Include="Migrations\201712130100509_revUserModel.cs" />
+    <Compile Include="Migrations\201712130100509_revUserModel.Designer.cs">
+      <DependentUpon>201712130100509_revUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.cs" />
+    <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.Designer.cs">
+      <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -411,8 +415,11 @@
     <EmbeddedResource Include="Migrations\201712091731552_NPNPRecommendationsTable.resx">
       <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712120500034_revUserModel.resx">
-      <DependentUpon>201712120500034_revUserModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712130100509_revUserModel.resx">
+      <DependentUpon>201712130100509_revUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712130242174_dropFLandNP_ModelKeys.resx">
+      <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

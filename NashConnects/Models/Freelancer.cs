@@ -8,9 +8,10 @@ namespace NashConnects.Models
 {
     public class Freelancer : ApplicationUser
     {
-        
+        /*
         [Key]
         public int FreelancerId { get; set; }
+        */
 
         public bool Newsletter { get; set; }
 

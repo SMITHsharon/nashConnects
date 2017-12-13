@@ -8,9 +8,10 @@ namespace NashConnects.Models
 {
     public class NonProfit : ApplicationUser
     {
-        
+        /*
         [Key]
         public int NonProfitId { get; set; }
+        */
 
         [StringLength(50)]
         public string CalendarLink { get; set; }

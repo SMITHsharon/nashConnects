@@ -332,6 +332,8 @@ namespace NashConnects.Controllers
             var user = new ApplicationUser()
             {
                 UserName = model.UserName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 WebsiteURL = model.WebsiteURL
             };
 

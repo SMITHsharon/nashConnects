@@ -19,14 +19,16 @@ namespace NashConnects.Models
             return userIdentity;
         }
 
+        [Required]
         [StringLength(25)]
         public string FirstName { get; set; }
 
+        [Required]
         [StringLength(25)]
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(75)]
         public string WebsiteURL { get; set; }
 
         [StringLength(300)]
