@@ -1,17 +1,31 @@
-﻿app.controller("flEditController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+﻿app.controller("flEditController", ["$rootScope", "$scope", "$http", "$location", function ($rootScope, $scope, $http, $location) {
 
-    //.when("/freelance/account/:id",
+    //.when("/freelance/account,
     //{
           //for user to edit Freelance profile
-    //    templateUrl: "/ngApp/Views/flAccount.html",
+    //    templateUrl: "/ngApp/Views/flProfile.html",
     //    controller: "flEditController",
     //    controllerAs: 'vm'
     //})
 
-    console.log("in Freelancers Edit Controller");
-    let vm = this;
 
-    vm.message = "Freelance Profile";
+
+    console.log("in Freelancers Edit Controller");
+    //let vm = this;
+
+    $scope.message = "Freelance Profile";
+
+    $scope.thisProfile = {};
+
+    $http.get("/api/Freelancers/current")
+        .then(function (result) {
+            console.log("result.data", result.data);
+           $scope.thisProfile = result.data;
+        })
+        .catch((error) => {
+            console.log("getFreelancerProfile", error);
+        });
+
 
 
 }

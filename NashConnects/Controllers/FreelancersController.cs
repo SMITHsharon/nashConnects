@@ -9,10 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NashConnects.Models;
+using Microsoft.AspNet.Identity;
 
 namespace NashConnects.Controllers
 {
-    /*
+    
     public class FreelancersController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,14 +21,15 @@ namespace NashConnects.Controllers
         // GET: api/Freelancers
         public IQueryable<Freelancer> GetUsers()
         {
-            return db.Users;
+            return db.Freelancers;
         }
 
-        // GET: api/Freelancers/5
+        // GET: api/Freelancers/current
+        [HttpGet, Route("api/Freelancers/current")]
         [ResponseType(typeof(Freelancer))]
-        public IHttpActionResult GetFreelancer(string id)
+        public IHttpActionResult GetFreelancer()
         {
-            Freelancer freelancer = db.Users.Find(id);
+            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
             if (freelancer == null)
             {
                 return NotFound();
@@ -105,7 +107,7 @@ namespace NashConnects.Controllers
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult DeleteFreelancer(string id)
         {
-            Freelancer freelancer = db.Users.Find(id);
+            Freelancer freelancer = db.Freelancers.Find(id);
             if (freelancer == null)
             {
                 return NotFound();
@@ -132,5 +134,5 @@ namespace NashConnects.Controllers
         }
     
     }
-    */
+    
 }

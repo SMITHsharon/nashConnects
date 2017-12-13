@@ -51,6 +51,7 @@
                 sessionStorage.setItem('token', result.data.access_token);
                 $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
                 $location.path("/");
+                console.log("logged in", result);
 
                 vm.inProgress = false;
             })

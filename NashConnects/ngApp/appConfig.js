@@ -62,7 +62,7 @@
         //    controller: "npViewController",
         //    controllerAs: 'vm'
         //})
-        .when("/freelance/account/:id",
+        .when("/freelance/account",
         {
             // for user to edit Freelance profile
             templateUrl: "/ngApp/Views/flProfile.html",
