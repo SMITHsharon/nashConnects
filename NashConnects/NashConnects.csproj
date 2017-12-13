@@ -262,6 +262,14 @@
     <Compile Include="Migrations\201712091731552_NPNPRecommendationsTable.Designer.cs">
       <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712130100509_revUserModel.cs" />
+    <Compile Include="Migrations\201712130100509_revUserModel.Designer.cs">
+      <DependentUpon>201712130100509_revUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.cs" />
+    <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.Designer.cs">
+      <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,26 +296,30 @@
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />
     <Content Include="ngApp\Controllers\flListController.js" />
-    <Content Include="ngApp\Controllers\flRegisterController.js" />
+    <Content Include="ngApp\Controllers\zflRegisterController.js" />
     <Content Include="ngApp\Controllers\flViewController.js" />
     <Content Include="ngApp\Controllers\homeController.js" />
-    <Content Include="ngApp\Controllers\loginController.js" />
-    <Content Include="ngApp\Controllers\logoutController.js" />
+    <Content Include="ngApp\Controllers\authController.js" />
+    <Content Include="ngApp\Controllers\zloginController.js" />
+    <Content Include="ngApp\Controllers\zlogoutController.js" />
+    <Content Include="ngApp\Controllers\zNavController.js" />
     <Content Include="ngApp\Controllers\npEditController.js" />
     <Content Include="ngApp\Controllers\npListController.js" />
-    <Content Include="ngApp\Controllers\npRegisterController.js" />
+    <Content Include="ngApp\Controllers\znpRegisterController.js" />
     <Content Include="ngApp\Controllers\npViewController.js" />
     <Content Include="ngApp\Views\EventDetail.html" />
     <Content Include="ngApp\Views\EventNew.html" />
     <Content Include="ngApp\Views\EventsList.html" />
-    <Content Include="ngApp\Views\flAccount.html" />
-    <Content Include="ngApp\Views\flList.html" />
     <Content Include="ngApp\Views\flProfile.html" />
+    <Content Include="ngApp\Views\flList.html" />
+    <Content Include="ngApp\Views\zflProfile.html" />
     <Content Include="ngApp\Views\home.html" />
     <Content Include="ngApp\Views\login.html" />
-    <Content Include="ngApp\Views\npAccount.html" />
+    <Content Include="ngApp\Views\logout.html" />
+    <Content Include="ngApp\Views\znpAccount.html" />
     <Content Include="ngApp\Views\npList.html" />
     <Content Include="ngApp\Views\npProfile.html" />
+    <Content Include="ngApp\Views\register.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -402,6 +414,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712091731552_NPNPRecommendationsTable.resx">
       <DependentUpon>201712091731552_NPNPRecommendationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712130100509_revUserModel.resx">
+      <DependentUpon>201712130100509_revUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712130242174_dropFLandNP_ModelKeys.resx">
+      <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

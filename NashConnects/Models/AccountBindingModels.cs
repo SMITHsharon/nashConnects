@@ -35,19 +35,31 @@ namespace NashConnects.Models
     public class RegisterBindingModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "username")]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(75)]
+        public string WebsiteURL { get; set; }
     }
 
     public class RegisterExternalBindingModel

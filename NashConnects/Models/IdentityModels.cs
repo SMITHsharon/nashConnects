@@ -18,19 +18,24 @@ namespace NashConnects.Models
             // Add custom user claims here
             return userIdentity;
         }
-        
+
         [Required]
         [StringLength(25)]
-        public string FName { get; set; }
+        public string FirstName { get; set; }
+
         [Required]
         [StringLength(25)]
-        public string LName { get; set; }
+        public string LastName { get; set; }
+
         [Required]
-        [StringLength(50)]
+        [StringLength(75)]
         public string WebsiteURL { get; set; }
 
         [StringLength(300)]
         public string Description { get; set; }
+
+        [StringLength(50)]
+        public string Category { get; set; }
 
         public int RecommendCount { get; set; }
         public bool Active { get; set; }
