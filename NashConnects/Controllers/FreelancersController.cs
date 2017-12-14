@@ -25,6 +25,7 @@ namespace NashConnects.Controllers
         }
 
         // GET: api/Freelancers/current
+        [Authorize]
         [HttpGet, Route("api/Freelancers/current")]
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult GetFreelancer()
@@ -39,6 +40,8 @@ namespace NashConnects.Controllers
         }
 
         // PUT: api/Freelancers/5
+        [Authorize]
+        [HttpPut, Route("api/Freelancers/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutFreelancer(string id, Freelancer freelancer)
         {

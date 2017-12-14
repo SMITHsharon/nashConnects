@@ -53,7 +53,19 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
+                                <!--
                                 <input ng-model="thisProfile.Category" class="input" type="text" placeholder="DROPDOWN OF CATEGORIES">
+                                -->
+                                <select id="category" type="number" ng-model="thisProfile.Category">
+                                    <option value="0">Artist</option>
+                                    <option value="2">Florist</option>
+                                    <option value="3">Personal Trainer</option>
+                                    <option value="4">Photographer</option>
+                                    <option value="5">Real Estate Agent</option>
+                                    <option value="6">Software Developer</option>
+                                    <option value="7">Therapist</option>
+                                    <option value="8">Writer</option>
+                                </select>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -61,7 +73,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <textarea rows="4" cols="50" ng-model="thisProfile.Description" class="input" type="text" placeholder="description">
+                                <textarea rows="4" cols="50" ng-model="thisProfile.Description" class="textarea" placeholder="description">
                                 </textarea>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
@@ -70,17 +82,20 @@
                         </div>
                         <form>
                             <div>
-                                <input type="checkbox" id="subscribeNewsletter" name="subscribe" value="newsletter" checked>
+                                <input type="checkbox" id="subscribeNewsletter" name="subscribe" value="newsletter" ng-checked="thisProfile.Newsletter" checked>
                                 <label for="subscribeNewsletter">subscribe to our newsletter?</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="makePublic" name="makePublic" value="makePublic" checked>
+                                <input type="checkbox" id="makePublic" name="makePublic" value="makePublic" ng-checked="thisProfile.PublicReveal" checked>
                                 <label for="makePublic">make info public?</label>
                             </div>
                         </form>
                             <div class="field">
-                                <button class="button is-primary" ng-click="submit()" ng-class="{'is-loading':inProgress}">Submit</button>
-                            </div>
+                                <button class="button is-primary is-normal" ng-click="editProfile()" ng-class="{'is-loading':inProgress}">Submit</button>
+                            <!-- </div>
+                        <div class="field"> -->
+                            <button class="button is-danger is-normal" ng-click="delete()" ng-class="{'is-loading':inProgress}">Delete Profile</button>
+                        </div>
 </div>
                 </div>
             </div>

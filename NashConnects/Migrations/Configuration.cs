@@ -146,7 +146,27 @@ namespace NashConnects.Migrations
                 WebsiteURL = "https://bsgreaves.github.io/portfolio/"
             };
             userManager.CreateAsync(user12, "password").Wait();
-            
+
+            var user17 = new Freelancer
+            {
+                UserName = "tVillager",
+                Email = "tim@gmail.com",
+                FirstName = "Tim",
+                LastName = "Villager",
+                WebsiteURL = "https://fridrichandclark.com/agents/tim-villager/"
+            };
+            userManager.CreateAsync(user12, "password").Wait();
+
+            var user18 = new Freelancer
+            {
+                UserName = "trVillager",
+                Email = "troy@gmail.com",
+                FirstName = "Troy",
+                LastName = "Villager",
+                WebsiteURL = "https://www.tvillagerdesigns.com/"
+            };
+            userManager.CreateAsync(user12, "password").Wait();
+
 
             //SEED WITH NON-PROFIT USERS
             var user13 = new NonProfit

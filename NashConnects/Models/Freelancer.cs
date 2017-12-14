@@ -17,9 +17,23 @@ namespace NashConnects.Models
 
         public bool PublicReveal { get; set; }
 
+        public FLCategory Category { get; set; }
+
         public virtual List<Freelancer> FLFLRecommendations { get; set; }
         public virtual List<NonProfit> NPRecommendations { get; set; }
         public virtual List<Event> RegEvents { get; set; }
+
+        public enum FLCategory
+        {
+            Artist,
+            Florist,
+            PersonalTrainer,
+            Photographer,
+            RealEstateAgent,
+            SoftwareDeveloper,
+            Therapist,
+            Writer
+        }
         
     }
 }

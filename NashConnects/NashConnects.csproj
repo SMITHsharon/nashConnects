@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.Designer.cs">
       <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712140527126_AddFLCategoryEnum.cs" />
+    <Compile Include="Migrations\201712140527126_AddFLCategoryEnum.Designer.cs">
+      <DependentUpon>201712140527126_AddFLCategoryEnum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -420,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712130242174_dropFLandNP_ModelKeys.resx">
       <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712140527126_AddFLCategoryEnum.resx">
+      <DependentUpon>201712140527126_AddFLCategoryEnum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
