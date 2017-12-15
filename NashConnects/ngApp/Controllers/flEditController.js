@@ -22,15 +22,17 @@
             console.log("result.data", result.data);
             $scope.thisProfile = result.data;
             userid = result.data.Id;
+            console.log("userid :: ", userid);
         })
         .catch((error) => {
             console.log("getFreelancerProfile", error);
         });
 
-
+    
     $scope.editProfile = () => {
         let userProfile = $scope.thisProfile;
-        $http.put("api/Freelancers/{userid}")
+        console.log("editing Profile; userid :: ", userid);
+        $http.put(`/api/Freelancers/${userid}`,
             {
                 UserName: userProfile.UserName,
                 FirstName: userProfile.FirstName,
@@ -40,8 +42,10 @@
                 Category: userProfile.Category,
                 Description: userProfile.Description,
                 Newsletter: userProfile.Newsletter,
-                PublicReveal: userProfile.PublicReveal
-            }
+                PublicReveal: userProfile.PublicReveal,
+                Active: userProfile.true,
+                Id: userid
+            })
             .then((result) => {
                 console.log("editFreelanceProfile", result);
             })
@@ -49,5 +53,5 @@
                 console.log("editFreelanceProfile", error);
             });
         };
-
+        
 }]);

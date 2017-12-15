@@ -10,10 +10,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using NashConnects.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NashConnects.Controllers
 {
-    
+    [RoutePrefix("api/Freelancers")]
     public class FreelancersController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -26,7 +27,7 @@ namespace NashConnects.Controllers
 
         // GET: api/Freelancers/current
         [Authorize]
-        [HttpGet, Route("api/Freelancers/current")]
+        [HttpGet, Route("current")]
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult GetFreelancer()
         {
@@ -41,7 +42,7 @@ namespace NashConnects.Controllers
 
         // PUT: api/Freelancers/5
         [Authorize]
-        [HttpPut, Route("api/Freelancers/{id}")]
+        [HttpPut, Route("{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutFreelancer(string id, Freelancer freelancer)
         {
@@ -59,6 +60,8 @@ namespace NashConnects.Controllers
 
             try
             {
+                //Freelancer user = db.Freelancer.Find(id));
+                //var user = (Freelancer)UserManagerExtensions.FindById(id);
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)

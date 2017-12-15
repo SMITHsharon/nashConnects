@@ -82,12 +82,14 @@
                         </div>
                         <form>
                             <div>
-                                <input type="checkbox" id="subscribeNewsletter" name="subscribe" value="newsletter" ng-checked="thisProfile.Newsletter" checked>
-                                <label for="subscribeNewsletter">subscribe to our newsletter?</label>
+                                
+                                <input type="checkbox" id="subscribeNewsletter" name="subscribe" value="subscribeNewsletter" ng-checked="thisProfile.Newsletter" checked>
+                                <label for="subscribeNewsletter" ng-model="thisProfile.Newsletter">subscribe to our newsletter?</label>
                             </div>
                             <div>
+                                
                                 <input type="checkbox" id="makePublic" name="makePublic" value="makePublic" ng-checked="thisProfile.PublicReveal" checked>
-                                <label for="makePublic">make info public?</label>
+                                <label for="makePublic" ng-model="thisProfile.PublicReveal">make info public?</label>
                             </div>
                         </form>
                             <div class="field">

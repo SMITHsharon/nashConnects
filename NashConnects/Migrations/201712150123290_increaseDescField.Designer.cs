@@ -7,13 +7,13 @@ namespace NashConnects.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddFLCategoryEnum : IMigrationMetadata
+    public sealed partial class increaseDescField : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFLCategoryEnum));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(increaseDescField));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712140527126_AddFLCategoryEnum"; }
+            get { return "201712150123290_increaseDescField"; }
         }
         
         string IMigrationMetadata.Source

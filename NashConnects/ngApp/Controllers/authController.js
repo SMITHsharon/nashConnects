@@ -101,12 +101,9 @@
                 console.log("error in register :", result.data.Message);
                 vm.inProgress = false;
             });
-        
-
-        
     }
 
-
+    
     vm.logout = function () {
 
         console.log("in logout function");
@@ -114,14 +111,11 @@
         console.log(vm.username);
         vm.error = "";
         vm.inProgress = true;
-
-        /*
-        $http({
-            method: 'POST',
-        })
-        */
         
-        $location.url('/freelancers/list');
-    }
-}
-]);
+        $http({
+                method: 'POST',
+                url: "/api/Account/Logout"
+            })
+        $location.path('/freelancers/list');
+        }
+}]);

@@ -270,9 +270,9 @@
     <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.Designer.cs">
       <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712140527126_AddFLCategoryEnum.cs" />
-    <Compile Include="Migrations\201712140527126_AddFLCategoryEnum.Designer.cs">
-      <DependentUpon>201712140527126_AddFLCategoryEnum.cs</DependentUpon>
+    <Compile Include="Migrations\201712150123290_increaseDescField.cs" />
+    <Compile Include="Migrations\201712150123290_increaseDescField.Designer.cs">
+      <DependentUpon>201712150123290_increaseDescField.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -425,8 +425,8 @@
     <EmbeddedResource Include="Migrations\201712130242174_dropFLandNP_ModelKeys.resx">
       <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712140527126_AddFLCategoryEnum.resx">
-      <DependentUpon>201712140527126_AddFLCategoryEnum.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712150123290_increaseDescField.resx">
+      <DependentUpon>201712150123290_increaseDescField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

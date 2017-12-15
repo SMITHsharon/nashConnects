@@ -31,7 +31,7 @@ namespace NashConnects.Models
         [StringLength(75)]
         public string WebsiteURL { get; set; }
 
-        [StringLength(300)]
+        [StringLength(600)]
         public string Description { get; set; }
 
         [StringLength(50)]
