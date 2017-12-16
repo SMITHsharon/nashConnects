@@ -16,7 +16,7 @@
 
     $scope.thisProfile = {};
 
-    $http.get("/api/NonProfit/current")
+    $http.get("/api/NonProfits/current")
         .then(function (result) {
             console.log("result.data", result.data);
             $scope.thisProfile = result.data;
@@ -31,25 +31,22 @@
     $scope.editProfile = () => {
         let userProfile = $scope.thisProfile;
         console.log("editing Profile; userid :: ", userid);
-        $http.put(`/api/Freelancers/${userid}`,
+        $http.put(`/api/Nonprofits/${userid}`,
             {
                 UserName: userProfile.UserName,
                 FirstName: userProfile.FirstName,
                 LastName: userProfile.LastName,
                 Email: userProfile.Email,
                 WebsiteURL: userProfile.WebsiteURL,
-                Category: userProfile.Category,
                 Description: userProfile.Description,
-                Newsletter: userProfile.Newsletter,
-                PublicReveal: userProfile.PublicReveal,
                 Active: true,
                 Id: userid
             })
             .then((result) => {
-                console.log("editFreelanceProfile", result);
+                console.log("editNonProfitProfile", result);
             })
             .catch((error) => {
-                console.log("editFreelanceProfile", error);
+                console.log("editNonProfitProfile", error);
             });
     };
 

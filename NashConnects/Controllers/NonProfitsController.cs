@@ -9,25 +9,36 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NashConnects.Models;
+using Microsoft.AspNet.Identity;
 
 namespace NashConnects.Controllers
 {
-    /*
+    [RoutePrefix("api/NonProfits")]
     public class NonProfitsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
+        [HttpGet, Route("current")]
+        [ResponseType(typeof(NonProfit))]
         // GET: api/NonProfits
-        public IQueryable<NonProfit> GetUsers()
+        //public IQueryable<NonProfit> GetUsers()
+        public IHttpActionResult GetFreelancer()
         {
-            return db.Users;
+            NonProfit nonProfit = db.NonProfits.Find(User.Identity.GetUserId());
+            if (nonProfit == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(nonProfit);
         }
 
         // GET: api/NonProfits/5
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult GetNonProfit(string id)
         {
-            NonProfit nonProfit = db.Users.Find(id);
+            NonProfit nonProfit = db.NonProfits.Find(id);
             if (nonProfit == null)
             {
                 return NotFound();
@@ -105,7 +116,7 @@ namespace NashConnects.Controllers
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult DeleteNonProfit(string id)
         {
-            NonProfit nonProfit = db.Users.Find(id);
+            NonProfit nonProfit = db.NonProfits.Find(id);
             if (nonProfit == null)
             {
                 return NotFound();
@@ -131,5 +142,4 @@ namespace NashConnects.Controllers
             return db.Users.Count(e => e.Id == id) > 0;
         }
     }
-    */
 }
