@@ -69,7 +69,7 @@
             controller: "flEditController",
             controllerAs: 'vm'
         })
-        .when("/nonprofit/account/:id",
+        .when("/nonprofit/account",
         {
             // for user to edit NonProfit profile
             templateUrl: "/ngApp/Views/npProfile.html",

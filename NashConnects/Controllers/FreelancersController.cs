@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using NashConnects.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using NashConnects.ViewModels;
 
 namespace NashConnects.Controllers
 {
@@ -20,9 +21,35 @@ namespace NashConnects.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Freelancers
-        public IQueryable<Freelancer> GetUsers()
+        [HttpGet, Route("list")]
+        //public IQueryable<Freelancer> GetUsers()
+        public HttpResponseMessage GetAllFreelancersById()
         {
-            return db.Freelancers;
+
+            var db = new ApplicationDbContext();
+            var freelanceList = db.Freelancers.ToList();
+            /*
+            var result = (from f in new ApplicationDbContext().Freelancers
+                          
+                          select new FreelancerListView { f.LastName, f.WebsiteURL }).ToList();
+            */
+            return Request.CreateResponse(HttpStatusCode.OK, freelanceList);
+            
+
+
+            //IQueryable<Freelancer> freelancers = flRepository.GetQueryableFreelancers();
+            //var listOfFreelancers = freelancers;
+            //return listOfFreelancers;
+
+
+            //var userId = User.Identity.GetUserId();
+            //userId.ToString();
+
+            //var db = new ApplicationDbContext();
+            //var fl = db.Freelancers;
+            //var listOfFreelancers = db.Freelancers.Where(fl => fl.Id.Contains(userId));
+
+            //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
         }
 
         // GET: api/Freelancers/current
@@ -140,5 +167,12 @@ namespace NashConnects.Controllers
         }
     
     }
-    
+
+    internal class flRepository
+    {
+        internal static IQueryable<Freelancer> GetQueryableFreelancers()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

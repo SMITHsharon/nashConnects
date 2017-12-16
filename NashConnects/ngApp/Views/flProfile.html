@@ -56,15 +56,17 @@
                                 <!--
                                 <input ng-model="thisProfile.Category" class="input" type="text" placeholder="DROPDOWN OF CATEGORIES">
                                 -->
-                                <select id="category" type="number" ng-model="thisProfile.Category">
-                                    <option value="0">Artist</option>
-                                    <option value="2">Florist</option>
-                                    <option value="3">Personal Trainer</option>
-                                    <option value="4">Photographer</option>
-                                    <option value="5">Real Estate Agent</option>
-                                    <option value="6">Software Developer</option>
-                                    <option value="7">Therapist</option>
-                                    <option value="8">Writer</option>
+                                <select id="category" name="categories" type="number" ng-model="thisProfile.Category">
+                                    <!-- <optgroup label="Category 1"> -->
+                                        <option value="0">Artist</option>
+                                        <option value="1">Florist</option>
+                                        <option value="2">Personal Trainer</option>
+                                        <option value="3">Photographer</option>
+                                        <option value="4">Real Estate Agent</option>
+                                        <option value="5">Software Developer</option>
+                                        <option value="6">Therapist</option>
+                                        <option value="7">Writer</option>
+                                    <!-- </optgroup> -->
                                 </select>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
@@ -82,14 +84,20 @@
                         </div>
                         <form>
                             <div>
-                                
-                                <input type="checkbox" id="subscribeNewsletter" name="subscribe" value="subscribeNewsletter" ng-checked="thisProfile.Newsletter" checked>
-                                <label for="subscribeNewsletter" ng-model="thisProfile.Newsletter">subscribe to our newsletter?</label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="Newsletter" ng-model="thisProfile.Newsletter" checked>
+                                <!-- <input type="checkbox" id="subscribeNewsletter" name="Newsletter" value="subscribeNewsletter" ng-checked="thisProfile.Newsletter" checked -->
+                                <!-- <label for="subscribeNewsletter" ng-model="thisProfile.Newsletter">subscribe to our newsletter?</label> -->
+                                    subscribe to our newsletter?
+                                </label>
                             </div>
                             <div>
-                                
-                                <input type="checkbox" id="makePublic" name="makePublic" value="makePublic" ng-checked="thisProfile.PublicReveal" checked>
-                                <label for="makePublic" ng-model="thisProfile.PublicReveal">make info public?</label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="PublicReveal" ng-model="thisProfile.PublicReveal" checked>
+                                    <!-- <input type="checkbox" id="makePublic" name="PublicReveal" value="makePublic" ng-checked="thisProfile.PublicReveal" checked> -->
+                                    <!-- <label for="makePublic" ng-model="thisProfile.PublicReveal">make info public?</label> -->
+                                    make info public?
+                                </label>
                             </div>
                         </form>
                             <div class="field">
@@ -98,7 +106,7 @@
                         <div class="field"> -->
                             <button class="button is-danger is-normal" ng-click="delete()" ng-class="{'is-loading':inProgress}">Delete Profile</button>
                         </div>
-</div>
+                    </div>
                 </div>
             </div>
         </div>

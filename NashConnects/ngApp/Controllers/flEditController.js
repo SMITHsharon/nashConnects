@@ -43,7 +43,7 @@
                 Description: userProfile.Description,
                 Newsletter: userProfile.Newsletter,
                 PublicReveal: userProfile.PublicReveal,
-                Active: userProfile.true,
+                Active: true,
                 Id: userid
             })
             .then((result) => {
