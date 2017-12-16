@@ -12,6 +12,37 @@
                         </div>
                         <h1>{{vm.message}}</h1>
 
+                        <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
+
+                        <h3>Nashville Freelancers</h3>
+
+                        <table class="table">
+                            <tbody>
+                                <tr ng-repeat="freelancer in freelancers | filter: searchText">
+
+                                    <td>{{freelancer.UserName}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- FILTERING ON NEWSLETTER SUBSCRIBERS 
+                        <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
+
+                        <h3>Nashville Freelancers</h3>
+
+                        <table class="table">
+                            <tbody>
+                                <tr ng-repeat="freelancer in freelancers | filter:{Newsletter:true} | filter: searchText">
+
+                                    <td>{{freelancer.UserName}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        -->
+
+
                     </div>
                 </div>
             </div>

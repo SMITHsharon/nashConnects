@@ -14,13 +14,13 @@
 
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
-                        <h3>Nashville Freelancers</h3>
+                        <h3>Nashville NonProfits</h3>
                         
                         <table class="table">
                             <tbody>
-                                <tr ng-repeat="freelancer in freelancers | filter: searchText">
+                                <tr ng-repeat="nonProfit in NonProfits | filter: searchText">
                                     
-                                    <td>{{freelancer.UserName}}</td>
+                                    <td>{{nonProfit.UserName}}</td>
                                     
                                 </tr>
                             </tbody>

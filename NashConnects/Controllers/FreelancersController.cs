@@ -52,6 +52,7 @@ namespace NashConnects.Controllers
             //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
         }
 
+
         // GET: api/Freelancers/current
         [Authorize]
         [HttpGet, Route("current")]

@@ -18,10 +18,44 @@ namespace NashConnects.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+        // GET: api/NonProfits
+        [HttpGet, Route("list")]
+        //public IQueryable<NonProfit> GetUsers()
+        public HttpResponseMessage GetAllNonProfitsById()
+        {
+
+            var db = new ApplicationDbContext();
+            var nonProfitList = db.NonProfits.ToList();
+            /*
+            var result = (from f in new ApplicationDbContext().Freelancers
+                          
+                          select new FreelancerListView { f.LastName, f.WebsiteURL }).ToList();
+            */
+            return Request.CreateResponse(HttpStatusCode.OK, nonProfitList);
+
+
+
+            //IQueryable<Freelancer> freelancers = flRepository.GetQueryableFreelancers();
+            //var listOfFreelancers = freelancers;
+            //return listOfFreelancers;
+
+
+            //var userId = User.Identity.GetUserId();
+            //userId.ToString();
+
+            //var db = new ApplicationDbContext();
+            //var fl = db.Freelancers;
+            //var listOfFreelancers = db.Freelancers.Where(fl => fl.Id.Contains(userId));
+
+            //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
+        }
+
+
+        // GET: api/NonProfits/current
         [Authorize]
         [HttpGet, Route("current")]
         [ResponseType(typeof(NonProfit))]
-        // GET: api/NonProfits
         //public IQueryable<NonProfit> GetUsers()
         public IHttpActionResult GetFreelancer()
         {
