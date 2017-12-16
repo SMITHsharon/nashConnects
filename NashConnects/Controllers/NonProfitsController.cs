@@ -82,6 +82,8 @@ namespace NashConnects.Controllers
         }
 
         // PUT: api/NonProfits/5
+        [Authorize]
+        [HttpPut, Route("{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutNonProfit(string id, NonProfit nonProfit)
         {
@@ -95,10 +97,25 @@ namespace NashConnects.Controllers
                 return BadRequest();
             }
 
-            db.Entry(nonProfit).State = EntityState.Modified;
+            // overwrites Password and SecurityStamp
+            //db.Entry(nonProfit).State = EntityState.Modified;
+
+            // ensures Password and SecurityStamp are retained
+            var originalNonProfit = db.NonProfits.Find(id);
 
             try
             {
+                originalNonProfit.UserName = nonProfit.UserName;
+                originalNonProfit.FirstName = nonProfit.FirstName;
+                originalNonProfit.LastName = nonProfit.LastName;
+                originalNonProfit.Email = nonProfit.Email;
+                originalNonProfit.Name = nonProfit.Name;
+                originalNonProfit.WebsiteURL = nonProfit.WebsiteURL;
+                originalNonProfit.CalendarLink = nonProfit.CalendarLink;
+                originalNonProfit.Description = nonProfit.Description;
+                originalNonProfit.Active = nonProfit.Active;
+                // Id, Password, and SecurityStamp are not updated
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)

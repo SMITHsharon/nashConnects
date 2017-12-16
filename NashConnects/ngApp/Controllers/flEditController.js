@@ -48,6 +48,7 @@
             })
             .then((result) => {
                 console.log("editFreelanceProfile", result);
+                $location.path('/freelancers/list');
             })
             .catch((error) => {
                 console.log("editFreelanceProfile", error);

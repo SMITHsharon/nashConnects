@@ -37,13 +37,16 @@
                 FirstName: userProfile.FirstName,
                 LastName: userProfile.LastName,
                 Email: userProfile.Email,
+                Name: userProfile.Name,
                 WebsiteURL: userProfile.WebsiteURL,
+                CalendarLink: userProfile.CalendarLink,
                 Description: userProfile.Description,
                 Active: true,
                 Id: userid
             })
             .then((result) => {
                 console.log("editNonProfitProfile", result);
+                $location.path('/freelancers/list');
             })
             .catch((error) => {
                 console.log("editNonProfitProfile", error);

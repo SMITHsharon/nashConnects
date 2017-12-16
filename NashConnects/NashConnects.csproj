@@ -274,6 +274,10 @@
     <Compile Include="Migrations\201712150123290_increaseDescField.Designer.cs">
       <DependentUpon>201712150123290_increaseDescField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712161755380_categoryandname.cs" />
+    <Compile Include="Migrations\201712161755380_categoryandname.Designer.cs">
+      <DependentUpon>201712161755380_categoryandname.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -428,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712150123290_increaseDescField.resx">
       <DependentUpon>201712150123290_increaseDescField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712161755380_categoryandname.resx">
+      <DependentUpon>201712161755380_categoryandname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

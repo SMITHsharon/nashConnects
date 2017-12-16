@@ -115,7 +115,10 @@
         $http({
                 method: 'POST',
                 url: "/api/Account/Logout"
-            })
+        })
+
+        sessionStorage.removeItem('token');
+
         $location.path('/freelancers/list');
         }
 }]);

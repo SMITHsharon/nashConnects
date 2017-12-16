@@ -84,12 +84,26 @@ namespace NashConnects.Controllers
                 return BadRequest();
             }
 
-            db.Entry(freelancer).State = EntityState.Modified;
+            // overwrites Password and SecurityStamp
+            //db.Entry(freelancer).State = EntityState.Modified;
+
+            // ensures Password and SecurityStamp are retained
+            var originalFreelancer = db.Freelancers.Find(id);
 
             try
             {
-                //Freelancer user = db.Freelancer.Find(id));
-                //var user = (Freelancer)UserManagerExtensions.FindById(id);
+                originalFreelancer.UserName = freelancer.UserName;
+                originalFreelancer.FirstName = freelancer.FirstName;
+                originalFreelancer.LastName = freelancer.LastName;
+                originalFreelancer.Email = freelancer.Email;
+                originalFreelancer.WebsiteURL = freelancer.WebsiteURL;
+                originalFreelancer.Category = freelancer.Category;
+                originalFreelancer.Description = freelancer.Description;
+                originalFreelancer.Newsletter = freelancer.Newsletter;
+                originalFreelancer.PublicReveal = freelancer.PublicReveal;
+                originalFreelancer.Active = freelancer.Active;
+                // Id, Password, and SecurityStamp are not updated
+                
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)

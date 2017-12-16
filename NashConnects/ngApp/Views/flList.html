@@ -18,7 +18,9 @@
 
                         <table class="table">
                             <tbody>
+
                                 <tr ng-repeat="freelancer in freelancers | filter: searchText">
+                                <!-- <tr ng-repeat="freelancer in freelancers | filter:{PublicReveal:true} | filter: searchText"> -->
 
                                     <td>{{freelancer.UserName}}</td>
 
