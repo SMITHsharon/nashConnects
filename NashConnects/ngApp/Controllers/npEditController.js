@@ -18,10 +18,10 @@
 
     $http.get("/api/NonProfits/current")
         .then(function (result) {
-            console.log("result.data", result.data);
+ //console.log("result.data", result.data);
             $scope.thisProfile = result.data;
             userid = result.data.Id;
-            console.log("userid :: ", userid);
+ //console.log("userid :: ", userid);
         })
         .catch((error) => {
             console.log("getNonProfitProfile", error);
@@ -30,7 +30,7 @@
 
     $scope.editProfile = () => {
         let userProfile = $scope.thisProfile;
-        console.log("editing Profile; userid :: ", userid);
+ //console.log("editing Profile; userid :: ", userid);
         $http.put(`/api/Nonprofits/${userid}`,
             {
                 UserName: userProfile.UserName,
@@ -45,7 +45,7 @@
                 Id: userid
             })
             .then((result) => {
-                console.log("editNonProfitProfile", result);
+ //console.log("editNonProfitProfile", result);
                 $location.path('/freelancers/list');
             })
             .catch((error) => {

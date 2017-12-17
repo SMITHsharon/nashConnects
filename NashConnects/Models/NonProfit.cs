@@ -16,7 +16,7 @@ namespace NashConnects.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        [StringLength(50)]
+        [StringLength(75)]
         public string CalendarLink { get; set; }
 
         public virtual List<Event> Events { get; set; }

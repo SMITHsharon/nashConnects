@@ -79,23 +79,13 @@ namespace NashConnects.Migrations
 
             var user6 = new Freelancer
             {
-                UserName = "nAndres",
+                UserName = "nAndrews",
                 Email = "nita@gmail.com",
                 FirstName = "Nita",
                 LastName = "Andrews",
                 WebsiteURL = "http://creativelectio.com/"
             };
             userManager.CreateAsync(user6, "password").Wait();
-
-            var user7 = new Freelancer
-            {
-                UserName = "aAndrews",
-                Email = "al@gmail.com",
-                FirstName = "Al",
-                LastName = "Andrews",
-                WebsiteURL = "http://creativelectio.com/"
-            };
-            userManager.CreateAsync(user7, "password").Wait();
 
             var user8 = new Freelancer
             {
@@ -155,20 +145,30 @@ namespace NashConnects.Migrations
                 LastName = "Villager",
                 WebsiteURL = "https://fridrichandclark.com/agents/tim-villager/"
             };
-            userManager.CreateAsync(user12, "password").Wait();
+            userManager.CreateAsync(user17, "password").Wait();
 
             var user18 = new Freelancer
             {
-                UserName = "trVillager",
+                UserName = "trVill",
                 Email = "troy@gmail.com",
                 FirstName = "Troy",
                 LastName = "Villager",
                 WebsiteURL = "https://www.tvillagerdesigns.com/"
             };
-            userManager.CreateAsync(user12, "password").Wait();
+            userManager.CreateAsync(user18, "password").Wait();
 
 
             //SEED WITH NON-PROFIT USERS
+            var user7 = new NonProfit
+            {
+                UserName = "aAndrews",
+                Email = "al@gmail.com",
+                FirstName = "Al",
+                LastName = "Andrews",
+                WebsiteURL = "http://porterscall.com/"
+            };
+            userManager.CreateAsync(user7, "password").Wait();
+
             var user13 = new NonProfit
             {
                 UserName = "lWilliams",
