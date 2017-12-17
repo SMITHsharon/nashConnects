@@ -10,7 +10,7 @@
 
     console.log("in Freelancers List Controller");
     let vm = this;
-    vm.message = "This is Nash Freelancers List";
+    vm.message = "Nash Freelancers";
 
     $scope.freelancers;
 

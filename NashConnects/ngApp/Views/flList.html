@@ -1,9 +1,6 @@
 ﻿<section class="hero is-fullheight" id="login">
     <div class="hero-body">
         <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-one-third-desktop is-10-mobile">
-                    <div class="box has-text-centered">
                         <figure class="image login-logo">
                             <!--<img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />-->
                         </figure>
@@ -14,40 +11,43 @@
 
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
-                        <h3>Nashville Freelancers</h3>
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="col-md-4 card" ng-repeat="freelancer in freelancers | filter:{PublicReveal:true} | filter: searchText">
+                                    <!-- <header class="card-header"> -->
+                                    <div class="card-block">
+                                        <h3 class="card-title">
+                                            <a ng-href="{{freelancer.WebsiteURL}}" target="_blank">{{freelancer.FirstName}} {{freelancer.LastName}}</a>
+                                        </h3>
+                                        <!-- <a href="#" class="card-header-icon" aria-label="more options">
+                                            <span class="icon">
+                                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a> -->
+                                        <!-- </header> -->
+                                        <div class="card-text">
+                                            {{freelancer.Description}}
+                                            <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
+                                        </div>
+                                        <footer class="card-footer">
+                                            <a id="likes" name="xxx" ng-click="recommend()">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                            </a>
 
-                        <table class="table">
-                            <tbody>
-
-                                <tr ng-repeat="freelancer in freelancers | filter: searchText">
-                                <!-- <tr ng-repeat="freelancer in freelancers | filter:{PublicReveal:true} | filter: searchText"> -->
-
-                                    <td>{{freelancer.UserName}}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <!-- FILTERING ON NEWSLETTER SUBSCRIBERS 
-                        <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
-
-                        <h3>Nashville Freelancers</h3>
-
-                        <table class="table">
-                            <tbody>
-                                <tr ng-repeat="freelancer in freelancers | filter:{Newsletter:true} | filter: searchText">
-
-                                    <td>{{freelancer.UserName}}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                        -->
-
-
-                    </div>
-                </div>
-            </div>
+                                            <!-- <button type="button" class="btn btn-default btn-sm" ng-click="recommend()" ng-class="{'is-loading':inProgress}">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                                            </button>
+                                            -->
+                                            <!-- <button class="button is-primary is-normal" ng-click="recommend()" ng-class="{'is-loading':inProgress}">Like</button> -->
+                                            <!-- <a href="#" class="card-footer-item">Save</a>
+                                            <a href="#" class="card-footer-item">Edit</a>
+                                            <a href="#" class="card-footer-item">Delete</a>
+                                            -->
+                                        </footer>
+                                    </div> <!-- .card-block -->
+                                </div> <!-- .card -->
+                            </div> <!-- .card-deck -->
+                        </div> <!-- .row -->
         </div>
     </div>
 </section>
