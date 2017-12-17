@@ -9,25 +9,70 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NashConnects.Models;
+using Microsoft.AspNet.Identity;
 
 namespace NashConnects.Controllers
 {
-    /*
+    [RoutePrefix("api/NonProfits")]
     public class NonProfitsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         // GET: api/NonProfits
-        public IQueryable<NonProfit> GetUsers()
+        [HttpGet, Route("list")]
+        //public IQueryable<NonProfit> GetUsers()
+        public HttpResponseMessage GetAllNonProfitsById()
         {
-            return db.Users;
+
+            var db = new ApplicationDbContext();
+            var nonProfitList = db.NonProfits.ToList();
+            /*
+            var result = (from f in new ApplicationDbContext().Freelancers
+                          
+                          select new FreelancerListView { f.LastName, f.WebsiteURL }).ToList();
+            */
+            return Request.CreateResponse(HttpStatusCode.OK, nonProfitList);
+
+
+
+            //IQueryable<Freelancer> freelancers = flRepository.GetQueryableFreelancers();
+            //var listOfFreelancers = freelancers;
+            //return listOfFreelancers;
+
+
+            //var userId = User.Identity.GetUserId();
+            //userId.ToString();
+
+            //var db = new ApplicationDbContext();
+            //var fl = db.Freelancers;
+            //var listOfFreelancers = db.Freelancers.Where(fl => fl.Id.Contains(userId));
+
+            //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
+        }
+
+
+        // GET: api/NonProfits/current
+        [Authorize]
+        [HttpGet, Route("current")]
+        [ResponseType(typeof(NonProfit))]
+        //public IQueryable<NonProfit> GetUsers()
+        public IHttpActionResult GetFreelancer()
+        {
+            NonProfit nonProfit = db.NonProfits.Find(User.Identity.GetUserId());
+            if (nonProfit == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(nonProfit);
         }
 
         // GET: api/NonProfits/5
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult GetNonProfit(string id)
         {
-            NonProfit nonProfit = db.Users.Find(id);
+            NonProfit nonProfit = db.NonProfits.Find(id);
             if (nonProfit == null)
             {
                 return NotFound();
@@ -37,6 +82,8 @@ namespace NashConnects.Controllers
         }
 
         // PUT: api/NonProfits/5
+        [Authorize]
+        [HttpPut, Route("{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutNonProfit(string id, NonProfit nonProfit)
         {
@@ -50,10 +97,25 @@ namespace NashConnects.Controllers
                 return BadRequest();
             }
 
-            db.Entry(nonProfit).State = EntityState.Modified;
+            // overwrites Password and SecurityStamp
+            //db.Entry(nonProfit).State = EntityState.Modified;
+
+            // ensures Password and SecurityStamp are retained
+            var originalNonProfit = db.NonProfits.Find(id);
 
             try
             {
+                originalNonProfit.UserName = nonProfit.UserName;
+                originalNonProfit.FirstName = nonProfit.FirstName;
+                originalNonProfit.LastName = nonProfit.LastName;
+                originalNonProfit.Email = nonProfit.Email;
+                originalNonProfit.Name = nonProfit.Name;
+                originalNonProfit.WebsiteURL = nonProfit.WebsiteURL;
+                originalNonProfit.CalendarLink = nonProfit.CalendarLink;
+                originalNonProfit.Description = nonProfit.Description;
+                originalNonProfit.Active = nonProfit.Active;
+                // Id, Password, and SecurityStamp are not updated
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -105,7 +167,7 @@ namespace NashConnects.Controllers
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult DeleteNonProfit(string id)
         {
-            NonProfit nonProfit = db.Users.Find(id);
+            NonProfit nonProfit = db.NonProfits.Find(id);
             if (nonProfit == null)
             {
                 return NotFound();
@@ -131,5 +193,4 @@ namespace NashConnects.Controllers
             return db.Users.Count(e => e.Id == id) > 0;
         }
     }
-    */
 }

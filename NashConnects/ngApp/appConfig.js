@@ -62,14 +62,14 @@
         //    controller: "npViewController",
         //    controllerAs: 'vm'
         //})
-        .when("/freelance/account/:id",
+        .when("/freelance/account",
         {
             // for user to edit Freelance profile
             templateUrl: "/ngApp/Views/flProfile.html",
             controller: "flEditController",
             controllerAs: 'vm'
         })
-        .when("/nonprofit/account/:id",
+        .when("/nonprofit/account",
         {
             // for user to edit NonProfit profile
             templateUrl: "/ngApp/Views/npProfile.html",

@@ -10,10 +10,10 @@
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
-                        <h1>{{vm.message}}</h1>
+                        <h1>{{message}}</h1>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.username" class="input" type="text" placeholder="username">
+                                <input ng-model="thisProfile.UserName" class="input" type="text" placeholder="username">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-user"></i>
                                 </span>
@@ -21,15 +21,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.name" class="input" type="text" placeholder="non-profit name">
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-user"></i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <input ng-model="vm.websiteURL" class="input" type="text" placeholder="website url">
+                                <input ng-model="thisProfile.FirstName" class="input" type="text" placeholder="first name">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -37,7 +29,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.calendarLink" class="input" type="text" placeholder="calendar link">
+                                <input ng-model="thisProfile.LastName" class="input" type="text" placeholder="last name">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -45,7 +37,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.fName" class="input" type="text" placeholder="contact first name">
+                                <input ng-model="thisProfile.Email" class="input" type="email" placeholder="email">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -53,7 +45,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.lName" class="input" type="text" placeholder="contact last name">
+                                <input ng-model="thisProfile.Name" class="input" type="text" placeholder="non-profit name">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -61,7 +53,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.phone" class="input" type="tel" minlength="9" maxlength="14" placeholder="contact phone">
+                                <input ng-model="thisProfile.WebsiteURL" class="input" type="url" placeholder="website url">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -69,7 +61,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.email" class="input" type="email" placeholder="contact email">
+                                <input ng-model="thisProfile.CalendarLink" class="input" type="url" placeholder="calendar link (url)">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -77,15 +69,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input ng-model="vm.category" class="input" type="text" placeholder="DROPDOWN OF CATEGORIES">
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <textarea rows="4" cols="50" ng-model="vm.desc" class="input" type="text" placeholder="description">
+                                <textarea rows="4" cols="50" ng-model="thisProfile.Description" class="textarea" placeholder="description">
                                 </textarea>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
@@ -93,7 +77,10 @@
                             </p>
                         </div>
                         <div class="field">
-                            <button class="button is-primary" ng-click="vm.submit()" ng-class="{'is-loading':inProgress}">Submit</button>
+                            <button class="button is-primary is-normal" ng-click="editProfile()" ng-class="{'is-loading':inProgress}">Submit</button>
+                            <!-- </div>
+                            <div class="field"> -->
+                            <button class="button is-danger is-normal" ng-click="delete()" ng-class="{'is-loading':inProgress}">Delete Profile</button>
                         </div>
                     </div>
                 </div>

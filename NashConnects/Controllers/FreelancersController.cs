@@ -9,25 +9,57 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NashConnects.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using NashConnects.ViewModels;
 
 namespace NashConnects.Controllers
 {
-    /*
+    [RoutePrefix("api/Freelancers")]
     public class FreelancersController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Freelancers
-        public IQueryable<Freelancer> GetUsers()
+        [HttpGet, Route("list")]
+        //public IQueryable<Freelancer> GetUsers()
+        public HttpResponseMessage GetAllFreelancersById()
         {
-            return db.Users;
+
+            var db = new ApplicationDbContext();
+            var freelanceList = db.Freelancers.ToList();
+            /*
+            var result = (from f in new ApplicationDbContext().Freelancers
+                          
+                          select new FreelancerListView { f.LastName, f.WebsiteURL }).ToList();
+            */
+            return Request.CreateResponse(HttpStatusCode.OK, freelanceList);
+            
+
+
+            //IQueryable<Freelancer> freelancers = flRepository.GetQueryableFreelancers();
+            //var listOfFreelancers = freelancers;
+            //return listOfFreelancers;
+
+
+            //var userId = User.Identity.GetUserId();
+            //userId.ToString();
+
+            //var db = new ApplicationDbContext();
+            //var fl = db.Freelancers;
+            //var listOfFreelancers = db.Freelancers.Where(fl => fl.Id.Contains(userId));
+
+            //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
         }
 
-        // GET: api/Freelancers/5
+
+        // GET: api/Freelancers/current
+        [Authorize]
+        [HttpGet, Route("current")]
         [ResponseType(typeof(Freelancer))]
-        public IHttpActionResult GetFreelancer(string id)
+        public IHttpActionResult GetFreelancer()
         {
-            Freelancer freelancer = db.Users.Find(id);
+            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
             if (freelancer == null)
             {
                 return NotFound();
@@ -37,6 +69,8 @@ namespace NashConnects.Controllers
         }
 
         // PUT: api/Freelancers/5
+        [Authorize]
+        [HttpPut, Route("{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutFreelancer(string id, Freelancer freelancer)
         {
@@ -50,10 +84,26 @@ namespace NashConnects.Controllers
                 return BadRequest();
             }
 
-            db.Entry(freelancer).State = EntityState.Modified;
+            // overwrites Password and SecurityStamp
+            //db.Entry(freelancer).State = EntityState.Modified;
+
+            // ensures Password and SecurityStamp are retained
+            var originalFreelancer = db.Freelancers.Find(id);
 
             try
             {
+                originalFreelancer.UserName = freelancer.UserName;
+                originalFreelancer.FirstName = freelancer.FirstName;
+                originalFreelancer.LastName = freelancer.LastName;
+                originalFreelancer.Email = freelancer.Email;
+                originalFreelancer.WebsiteURL = freelancer.WebsiteURL;
+                originalFreelancer.Category = freelancer.Category;
+                originalFreelancer.Description = freelancer.Description;
+                originalFreelancer.Newsletter = freelancer.Newsletter;
+                originalFreelancer.PublicReveal = freelancer.PublicReveal;
+                originalFreelancer.Active = freelancer.Active;
+                // Id, Password, and SecurityStamp are not updated
+                
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -105,7 +155,7 @@ namespace NashConnects.Controllers
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult DeleteFreelancer(string id)
         {
-            Freelancer freelancer = db.Users.Find(id);
+            Freelancer freelancer = db.Freelancers.Find(id);
             if (freelancer == null)
             {
                 return NotFound();
@@ -132,5 +182,12 @@ namespace NashConnects.Controllers
         }
     
     }
-    */
+
+    internal class flRepository
+    {
+        internal static IQueryable<Freelancer> GetQueryableFreelancers()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

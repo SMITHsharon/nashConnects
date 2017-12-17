@@ -51,6 +51,7 @@
                 sessionStorage.setItem('token', result.data.access_token);
                 $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
                 $location.path("/");
+                console.log("logged in", result);
 
                 vm.inProgress = false;
             })
@@ -100,12 +101,9 @@
                 console.log("error in register :", result.data.Message);
                 vm.inProgress = false;
             });
-        
-
-        
     }
 
-
+    
     vm.logout = function () {
 
         console.log("in logout function");
@@ -113,14 +111,14 @@
         console.log(vm.username);
         vm.error = "";
         vm.inProgress = true;
-
-        /*
-        $http({
-            method: 'POST',
-        })
-        */
         
-        $location.url('/freelancers/list');
-    }
-}
-]);
+        $http({
+                method: 'POST',
+                url: "/api/Account/Logout"
+        })
+
+        sessionStorage.removeItem('token');
+
+        $location.path('/freelancers/list');
+        }
+}]);

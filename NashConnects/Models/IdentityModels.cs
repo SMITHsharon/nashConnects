@@ -31,11 +31,8 @@ namespace NashConnects.Models
         [StringLength(75)]
         public string WebsiteURL { get; set; }
 
-        [StringLength(300)]
+        [StringLength(600)]
         public string Description { get; set; }
-
-        [StringLength(50)]
-        public string Category { get; set; }
 
         public int RecommendCount { get; set; }
         public bool Active { get; set; }

@@ -270,6 +270,18 @@
     <Compile Include="Migrations\201712130242174_dropFLandNP_ModelKeys.Designer.cs">
       <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712150123290_increaseDescField.cs" />
+    <Compile Include="Migrations\201712150123290_increaseDescField.Designer.cs">
+      <DependentUpon>201712150123290_increaseDescField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712161755380_categoryandname.cs" />
+    <Compile Include="Migrations\201712161755380_categoryandname.Designer.cs">
+      <DependentUpon>201712161755380_categoryandname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712170220296_chgCalendarLinkField.cs" />
+    <Compile Include="Migrations\201712170220296_chgCalendarLinkField.Designer.cs">
+      <DependentUpon>201712170220296_chgCalendarLinkField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,6 +293,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FreelancerListView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -420,6 +433,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712130242174_dropFLandNP_ModelKeys.resx">
       <DependentUpon>201712130242174_dropFLandNP_ModelKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712150123290_increaseDescField.resx">
+      <DependentUpon>201712150123290_increaseDescField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712161755380_categoryandname.resx">
+      <DependentUpon>201712161755380_categoryandname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712170220296_chgCalendarLinkField.resx">
+      <DependentUpon>201712170220296_chgCalendarLinkField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
