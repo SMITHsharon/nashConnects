@@ -10,9 +10,12 @@
 
     console.log("in Freelancers List Controller");
     let vm = this;
-    vm.message = "This is Nash Freelancers List";
+    vm.message = "Nash Freelancers";
 
-    $scope.freelancers;
+    $scope.category;
+    $scope.freelancers = [];
+    var listOfFreelancers = [];
+    var listOfCategories = [];
 
     var getFreelancerList = function () {
         $http.get("/api/Freelancers/list")
@@ -20,21 +23,56 @@
                 console.log("result, listing all Freelancers :: ", result);
                 var dataResults = result.data;
                 console.log("Freelancers List result.data :: ", dataResults);
-                var listOfFreelancers = [];
 
+                
                 if (dataResults.length > 0) {
                     Object.keys(dataResults).forEach((key) => {
                         dataResults[key].id = key;
                         listOfFreelancers.push(dataResults[key]);
                     });
                 }
+
+                $scope.categories = listOfCategories;
                 $scope.freelancers = listOfFreelancers;
-                console.log($scope.freelancers);
+
             }).catch(function (error) {
                 console.log("error, listing all Freelancers :: ", error);
             });
     };
     getFreelancerList();
 
-}
-]);
+
+    $scope.recommend = (freelancerId) => {
+        $http.get(`/api/NonProfits/${freelancerId}`)
+            .then((getResult) => {
+                let thisProfile = getResult.data;
+                let likesCount = thisProfile.RecommendCount + 1;
+
+                $http.put(`/api/NonProfits/likes/${nonprofitId}`,
+                    {
+                        RecommendCount: likesCount,
+                        UserName: thisProfile.UserName,
+                        FirstName: thisProfile.FirstName,
+                        LastName: thisProfile.LastName,
+                        Email: thisProfile.Email,
+                        Name: thisProfile.Name,
+                        WebsiteURL: thisProfile.WebsiteURL,
+                        CalendarLink: thisProfile.CalendarLink,
+                        Description: thisProfile.Description,
+                        Active: true,
+                        Id: nonprofitId
+                    })
+                    .then((putResult) => {
+                        console.log("incremented Likes count :: ", putResult);
+                        location.reload();
+                    })
+                    .catch((error) => {
+                        console.log("error on Likes count :: ", error);
+                    })
+            })
+            .catch((error) => {
+                console.log("error on getNonProfitProfile", error);
+            });
+    };
+
+}]);
