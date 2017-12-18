@@ -8,14 +8,11 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in Freelancers List Controller");
+    console.log("in Newsletter Subscribers List Controller");
     let vm = this;
-    vm.message = "Nash Freelancers";
+    vm.message = "Newsletter Subscribers";
 
-    $scope.category;
     $scope.freelancers = [];
-    var listOfFreelancers = [];
-    var listOfCategories = [];
 
     var getFreelancerList = function () {
         $http.get("/api/Freelancers/list")

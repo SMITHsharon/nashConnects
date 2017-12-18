@@ -309,6 +309,7 @@
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />
     <Content Include="ngApp\Controllers\flListController.js" />
+    <Content Include="ngApp\Controllers\newsletterListController.js" />
     <Content Include="ngApp\Controllers\zflRegisterController.js" />
     <Content Include="ngApp\Controllers\flViewController.js" />
     <Content Include="ngApp\Controllers\homeController.js" />
@@ -323,6 +324,7 @@
     <Content Include="ngApp\Views\EventDetail.html" />
     <Content Include="ngApp\Views\EventNew.html" />
     <Content Include="ngApp\Views\EventsList.html" />
+    <Content Include="ngApp\Views\flListNewsletters.html" />
     <Content Include="ngApp\Views\flProfile.html" />
     <Content Include="ngApp\Views\flList.html" />
     <Content Include="ngApp\Views\zflProfile.html" />
