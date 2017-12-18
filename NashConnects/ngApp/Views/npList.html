@@ -4,37 +4,36 @@
             <div class="columns is-centered">
                 <div class="column is-10 is-10-mobile">
                     <div class="box has-text-centered">
-                        <figure class="image login-logo">
-                            <!--<img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />-->
+                        <!-- <figure class="image login-logo"> 
+                            <img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />
                         </figure>
+                        -->
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
                         <h1>{{vm.message}}</h1>
 
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
-
-                        <!--
-                        <h3>Nashville Non-Profits</h3>
-                        -->
                         
                         <table class="table is-hoverable">
                             <tbody>
                                 <tr ng-repeat="nonprofit in nonprofits | filter: searchText">
 
-                                    <td><a ng-href="{{nonprofit.WebsiteURL}}" target="_blank"><h3>{{nonprofit.Name}}</h3></a></td>
-                                    <td>{{nonprofit.Description}}</td>
-                                    <td>
-                                        <a id="likes" name="xxx" ng-click="recommend(nonprofit.Id)">
-                                            <span class="glyphicon glyphicon-thumbs-up"></span>{{nonprofit.RecommendCount}}
-                                        </a>
+                                    <td><a ng-href="{{nonprofit.WebsiteURL}}" target="_blank"><h3>{{nonprofit.Name}}</h3></a>
+                                        <p>{{nonprofit.Description}}</p>
+                                        <p>
+                                            <a id="likes" name="xxx" ng-click="recommend(nonprofit.Id)">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span>  {{nonprofit.RecommendCount}}
+                                            </a>
+                                        </p>
                                     </td>
 
+                                    <td>
+                                        <button class="button is-normal is-light" ng-click="postEvent(nonprofit.id)">Post Event</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                        
-
                     </div>
                 </div>
             </div>
