@@ -45,6 +45,19 @@ namespace NashConnects.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
         }
+        
+        
+        // GET: api/Freelancers
+        [HttpGet, Route("list/newsletter")]
+        //public IQueryable<Freelancer> GetUsers()
+        public HttpResponseMessage GetAllFreelancersById()
+        {
+            var db = new ApplicationDbContext();
+
+            var freelancersById = db.Freelancers.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, freelancersById);
+        }
 
 
         // GET: api/Freelancers/current

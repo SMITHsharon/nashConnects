@@ -1,0 +1,35 @@
+﻿<section class="hero is-fullheight" id="login">
+    <div class="hero-body">
+        <div class="container">
+            <figure class="image login-logo">
+                <!--<img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />-->
+            </figure>
+
+            <div ng-show="error" class="notification is-danger">
+                {{error}}
+            </div>
+            <h1>{{vm.message}}</h1>
+
+            <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
+
+            <table is-hoverable>
+                <tr>
+                    <th>Subscriber</th>
+                    <th></th>
+                    <th>Email</th>
+                    <th></th>
+                    <th>Website</th>
+                </tr>
+
+                <tr ng-repeat="freelancer in freelancers | filter:{Newsletter:true} | filter: searchText">
+                    <td><a ng-href="{{freelancer.WebsiteURL}}" target="_blank">{{freelancer.FirstName}} {{freelancer.LastName}}</a></td>
+                    <td></td>
+                    <td>{{freelancer.Email}}</td>
+                    <td></td>
+                    <td>{{freelancer.WebsiteURL}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</section>
