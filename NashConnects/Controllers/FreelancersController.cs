@@ -51,7 +51,7 @@ namespace NashConnects.Controllers
         [Authorize]
         [HttpGet, Route("current")]
         [ResponseType(typeof(Freelancer))]
-        public IHttpActionResult GetFreelancer()
+        public IHttpActionResult GetCurrentFreelancer()
         {
             Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
             if (freelancer == null)
@@ -61,6 +61,22 @@ namespace NashConnects.Controllers
 
             return Ok(freelancer);
         }
+
+
+        // GET: api/Freelancers/5
+        [HttpGet, Route("{id}")]
+        [ResponseType(typeof(Freelancer))]
+        public IHttpActionResult GetFreelancerById(string id)
+        {
+            Freelancer freelancer = db.Freelancers.Find(id);
+            if (freelancer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(freelancer);
+        }
+
 
         // PUT: api/Freelancers/5
         [Authorize]
@@ -97,7 +113,7 @@ namespace NashConnects.Controllers
                 originalFreelancer.PublicReveal = freelancer.PublicReveal;
                 originalFreelancer.Active = freelancer.Active;
                 // Id, Password, and SecurityStamp are not updated
-                
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -114,6 +130,62 @@ namespace NashConnects.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+
+        // PUT: api/Freelancers/5
+        //[Authorize]//
+        [HttpPut, Route("likes/{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult IncrementLikes(string id, Freelancer freelancer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != freelancer.Id)
+            {
+                return BadRequest();
+            }
+
+            // overwrites Password and SecurityStamp
+            //db.Entry(freelancer).State = EntityState.Modified;
+
+            // ensures Password and SecurityStamp are retained
+            var originalFreelancer = db.Freelancers.Find(id);
+
+            try
+            {
+                originalFreelancer.UserName = freelancer.UserName;
+                originalFreelancer.FirstName = freelancer.FirstName;
+                originalFreelancer.LastName = freelancer.LastName;
+                originalFreelancer.Email = freelancer.Email;
+                originalFreelancer.WebsiteURL = freelancer.WebsiteURL;
+                originalFreelancer.Category = freelancer.Category;
+                originalFreelancer.Description = freelancer.Description;
+                originalFreelancer.Newsletter = freelancer.Newsletter;
+                originalFreelancer.PublicReveal = freelancer.PublicReveal;
+                originalFreelancer.Active = freelancer.Active;
+                originalFreelancer.RecommendCount = freelancer.RecommendCount;
+                // Id, Password, and SecurityStamp are not updated
+
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FreelancerExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
 
         // POST: api/Freelancers
         [ResponseType(typeof(Freelancer))]

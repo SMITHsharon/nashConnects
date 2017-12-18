@@ -35,8 +35,8 @@
                                             <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
                                         </div>
                                         <footer class="card-footer">
-                                            <a id="likes" name="xxx" ng-click="recommend()">
-                                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                            <a id="likes" name="xxx" ng-click="recommend(freelancer.Id)">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span>{{nonprofit.RecommendCount}}
                                             </a>
 
                                             <!-- <button type="button" class="btn btn-default btn-sm" ng-click="recommend()" ng-class="{'is-loading':inProgress}">
