@@ -37,6 +37,7 @@ namespace NashConnects.Controllers
                                         select new { Category = g.Key, Freelancers = g.ToList() };
             */
 
+            // RETURNS FREELANCERS GROUPED BY CATEGORY
             var freelancersByCategory = db.Freelancers
                 .GroupBy(g => g.Category)
                 .Select(grp => grp.ToList())

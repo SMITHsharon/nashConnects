@@ -27,28 +27,8 @@ namespace NashConnects.Controllers
 
             var db = new ApplicationDbContext();
             var nonProfitList = db.NonProfits.ToList();
-            /*
-            var result = (from f in new ApplicationDbContext().Freelancers
-                          
-                          select new FreelancerListView { f.LastName, f.WebsiteURL }).ToList();
-            */
+
             return Request.CreateResponse(HttpStatusCode.OK, nonProfitList);
-
-
-
-            //IQueryable<Freelancer> freelancers = flRepository.GetQueryableFreelancers();
-            //var listOfFreelancers = freelancers;
-            //return listOfFreelancers;
-
-
-            //var userId = User.Identity.GetUserId();
-            //userId.ToString();
-
-            //var db = new ApplicationDbContext();
-            //var fl = db.Freelancers;
-            //var listOfFreelancers = db.Freelancers.Where(fl => fl.Id.Contains(userId));
-
-            //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
         }
 
 
@@ -57,7 +37,7 @@ namespace NashConnects.Controllers
         [HttpGet, Route("current")]
         [ResponseType(typeof(NonProfit))]
         //public IQueryable<NonProfit> GetUsers()
-        public IHttpActionResult GetFreelancer()
+        public IHttpActionResult GetCurrentNonProfit()
         {
             NonProfit nonProfit = db.NonProfits.Find(User.Identity.GetUserId());
             if (nonProfit == null)
@@ -69,8 +49,9 @@ namespace NashConnects.Controllers
         }
 
         // GET: api/NonProfits/5
+        [HttpGet, Route("{id}")]
         [ResponseType(typeof(NonProfit))]
-        public IHttpActionResult GetNonProfit(string id)
+        public IHttpActionResult GetNonProfitById(string id)
         {
             NonProfit nonProfit = db.NonProfits.Find(id);
             if (nonProfit == null)
@@ -114,6 +95,55 @@ namespace NashConnects.Controllers
                 originalNonProfit.CalendarLink = nonProfit.CalendarLink;
                 originalNonProfit.Description = nonProfit.Description;
                 originalNonProfit.Active = nonProfit.Active;
+                // Id, Password, and SecurityStamp are not updated
+
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!NonProfitExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // PUT: api/NonProfits/5
+        //[Authorize]//
+        [HttpPut, Route("likes/{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult IncrementLikes(string id, NonProfit nonProfit)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != nonProfit.Id)
+            {
+                return BadRequest();
+            }
+
+            var originalNonProfit = db.NonProfits.Find(id);
+
+            try
+            {
+                originalNonProfit.UserName = nonProfit.UserName;
+                originalNonProfit.FirstName = nonProfit.FirstName;
+                originalNonProfit.LastName = nonProfit.LastName;
+                originalNonProfit.Email = nonProfit.Email;
+                originalNonProfit.Name = nonProfit.Name;
+                originalNonProfit.WebsiteURL = nonProfit.WebsiteURL;
+                originalNonProfit.CalendarLink = nonProfit.CalendarLink;
+                originalNonProfit.Description = nonProfit.Description;
+                originalNonProfit.Active = nonProfit.Active;
+                originalNonProfit.RecommendCount = nonProfit.RecommendCount;
                 // Id, Password, and SecurityStamp are not updated
 
                 db.SaveChanges();
