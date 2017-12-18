@@ -12,7 +12,12 @@
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
                         <div class="row">
+                        
+                        <!--
+                        <div><h3 ng-repeat="freelancer in freelancers | groupby: 'id' | filter:{PublicReveal:true} | filter: searchText">{{category.id}}</h3>
+                        -->
                             <div class="card-deck">
+                                <!-- <div class="col-md-4 card">  -->
                                 <div class="col-md-4 card" ng-repeat="freelancer in freelancers | filter:{PublicReveal:true} | filter: searchText">
                                     <!-- <header class="card-header"> -->
                                     <div class="card-block">
@@ -47,6 +52,7 @@
                                     </div> <!-- .card-block -->
                                 </div> <!-- .card -->
                             </div> <!-- .card-deck -->
+                        </div>
                         </div> <!-- .row -->
         </div>
     </div>

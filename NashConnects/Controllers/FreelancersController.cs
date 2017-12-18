@@ -23,33 +23,26 @@ namespace NashConnects.Controllers
         // GET: api/Freelancers
         [HttpGet, Route("list")]
         //public IQueryable<Freelancer> GetUsers()
-        public HttpResponseMessage GetAllFreelancersById()
-        {
-
+        public HttpResponseMessage GetAllFreelancersGroupByCat()
+        { 
             var db = new ApplicationDbContext();
-            var freelanceList = db.Freelancers.ToList();
+
+            //var freelancersByCategory = db.Freelancers.ToList();
+
+            // THIS GROUPS BY CATEGORY, BUT ONLY RETURNS FREELANCE IDs
             /*
-            var result = (from f in new ApplicationDbContext().Freelancers
-                          
-                          select new FreelancerListView { f.LastName, f.WebsiteURL }).ToList();
+            var freelancersByCategory = from f in db.Freelancers
+                                        group f.Id by f.Category into g
+                                        //select new { Category = g.Key, Id = g.ToList() };
+                                        select new { Category = g.Key, Freelancers = g.ToList() };
             */
-            return Request.CreateResponse(HttpStatusCode.OK, freelanceList);
-            
 
+            var freelancersByCategory = db.Freelancers
+                .GroupBy(g => g.Category)
+                .Select(grp => grp.ToList())
+                .ToList();
 
-            //IQueryable<Freelancer> freelancers = flRepository.GetQueryableFreelancers();
-            //var listOfFreelancers = freelancers;
-            //return listOfFreelancers;
-
-
-            //var userId = User.Identity.GetUserId();
-            //userId.ToString();
-
-            //var db = new ApplicationDbContext();
-            //var fl = db.Freelancers;
-            //var listOfFreelancers = db.Freelancers.Where(fl => fl.Id.Contains(userId));
-
-            //return Request.CreateResponse(HttpStatusCode.OK, listOfFreelancers);
+            return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
         }
 
 

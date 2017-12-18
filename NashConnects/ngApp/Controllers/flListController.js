@@ -12,7 +12,10 @@
     let vm = this;
     vm.message = "Nash Freelancers";
 
-    $scope.freelancers;
+    $scope.category;
+    $scope.freelancers = [];
+    var listOfFreelancers = [];
+    var listOfCategories = [];
 
     var getFreelancerList = function () {
         $http.get("/api/Freelancers/list")
@@ -20,16 +23,18 @@
                 console.log("result, listing all Freelancers :: ", result);
                 var dataResults = result.data;
                 console.log("Freelancers List result.data :: ", dataResults);
-                var listOfFreelancers = [];
 
+                
                 if (dataResults.length > 0) {
                     Object.keys(dataResults).forEach((key) => {
                         dataResults[key].id = key;
                         listOfFreelancers.push(dataResults[key]);
                     });
                 }
+
+                $scope.categories = listOfCategories;
                 $scope.freelancers = listOfFreelancers;
-                console.log($scope.freelancers);
+
             }).catch(function (error) {
                 console.log("error, listing all Freelancers :: ", error);
             });
