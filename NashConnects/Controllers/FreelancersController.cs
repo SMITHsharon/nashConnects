@@ -153,38 +153,14 @@ namespace NashConnects.Controllers
         //[Authorize]//
         [HttpPut, Route("likes/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult IncrementLikes(string id, Freelancer freelancer)
+        //public IHttpActionResult IncrementLikes(string id, Freelancer freelancer)
+        public IHttpActionResult IncrementLikes(string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != freelancer.Id)
-            {
-                return BadRequest();
-            }
-
-            // overwrites Password and SecurityStamp
-            //db.Entry(freelancer).State = EntityState.Modified;
-
-            // ensures Password and SecurityStamp are retained
             var originalFreelancer = db.Freelancers.Find(id);
 
             try
             {
-                originalFreelancer.UserName = freelancer.UserName;
-                originalFreelancer.FirstName = freelancer.FirstName;
-                originalFreelancer.LastName = freelancer.LastName;
-                originalFreelancer.Email = freelancer.Email;
-                originalFreelancer.WebsiteURL = freelancer.WebsiteURL;
-                originalFreelancer.Category = freelancer.Category;
-                originalFreelancer.Description = freelancer.Description;
-                originalFreelancer.Newsletter = freelancer.Newsletter;
-                originalFreelancer.PublicReveal = freelancer.PublicReveal;
-                originalFreelancer.Active = freelancer.Active;
-                originalFreelancer.RecommendCount = freelancer.RecommendCount;
-                // Id, Password, and SecurityStamp are not updated
+                originalFreelancer.RecommendCount = originalFreelancer.RecommendCount + 1;
 
                 db.SaveChanges();
             }

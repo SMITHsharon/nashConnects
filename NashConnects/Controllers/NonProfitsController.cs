@@ -118,33 +118,13 @@ namespace NashConnects.Controllers
         //[Authorize]//
         [HttpPut, Route("likes/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult IncrementLikes(string id, NonProfit nonProfit)
+        public IHttpActionResult IncrementLikes(string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != nonProfit.Id)
-            {
-                return BadRequest();
-            }
-
             var originalNonProfit = db.NonProfits.Find(id);
 
             try
             {
-                originalNonProfit.UserName = nonProfit.UserName;
-                originalNonProfit.FirstName = nonProfit.FirstName;
-                originalNonProfit.LastName = nonProfit.LastName;
-                originalNonProfit.Email = nonProfit.Email;
-                originalNonProfit.Name = nonProfit.Name;
-                originalNonProfit.WebsiteURL = nonProfit.WebsiteURL;
-                originalNonProfit.CalendarLink = nonProfit.CalendarLink;
-                originalNonProfit.Description = nonProfit.Description;
-                originalNonProfit.Active = nonProfit.Active;
-                originalNonProfit.RecommendCount = nonProfit.RecommendCount;
-                // Id, Password, and SecurityStamp are not updated
+                originalNonProfit.RecommendCount = originalNonProfit.RecommendCount + 1;
 
                 db.SaveChanges();
             }

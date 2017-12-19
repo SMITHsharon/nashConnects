@@ -12,9 +12,9 @@
 
             <h1>{{vm.message}}</h1>
 
-            <input type="text" name="" placeholder="Search for ....." ng-model="searchText | filter: searchText">
+            <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
-            <table class="table is-hoverable" ng-repeat="group in freelancerGroups">
+            <table class="table is-hoverable" ng-repeat="group in freelancerGroups | filter: searchText">
                 <tbody>
                     <tr >
                         <th>
