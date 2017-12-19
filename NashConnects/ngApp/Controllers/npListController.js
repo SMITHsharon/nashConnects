@@ -71,4 +71,9 @@
             });
     };
 
+
+    $scope.postEvent = (nonprofitId) => {
+        console.log("in postEvent");
+    };
+
 }]);
