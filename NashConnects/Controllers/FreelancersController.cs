@@ -39,8 +39,12 @@ namespace NashConnects.Controllers
 
             // RETURNS FREELANCERS GROUPED BY CATEGORY
             var freelancersByCategory = db.Freelancers
-                .GroupBy(g => g.Category)
-                .Select(grp => grp.ToList())
+                .GroupBy(freelancer => freelancer.Category)
+                .Select(freelancerGroup => new
+                {
+                    CategoryName = freelancerGroup.Key.ToString(),
+                    Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+                })
                 .ToList();
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);

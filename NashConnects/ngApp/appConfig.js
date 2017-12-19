@@ -86,7 +86,7 @@
         .when("/event/add",
         {
             // for user to add an Event
-            templateUrl: "/ngApp/Views/EventNew.html",
+            templateUrl: "/ngApp/Views/EventAdd.html",
             controller: "eventAddController",
             controllerAs: 'vm'
         })

@@ -12,28 +12,18 @@
     let vm = this;
     vm.message = "Newsletter Subscribers";
 
-    $scope.freelancers = [];
+    $scope.freelancerGroups = [];
 
     var getFreelancerList = function () {
         $http.get("/api/Freelancers/list")
             .then(function (result) {
-                console.log("result, listing all Freelancers :: ", result);
-                var dataResults = result.data;
-                console.log("Freelancers List result.data :: ", dataResults);
-
+                var freelancerGroupings = result.data;
+                console.table(freelancerGroupings);
                 
-                if (dataResults.length > 0) {
-                    Object.keys(dataResults).forEach((key) => {
-                        dataResults[key].id = key;
-                        listOfFreelancers.push(dataResults[key]);
-                    });
-                }
-
-                $scope.categories = listOfCategories;
-                $scope.freelancers = listOfFreelancers;
+                $scope.freelancerGroups = freelancerGroupings;
 
             }).catch(function (error) {
-                console.log("error, listing all Freelancers :: ", error);
+                console.error("error, listing all Freelancers :: ", error);
             });
     };
     getFreelancerList();
