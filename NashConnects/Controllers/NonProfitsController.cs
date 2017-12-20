@@ -174,6 +174,40 @@ namespace NashConnects.Controllers
             return CreatedAtRoute("DefaultApi", new { id = nonProfit.Id }, nonProfit);
         }
 
+
+        // POST: api/NonProfits
+        //[Authorize]//
+        [HttpPost, Route("{nonprofitid}/addEvent")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult AddEventForNonProfit(string nonprofitid, Event @event)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var nonProfit = db.NonProfits.Find(nonprofitid);
+            nonProfit.Events.Add(@event);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (NonProfitExists(nonProfit.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
+
         // DELETE: api/NonProfits/5
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult DeleteNonProfit(string id)
