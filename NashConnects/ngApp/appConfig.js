@@ -83,14 +83,14 @@
             controller: "npEditController",
             controllerAs: 'vm'
         })
-        .when("/event/add",
+        .when("/event/add/:nonprofitid",
         {
             // for user to add an Event
-            templateUrl: "/ngApp/Views/EventAdd.html",
+            templateUrl: "/ngApp/Views/EventNew.html",
             controller: "eventAddController",
             controllerAs: 'vm'
         })
-        .when("/events/list",
+        .when("/nonprofit/:id/events/list",
         {
             // for user to list Events
             templateUrl: "/ngApp/Views/EventsList.html",
