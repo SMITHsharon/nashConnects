@@ -85,7 +85,7 @@
         })
         .when("/event/add/:nonprofitid",
         {
-            // for user to add an Event
+            // for NonProfit user to add an Event
             templateUrl: "/ngApp/Views/EventNew.html",
             controller: "eventAddController",
             controllerAs: 'vm'

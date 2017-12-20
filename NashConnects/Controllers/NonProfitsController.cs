@@ -207,6 +207,25 @@ namespace NashConnects.Controllers
 
             return Ok();
         }
+        
+        
+        // GET: api/NonProfits
+        [HttpGet, Route("{nonprofitid}/events/list")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult ListEventForNonProfit(string nonprofitid)
+        {
+            var db = new ApplicationDbContext();
+            
+            NonProfit nonProfit = db.NonProfits.Find(nonprofitid);
+
+            if (nonProfit == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(nonProfit.Events);
+        }
+
 
         // DELETE: api/NonProfits/5
         [ResponseType(typeof(NonProfit))]

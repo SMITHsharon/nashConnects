@@ -8,7 +8,6 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in NonProfits List Controller");
     let vm = this;
 
     vm.message = "Nash NonProfits";
@@ -18,9 +17,7 @@
     var getNonProfitList = function () {
         $http.get("/api/NonProfits/list")
             .then(function (result) {
-                console.log("result, listing all NonProfits :: ", result);
                 var dataResults = result.data;
-                console.log("NonProfits List result.data :: ", dataResults);
                 var listOfNonProfits = [];
 
                 if (dataResults.length > 0) {
@@ -30,7 +27,6 @@
                     });
                 }
                 $scope.nonprofits = listOfNonProfits;
-                console.log($scope.nonprofits);
             }).catch(function (error) {
                 console.log("error, listing all NonProfits :: ", error);
             });
