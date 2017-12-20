@@ -1,6 +1,6 @@
 ﻿app.controller("eventListController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
 
-    //.when("/events/list",
+    //.when("/api/nonprofit/{:id}/events/list`",
     //{
           //for user to list Events
     //    templateUrl: "/ngApp/Views/EventsList.html",
@@ -12,6 +12,9 @@
     let vm = this;
 
     vm.message = "This is List Events Controller";
+
+    $scope.nonprofit;
+    $scope.event;
 
 }
 ]);

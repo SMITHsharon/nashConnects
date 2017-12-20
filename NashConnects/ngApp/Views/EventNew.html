@@ -10,8 +10,47 @@
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
-                        <h1>{{vm.message}}</h1>
-
+                        <h1>{{message}}</h1>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="addEvent.EventName" class="input" type="text" placeholder="username">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input type="date" class="form-control" uib-datepicker-popup ng-model="addEvent.startDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input type="date" class="form-control" uib-datepicker-popup ng-model="addEvent.endDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="addEvent.Description" class="input" type="email" placeholder="email">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <a href="#!/event/add/{{.id}}">
+                                <button class="button is-primary is-normal" ng-click="postEvent()" ng-class="{'is-loading':inProgress}">Add Event</button>
+                            </a>
+                                <!--
+        <button class="button is-danger is-normal" ng-click="editEvent()" ng-class="{'is-loading':inProgress}">Edit Event</button>
+        -->
+</div>
                     </div>
                 </div>
             </div>

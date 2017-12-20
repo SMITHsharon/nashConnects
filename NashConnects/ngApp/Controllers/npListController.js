@@ -14,6 +14,7 @@
     vm.message = "Nash NonProfits";
 
     $scope.nonprofits;
+    //$scope.addEvent;
 
     var getNonProfitList = function () {
         $http.get("/api/NonProfits/list")
@@ -49,8 +50,28 @@
     };
 
 
+    /*
+    NOOOOOOOOO ... ??? 
+    MOVED TO eventAddController
     $scope.postEvent = (nonprofitId) => {
         console.log("in postEvent");
+        {
+            //add this method to the nonprofit cs controller
+            //db find this nonprofit ... add this event to event table
+            //that creates the foreign key
+            $http.post("/api/nonprofit/{id}/addevent",
+                {
+                    EventName: $scope.addEvent.EventName,
+                    StartDate: $scope.addEvent.SchoolId,
+                    EndDate: $scope.addEvent.NoteText,
+                    Description: $scope.addEvent.EnrolledClassId
+                })
+                .then(function (newEventResult) {
+                    console.log(newEventResult);
+                    $location.url(`/api/NonProfits/Events/${nonprofitId}`);
+                }).catch(error => console.error("error, creating new event", error));
+        }
     };
+    */
 
 }]);
