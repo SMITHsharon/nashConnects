@@ -4,33 +4,35 @@
             <div class="columns is-centered">
                 <div class="column is-10 is-10-mobile">
                     <div class="box has-text-centered">
-                        <!-- <figure class="image login-logo">
-                            <img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />
-                        </figure>
-                        -->
+                        <!--
+                    <figure class="image login-logo">
+                        <img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />
+                    </figure>
+                    -->
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
-                        <!-- 
-                        <h1>{{vm.message}}</h1>
-                        -->
 
-                        <h3>{{nonprofit}} Scheduled Events</h3>
+                        <h1>{{vm.message}}</h1>
 
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
-                        <table class="table is-hoverable">
+                        
+                        <table class="table is-hoverable" ng-repeat="group in eventGroups | filter: searchText">
+                        
                             <tbody>
-                                <tr ng-repeat="event in events | filter: searchText">
+                                <tr>
+                                    <th>
+                                        <h2>{{group.NonProfitName}}</h2>
+                                    </th>
+                                </tr>
 
+                                <tr ng-repeat="event in group.events">
+                                    <!-- filter out past dates -->
                                     <td>{{event.EventName}}</td>
                                     <td>{{event.Description}}</td>
                                     <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mma'}}</td>
                                     <td>{{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
-
-                                    <td>
-                                        <button class="button is-normal is-light" ng-click="register(nonprofit.id)">Register</button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>

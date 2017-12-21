@@ -233,27 +233,52 @@ namespace NashConnects.Controllers
             //return Ok(nonProfit.Events);
         }
 
-        /*
+        
         // GET: api/NonProfits
         [HttpGet, Route("events/list")]
         [ResponseType(typeof(Event))]
-        public IHttpActionResult GetAllEventsGroupByNonProfit()
+        public IHttpActionResult GetAllEventsGroupedByNonProfit()
         {
             var db = new ApplicationDbContext();
 
-            var eventsByNonProfit = db.Events
-            
-            //.Select(e => new
-            {
-                CategoryName = freelancerGroup.Key.ToString(),
-                Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
-            })
-            .ToList();
+            var query = 
+                from np in db.NonProfits
+                group np by np.Id into eventsByNonProfits
+                let eventsList = from npList in eventsByNonProfits
+                                 select npList.Events
+                select new
+                {
+                    nonProfitId = eventsByNonProfits.Key,
+                    Events = eventsList
+                };
+            // var q = context.Groups.Select(x => new { Group = x.Name, Count = x.Members.Count() } );
 
-            return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
+            /*
+            var eventsByNonProfit = db.NonProfits.Select
+                    (from np in db.NonProfits
+                     join ev in db.Events 
+                     on np.Id equals ev.NonProfit_Id
+                     select
+                      (eventsList => new
+                      {
+                          nonProfitName = nonProfit.Name,
+                          Events = eventsList.Events
+                      }));
+            /*
+            var eventsByNonProfit =
+                from np in db.NonProfits
+                join eventsList in db.Events on np.Id equals eventsList.NonProfit_Id
+                select new
+                {
+                    nonProfitName = np.Name,
+                    Events = np.Events
+                };
+            */
 
+            return Ok(query);
+            //return Ok(eventsByNonProfits);
         }
-        */
+        
 
 
         // DELETE: api/NonProfits/5

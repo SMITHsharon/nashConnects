@@ -3,45 +3,70 @@
     //.when("/nonprofit/{:id}/events/list`",
     //{
           //for user to list Events
-    //    templateUrl: "/ngApp/Views/EventsList.html",
+    //    templateUrl: "/ngApp/Views/EventsListSingleNonProfit.html",
     //    controller:  "eventListController",
     //    controllerAs: 'vm'
     //})
+    //.when("/events/list",
+    //{
+    //    //for user to list Events
+    //    templateUrl: "/ngApp/Views/EventsListAllNonProfits.html",
+    //    controller: "eventListController",
+    //    controllerAs: 'vm'
+    //})
 
-    console.log("in List Events Controller");
     let vm = this;
 
     vm.message = "Scheduled Events";
 
     $scope.nonprofit;
     $scope.events;
+    $scope.eventGroups;
     var nonprofitId = $routeParams.id;
     console.log("nonprofitId :: ", nonprofitId);
     console.log("$routeParams.id :: ", $routeParams.id);
 
-    var getEventList = function () {
-        $http.get(`/api/NonProfits/${nonprofitId}/events/list`)
-            .then(function (eventListResult) {
-                console.log("eventListResult, listing all Events :: ", eventListResult);
-                var eventListDataResults = eventListResult.data;
-                console.log("Events List eventListDataResult.data :: ", eventListDataResults);
-                console.log("Events List eventListDataResult.Events :: ", eventListDataResults.Events);
-                $scope.nonprofit = eventListDataResults.nonProfitName;
-                var listOfEvents = eventListDataResults.Events;
+    listOfEvents = [];
 
-                /*
-                if (eventListDataResults.length > 0) {
-                    Object.keys(eventListDataResults).forEach((key) => {
-                        eventListDataResults[key].id = key;
-                        listOfEvents.push(eventListDataResults[key]);
-                    });
-                }
-                */
-                $scope.events = listOfEvents;
-                console.log($scope.Events);
-            }).catch(function (eventsError) {
-                console.log("error, listing all Events :: ", eventsError);
-            });
+    var getEventList = () => {
+        if (nonprofitId != null) { // get Event for This NonProfit
+            $http.get(`/api/NonProfits/${nonprofitId}/events/list`)
+                .then((eventListResult) => {
+                    //console.log("eventListResult, listing all Events :: ", eventListResult);
+                    var eventListDataResult = eventListResult.data;
+                    //console.log("Events List eventListDataResult.data :: ", eventListDataResult);
+                    //console.log("Events List eventListDataResult.Events :: ", eventListDataResult.Events);
+                    $scope.nonprofit = eventListDataResult.nonProfitName;
+                    var listOfEvents = eventListDataResult.Events;
+
+                    $scope.events = listOfEvents;
+                    //console.log("$scope.events :: ", $scope.events);
+                }).catch((eventsError) => {
+                    console.log("error, listing NonProfit Events :: ", eventsError);
+                });
+        }
+        else // get Events for All NonProfits
+        {
+            $http.get("api/NonProfits/events/list")
+                .then((eventListResult) => {
+                    console.log("eventListResult :: ", eventListResult);
+                    var eventListDataResult = eventListResult.data;
+                    console.log("Events List eventListDataResult.data :: ", eventListDataResult); // this is an array of objects
+
+                    if (eventListDataResult.length > 0) {
+                        Object.keys(eventListDataResult).forEach((key) => {
+                            eventListDataResult[key].id = key;
+                            listOfEvents.push(eventListDataResult[key]);
+                        });
+                    }
+
+                    $scope.eventGroups = listOfEvents;
+                    console.log("$scope.events :: ", $scope.events);
+
+                }).catch((errorListResult) => {
+                    console.error("error, listing All Events :: ", errorListResult);
+                });
+        }
     };
     getEventList();
 
