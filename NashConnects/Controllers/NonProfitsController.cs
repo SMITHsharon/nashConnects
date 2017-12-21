@@ -223,8 +223,37 @@ namespace NashConnects.Controllers
                 return NotFound();
             }
 
-            return Ok(nonProfit.Events);
+            var eventList = new
+            {
+                nonProfitName = nonProfit.Name,
+                Events = nonProfit.Events
+            };
+
+            return Ok(eventList);
+            //return Ok(nonProfit.Events);
         }
+
+        /*
+        // GET: api/NonProfits
+        [HttpGet, Route("events/list")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult GetAllEventsGroupByNonProfit()
+        {
+            var db = new ApplicationDbContext();
+
+            var eventsByNonProfit = db.Events
+            
+            //.Select(e => new
+            {
+                CategoryName = freelancerGroup.Key.ToString(),
+                Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+            })
+            .ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
+
+        }
+        */
 
 
         // DELETE: api/NonProfits/5

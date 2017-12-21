@@ -25,15 +25,19 @@
                 console.log("eventListResult, listing all Events :: ", eventListResult);
                 var eventListDataResults = eventListResult.data;
                 console.log("Events List eventListDataResult.data :: ", eventListDataResults);
-                var listOfEvents = [];
+                console.log("Events List eventListDataResult.Events :: ", eventListDataResults.Events);
+                $scope.nonprofit = eventListDataResults.nonProfitName;
+                var listOfEvents = eventListDataResults.Events;
 
+                /*
                 if (eventListDataResults.length > 0) {
                     Object.keys(eventListDataResults).forEach((key) => {
-                        EventListDataResults[key].id = key;
+                        eventListDataResults[key].id = key;
                         listOfEvents.push(eventListDataResults[key]);
                     });
                 }
-                $scope.Events = listOfEvents;
+                */
+                $scope.events = listOfEvents;
                 console.log($scope.Events);
             }).catch(function (eventsError) {
                 console.log("error, listing all Events :: ", eventsError);
