@@ -11,20 +11,22 @@
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
+                        <!-- 
                         <h1>{{vm.message}}</h1>
+                        -->
 
-                        <h3>{{nonprofit.Name}}</h3>
+                        <h3><em>{{nonprofit}}</em> Scheduled Events</h3>
 
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
                         <table class="table is-hoverable">
                             <tbody>
-                                <tr ng-repeat="event in events | filter: searchText">
+                                <tr ng-repeat="event in events | filter: searchText"> <!-- filter out past dates -->
 
-                                    <td>{{event.Name}}</td>
+                                    <td>{{event.EventName}}</td>
                                     <td>{{event.Description}}</td>
-                                    <td>{{event.StartDate}}</td>
-                                    <td>{{event.EndDate}}</td>
+                                    <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mma'}}</td>
+                                    <td>{{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
 
                                     <td>
                                         <button class="button is-normal is-light" ng-click="register(nonprofit.id)">Register</button>

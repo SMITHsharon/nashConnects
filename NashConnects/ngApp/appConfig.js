@@ -93,17 +93,24 @@
         .when("/nonprofit/:id/events/list",
         {
             // for user to list Events
-            templateUrl: "/ngApp/Views/EventsList.html",
+            templateUrl: "/ngApp/Views/EventsListSingleNonProfit.html",
             controller: "eventListController",
             controllerAs: 'vm'
         })
-        .when("/event/detail/:id",
+        .when("/events/list",
         {
             // for user to list Events
-            templateUrl: "/ngApp/Views/EventDetail.html",
-            controller: "eventViewController",
+            templateUrl: "/ngApp/Views/EventsListAllNonProfits.html",
+            controller: "eventListController",
             controllerAs: 'vm'
         })
+        //.when("/event/detail/:id",
+        //{
+        //    // for user to list Events
+        //    templateUrl: "/ngApp/Views/EventDetail.html",
+        //    controller: "eventViewController",
+        //    controllerAs: 'vm'
+        //})
         //.when("/category/add",
         //{
         //    //templateUrl: "/ngApp/Views/xxx.html",

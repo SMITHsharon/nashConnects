@@ -323,7 +323,8 @@
     <Content Include="ngApp\Controllers\npViewController.js" />
     <Content Include="ngApp\Views\EventDetail.html" />
     <Content Include="ngApp\Views\EventNew.html" />
-    <Content Include="ngApp\Views\EventsList.html" />
+    <Content Include="ngApp\Views\EventsListAllNonProfits.html" />
+    <Content Include="ngApp\Views\EventsListSingleNonProfit.html" />
     <Content Include="ngApp\Views\flListNewsletters.html" />
     <Content Include="ngApp\Views\flProfile.html" />
     <Content Include="ngApp\Views\flList.html" />
