@@ -1,4 +1,4 @@
-﻿app.controller("eventAddController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+﻿app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
 
     //.when("/event/add/:nonprofitid",
     //{
@@ -11,26 +11,41 @@
     console.log("in Add Event Controller");
     let vm = this;
 
-    vm.message = "This is Add Event Controller";
+    vm.message = "Add Event";
 
     $scope.addEvent;
+    $scope.nonProfit;
+    var nonprofitId = $routeParams.nonprofitid;
 
-    $scope.postEvent = (nonprofitId) => {
-        console.log("in postEvent");
+    let getThisNonProfit = (nonprofitId) => {
+        console.log("getting nonProfit");
+        $http.get(`/api/nonprofits/${nonprofitId}`)
+            .then((getResult) => {
+                console.log("getResult.data", getResult.data);
+                var nonProfitName = getResult.data.Name;
+                console.log("nonProfitName = ", nonProfitName);
+                $scope.nonProfit = nonProfitName;
+                console.log("$scope.nonProfit :: ", $scope.nonProfit); 
+            })
+            .catch((getError) => {
+                console.error("error on getThisNonProfit", getError);
+            }) 
+    };
+    getThisNonProfit(nonprofitId);
+
+
+    $scope.postEvent = () => {
         {
-            //add this method to the nonprofit cs controller
-            //db find this nonprofit ... add this event to event table
-            //that creates the foreign key
-            $http.post("/api/nonprofit/{id}/addevent",
+            $http.post(`/api/nonprofits/${nonprofitId}/addevent`,
                 {
                     EventName: $scope.addEvent.EventName,
-                    StartDate: $scope.addEvent.SchoolId,
-                    EndDate: $scope.addEvent.NoteText,
-                    Description: $scope.addEvent.EnrolledClassId
+                    StartDate: $scope.addEvent.StartDate,
+                    EndDate: $scope.addEvent.EndDate,
+                    Description: $scope.addEvent.Description
                 })
                 .then(function (newEventResult) {
                     console.log(newEventResult);
-                    $location.url(`/api/nonprofit/{:id}/events/list`);
+                    $location.url(`/nonprofit/${nonprofitId}/events/list`);
                 }).catch(error => console.error("error, creating new event", error));
         }
     };

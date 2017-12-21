@@ -8,7 +8,6 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in Newsletter Subscribers List Controller");
     let vm = this;
     vm.message = "Newsletter Subscribers";
 
@@ -18,7 +17,7 @@
         $http.get("/api/Freelancers/list")
             .then(function (result) {
                 var freelancerGroupings = result.data;
-                console.table(freelancerGroupings);
+                //console.table(freelancerGroupings);
                 
                 $scope.freelancerGroups = freelancerGroupings;
 
@@ -32,7 +31,6 @@
     $scope.recommend = (freelancerId) => {
         $http.put(`/api/Freelancers/likes/${freelancerId}`)
             .then((likesAddResult) => {
-                console.log("likesAddResult :: ", likesAddResult);
                 location.reload();
             })
             .catch((error) => {
