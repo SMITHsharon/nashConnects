@@ -1,0 +1,40 @@
+﻿<section class="hero is-fullheight" id="login">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-one-third-desktop is-10-mobile">
+                    <div class="box has-text-centered">
+                        <figure class="image login-logo">
+                            <!--<img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />-->
+                        </figure>
+                        <div ng-show="error" class="notification is-danger">
+                            {{error}}
+                        </div>
+                        <h1>{{vm.message}}</h1>
+                        <table class="table is-hoverable">
+                            <tbody>
+                                <tr>
+                                    <th>{{event.Name}}</th>
+                                </tr>
+                                <tr>
+                                    <!-- filter out past dates -->
+
+                                    <td>{{thisProfile.FirstName}} {{thisProfile.LastName}}</td>
+                                    <td>{{event.Description}}</td>
+                                    <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mmaZ'}}
+                                        {{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="field">
+                            <button class="button is-normal is-normal" ng-click="register(thisProfile.Id, event.Id)" ng-class="{'is-loading':inProgress}">Register</button>
+                            <!-- </div>
+                            <div class="field"> -->
+                            <button class="button is-light is-normal" ng-click="cancel()" ng-class="{'is-loading':inProgress}">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -15,6 +15,8 @@
     //    controllerAs: 'vm'
     //})
 
+    console.log("in eventListController");
+
     let vm = this;
 
     vm.message = "Scheduled Events";
@@ -22,9 +24,9 @@
     $scope.nonprofit;
     $scope.events;
     $scope.eventGroups;
-    var nonprofitId = $routeParams.id;
+    var nonprofitId = $routeParams.nonprofitid;
+    console.log("routeParams :: ", $routeParams)
     console.log("nonprofitId :: ", nonprofitId);
-    console.log("$routeParams.id :: ", $routeParams.id);
 
     listOfEvents = [];
 
@@ -37,10 +39,12 @@
                     //console.log("Events List eventListDataResult.data :: ", eventListDataResult);
                     //console.log("Events List eventListDataResult.Events :: ", eventListDataResult.Events);
                     $scope.nonprofit = eventListDataResult.nonProfitName;
+                    var nonProfitId = eventListDataResult.Id;
                     var listOfEvents = eventListDataResult.Events;
 
                     $scope.events = listOfEvents;
-                    //console.log("$scope.events :: ", $scope.events);
+                    console.log("$scope.events :: ", $scope.events);
+                    console.log("listOfEvents[0].EventId :: ", listOfEvents[0].EventId);
                 }).catch((eventsError) => {
                     console.log("error, listing NonProfit Events :: ", eventsError);
                 });
@@ -69,5 +73,12 @@
         }
     };
     getEventList();
+
+
+    $scope.register = (eventId) => {
+        console.log("passing eventId :: ", eventId);
+        $location.url(`/freelance/event/${eventId}/register`)
+    }
+
 
 }]);

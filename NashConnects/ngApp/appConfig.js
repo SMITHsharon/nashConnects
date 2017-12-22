@@ -90,7 +90,7 @@
             controller: "eventAddController",
             controllerAs: 'vm'
         })
-        .when("/nonprofit/:id/events/list",
+        .when("/nonprofit/:nonprofitid/events/list",
         {
             // for user to list Events
             templateUrl: "/ngApp/Views/EventsListSingleNonProfit.html",
@@ -102,6 +102,13 @@
             // for user to list Events
             templateUrl: "/ngApp/Views/EventsListAllNonProfits.html",
             controller: "eventListController",
+            controllerAs: 'vm'
+        })
+        .when("/freelance/event/:eventId/register",
+        {
+            // for user to list Events
+            templateUrl: "/ngApp/Views/EventRegistration.html",
+            controller: "eventRegisterController",
             controllerAs: 'vm'
         })
         //.when("/event/detail/:id",

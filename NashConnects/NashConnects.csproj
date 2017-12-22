@@ -306,6 +306,7 @@
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />
     <Content Include="ngApp\Controllers\eventListController.js" />
+    <Content Include="ngApp\Controllers\EventRegisterController.js" />
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />
     <Content Include="ngApp\Controllers\flListController.js" />
@@ -321,7 +322,8 @@
     <Content Include="ngApp\Controllers\npListController.js" />
     <Content Include="ngApp\Controllers\znpRegisterController.js" />
     <Content Include="ngApp\Controllers\npViewController.js" />
-    <Content Include="ngApp\Views\EventDetail.html" />
+    <Content Include="ngApp\Views\EventRegistration.html" />
+    <Content Include="ngApp\Views\zEventDetail.html" />
     <Content Include="ngApp\Views\EventNew.html" />
     <Content Include="ngApp\Views\EventsListAllNonProfits.html" />
     <Content Include="ngApp\Views\EventsListSingleNonProfit.html" />

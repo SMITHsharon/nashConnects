@@ -23,16 +23,17 @@ namespace NashConnects.Controllers
         }
 
         // GET: api/Events/5
+        [HttpGet, Route("{id}")]
         [ResponseType(typeof(Event))]
-        public IHttpActionResult GetEvent(int id)
+        public IHttpActionResult GetEventById(int id)
         {
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            Event thisEvent = db.Events.Find(id);
+            if (thisEvent == null)
             {
                 return NotFound();
             }
 
-            return Ok(@event);
+            return Ok(thisEvent);
         }
 
         // PUT: api/Events/5

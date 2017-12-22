@@ -14,5 +14,4 @@
     vm.message = "This is Nash Freelancers Profile // Register Controller";
 
 
-}
-]);
+}]);

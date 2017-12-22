@@ -27,6 +27,8 @@
                     });
                 }
                 $scope.nonprofits = listOfNonProfits;
+                console.log("listOfNonProfits :: ", listOfNonProfits);
+                console.log("listOfNonProfits[0].Id :: ", listOfNonProfits[0].Id);
             }).catch(function (error) {
                 console.log("error, listing all NonProfits :: ", error);
             });
@@ -46,8 +48,12 @@
 
     
     $scope.postEvent = (nonprofitId) => {
-            $location.url(`/event/add/${nonprofitId}`);
+        $location.url(`/event/add/${nonprofitId}`);
     };
+
+    $scope.listEvents = (nonprofitId) => {
+        $location.url(`/nonprofit/${nonprofitId}/events/list`)
+    }
     
 
 }]);

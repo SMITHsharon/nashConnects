@@ -42,7 +42,7 @@
                 Id: userid
             })
             .then((result) => {
-                $location.path('/freelancers/list');
+                $location.path('/nonprofits/list');
             })
             .catch((error) => {
                 console.log("editNonProfitProfile", error);
