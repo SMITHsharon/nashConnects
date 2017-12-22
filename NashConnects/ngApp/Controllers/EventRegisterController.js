@@ -3,13 +3,16 @@
     console.log("in Event Register Controller");
     console.log("$routeParams :: ", $routeParams);
     var eventId = $routeParams.eventId;
+    var nonprofitId = $routeParams.nonprofitid;
     console.log("eventId :: ", eventId);
+    console.log("nonprofitid :: ", nonprofitId);
 
     let vm = this;
 
     vm.message = "Event Registration";
 
     $scope.thisProfile = {};
+    $scope.thisNonProfit = {};
     $scope.thisEvent = {};
 
     // get user info
@@ -25,10 +28,12 @@
         });
 
     // get event info
-    $http.get(`/api/Events/${eventId}`)
+    //$http.get(`/api/Events/${eventId}`)
+    //$http.get(`/api/NonProfits/${nonprofitId}/events/list`)
+    $http.get(`/api/NonProfits/${nonprofitId}/events/${eventId}`)
         .then((eventResult) => {
             console.log("eventResult :: ", eventResult);
-            console.log("eventResult.data :: ", eentResult.data);
+            console.log("eventResult.data :: ", eventResult.data);
             $scope.thisEvent = eventResult.data;
         })
         .catch((eventError) => {

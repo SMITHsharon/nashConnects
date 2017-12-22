@@ -104,7 +104,7 @@
             controller: "eventListController",
             controllerAs: 'vm'
         })
-        .when("/freelance/event/:eventId/register",
+        .when("/nonprofit/:nonprofitid/event/:eventId/register",
         {
             // for user to list Events
             templateUrl: "/ngApp/Views/EventRegistration.html",

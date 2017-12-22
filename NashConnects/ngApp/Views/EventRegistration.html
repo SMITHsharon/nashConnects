@@ -14,15 +14,15 @@
                         <table class="table is-hoverable">
                             <tbody>
                                 <tr>
-                                    <th>{{event.Name}}</th>
+                                    <th>{{thisEvent.Name}}</th>
                                 </tr>
                                 <tr>
                                     <!-- filter out past dates -->
 
-                                    <td>{{thisProfile.FirstName}} {{thisProfile.LastName}}</td>
-                                    <td>{{event.Description}}</td>
-                                    <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mmaZ'}}
-                                        {{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
+                                    <p>{{thisProfile.FirstName}} {{thisProfile.LastName}}</p>
+                                    <p>{{thisEvent.Description}}</p>
+                                    <p>{{thisEvent.StartDate | date:'MM/dd/yyyy @ h:mmaZ'}}</p>
+                                    <p>{{thisEvent.EndDate | date:'MM/dd/yyyy @ h:mma'}}</p>
                                 </tr>
                             </tbody>
                         </table>

@@ -76,8 +76,8 @@
 
 
     $scope.register = (eventId) => {
-        console.log("passing eventId :: ", eventId);
-        $location.url(`/freelance/event/${eventId}/register`)
+        console.log("passing nonprofitId, eventId :: ", nonprofitId, eventId);
+        $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/register`)
     }
 
 
