@@ -11,23 +11,26 @@
                             {{error}}
                         </div>
                         <h1>{{vm.message}}</h1>
+                        <h3>{{nonProfitName}}</h3>
                         <table class="table is-hoverable">
                             <tbody>
                                 <tr>
-                                    <th>{{thisEvent.Name}}</th>
+                                    <th>{{thisEvent.EventName}}</th>
                                 </tr>
                                 <tr>
-                                    <!-- filter out past dates -->
+                                    <td>
+                                        <!-- filter out past dates -->
 
-                                    <p>{{thisProfile.FirstName}} {{thisProfile.LastName}}</p>
-                                    <p>{{thisEvent.Description}}</p>
-                                    <p>{{thisEvent.StartDate | date:'MM/dd/yyyy @ h:mmaZ'}}</p>
-                                    <p>{{thisEvent.EndDate | date:'MM/dd/yyyy @ h:mma'}}</p>
+                                        <h4>{{thisProfile.FirstName}} {{thisProfile.LastName}}</h4>
+                                        <p>Event: {{thisEvent.Description}}</p>
+                                        <p>{{thisEvent.StartDate | date:'MM/dd/yyyy @ h:mmaZ'}}</p>
+                                        <p>{{thisEvent.EndDate | date:'MM/dd/yyyy @ h:mma'}}</p>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="field">
-                            <button class="button is-normal is-normal" ng-click="register(thisProfile.Id, event.Id)" ng-class="{'is-loading':inProgress}">Register</button>
+                            <button class="button is-normal is-normal" ng-click="postRegistration(thisProfile.Id, event.Id)" ng-class="{'is-loading':inProgress}">Register</button>
                             <!-- </div>
                             <div class="field"> -->
                             <button class="button is-light is-normal" ng-click="cancel()" ng-class="{'is-loading':inProgress}">Cancel</button>
