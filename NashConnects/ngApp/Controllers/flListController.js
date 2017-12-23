@@ -17,11 +17,6 @@
         $http.get("/api/Freelancers/list")
             .then(function (result) {
                 var freelancerGroupings = result.data;
-                //console.log(freelancerGroupings);
-                //console.log("freelancerGroupings[0].Freelancers[0] :: ", freelancerGroupings[0].Freelancers[0]);
-                //console.log("freelancerGroupings[0].Freelancers[0].FirstName :: ", freelancerGroupings[0].Freelancers[0].FirstName);
-
-                
                 $scope.freelancerGroups = freelancerGroupings;
 
             }).catch(function (error) {

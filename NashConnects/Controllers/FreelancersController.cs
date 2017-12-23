@@ -40,17 +40,17 @@ namespace NashConnects.Controllers
             // RETURNS FREELANCERS GROUPED BY CATEGORY
             var freelancersByCategory = db.Freelancers
                 .GroupBy(freelancer => freelancer.Category)
-                .Select(freelancerGroup => new
-                {
-                    CategoryName = freelancerGroup.Key.ToString(),
-                    //Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+                .Select(freelancerGroup => 
+                new {
+                        CategoryName = freelancerGroup.Key.ToString(),
+                        //Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
                     
-                    Freelancers = freelancerGroup.Select(freelancer =>
-                        new { freelancer.FirstName, freelancer.LastName, freelancer.WebsiteURL,
-                              freelancer.Description, freelancer.RecommendCount, freelancer.PublicReveal })
-                    
-                })
-                .ToList();
+                        Freelancers = freelancerGroup.Select(freelancer =>
+                            new { freelancer.Id, freelancer.FirstName, freelancer.LastName, freelancer.WebsiteURL,
+                                  freelancer.Description, freelancer.RecommendCount, freelancer.PublicReveal
+                                })
+                    })
+                    .ToList();
             
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
@@ -217,6 +217,7 @@ namespace NashConnects.Controllers
         }
 
 
+        
         // POST: api/Freelancers/5
         [Authorize]
         [HttpPost, Route("{freelancerId}/register/{eventId}")]
@@ -239,7 +240,7 @@ namespace NashConnects.Controllers
             }
             catch (DbUpdateException)
             {
-                if (FreelancerExists(freelancer.Id))
+                if (!FreelancerExists(freelancer.Id))
                 {
                     return Conflict();
                 }
@@ -251,6 +252,7 @@ namespace NashConnects.Controllers
 
             return Ok();
         }
+        
 
 
         // DELETE: api/Freelancers/5

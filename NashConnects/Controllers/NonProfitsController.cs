@@ -26,7 +26,19 @@ namespace NashConnects.Controllers
         {
 
             var db = new ApplicationDbContext();
-            var nonProfitList = db.NonProfits.ToList();
+            var nonProfitList = db.NonProfits.Select(nonProfit => 
+            new {
+                    Id = nonProfit.Id,
+                    Name = nonProfit.Name,
+                    WebsiteURL = nonProfit.WebsiteURL,
+                    Description = nonProfit.Description,
+                    RecommendCount = nonProfit.RecommendCount,
+                    //Events = nonProfit.Events.
+                    Events = nonProfit.Events.Select(thisEvent => 
+                        new { thisEvent.EventId, thisEvent.EventName,
+                              thisEvent.StartDate, thisEvent.EndDate, thisEvent.Description
+                            })
+                }).ToList();
 
             return Request.CreateResponse(HttpStatusCode.OK, nonProfitList);
         }
