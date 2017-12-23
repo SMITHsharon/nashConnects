@@ -306,7 +306,7 @@
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />
     <Content Include="ngApp\Controllers\eventListController.js" />
-    <Content Include="ngApp\Controllers\EventRegisterController.js" />
+    <Content Include="ngApp\Controllers\eventRegisterController.js" />
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />
     <Content Include="ngApp\Controllers\flListController.js" />
@@ -399,6 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="ngApp\Factories\" />
   </ItemGroup>
   <ItemGroup>

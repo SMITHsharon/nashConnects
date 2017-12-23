@@ -210,6 +210,43 @@ namespace NashConnects.Controllers
             return CreatedAtRoute("DefaultApi", new { id = freelancer.Id }, freelancer);
         }
 
+
+        // POST: api/Freelancers/5
+        [Authorize]
+        [HttpPost, Route("{freelancerId}/register/{eventId}")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult RegisgterFreelancerForEvent(string freelancerId, int eventId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var freelancer = db.Freelancers.Find(freelancerId);
+            var thisEvent = db.Events.Find(eventId);
+            freelancer.RegEvents.Add(thisEvent);
+            //thisEvent.Freelancers.Add(freelancer);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (FreelancerExists(freelancer.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
+
+
         // DELETE: api/Freelancers/5
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult DeleteFreelancer(string id)

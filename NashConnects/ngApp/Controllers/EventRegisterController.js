@@ -22,7 +22,7 @@
             console.log("nonProfitResult.Name :: ", nonProfitResult.Name);
             $scope.nonProfitName = nonProfitResult.Name;
             var nonProfitId = nonProfitResult.Id;
-            
+
         }).catch((npError) => {
             console.log("error, getting NonProfit Name :: ", npError);
         });
@@ -43,16 +43,24 @@
     $http.get(`/api/NonProfits/${nonprofitId}/events/${eventId}`)
         .then((eventResult) => {
             $scope.thisEvent = eventResult.data;
+            console.log("eventId :: ", eventId);
         })
         .catch((eventError) => {
             console.log("error on getEvent", eventError);
         });
+    
 
-    $scope.postRegistration = (userId, eventId) => {
-        console.log("passing userId, eventId :: ", userId, eventId);
-        // display confirmation message
-        // on OK
-        $location.url(`/nonprofit/${nonprofitId}/events/list`)
-    }
+    $scope.postRegistration = (userId) => {
+        console.log("passing eventId, userId:: ", eventId, userId);
+        $http.post(`/api/Freelancers/${userId}/register/${eventId}`)
+        .then((registrationResult) => {
+            // display confirmation message
+            console.log("registrationResult :: ", registrationResult);
+            $location.url(`/nonprofit/${nonprofitId}/events/list`)
+        })
+        .catch((registrationError) => {
+            console.error("error on User Register for Event :: ", registrationError);
+        });
+    };
 
 }]);

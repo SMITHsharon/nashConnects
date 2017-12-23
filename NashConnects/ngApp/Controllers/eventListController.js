@@ -34,17 +34,12 @@
         if (nonprofitId != null) { // get Event for This NonProfit
             $http.get(`/api/NonProfits/${nonprofitId}/events/list`)
                 .then((eventListResult) => {
-                    //console.log("eventListResult, listing all Events :: ", eventListResult);
                     var eventListDataResult = eventListResult.data;
-                    //console.log("Events List eventListDataResult.data :: ", eventListDataResult);
-                    //console.log("Events List eventListDataResult.Events :: ", eventListDataResult.Events);
                     $scope.nonprofit = eventListDataResult.nonProfitName;
                     var nonProfitId = eventListDataResult.Id;
                     var listOfEvents = eventListDataResult.Events;
 
                     $scope.events = listOfEvents;
-                    console.log("$scope.events :: ", $scope.events);
-                    console.log("listOfEvents[0].EventId :: ", listOfEvents[0].EventId);
                 }).catch((eventsError) => {
                     console.log("error, listing NonProfit Events :: ", eventsError);
                 });
