@@ -43,9 +43,15 @@ namespace NashConnects.Controllers
                 .Select(freelancerGroup => new
                 {
                     CategoryName = freelancerGroup.Key.ToString(),
-                    Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+                    //Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+                    
+                    Freelancers = freelancerGroup.Select(freelancer =>
+                        new { freelancer.FirstName, freelancer.LastName, freelancer.WebsiteURL,
+                              freelancer.Description, freelancer.RecommendCount, freelancer.PublicReveal })
+                    
                 })
                 .ToList();
+            
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
         }
