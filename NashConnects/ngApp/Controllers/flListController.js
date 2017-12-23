@@ -9,7 +9,7 @@
     //})
 
     let vm = this;
-    vm.message = "Newsletter Subscribers";
+    vm.message = "Nash Freelancers";
 
     $scope.freelancerGroups = [];
 

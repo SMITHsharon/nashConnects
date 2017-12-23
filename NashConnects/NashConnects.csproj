@@ -302,6 +302,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\darkNashvilleImage.jpeg" />
+    <Content Include="Images\nashSkyline.png" />
+    <Content Include="nashSkyline.png" />
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />
@@ -322,6 +325,7 @@
     <Content Include="ngApp\Controllers\npListController.js" />
     <Content Include="ngApp\Controllers\znpRegisterController.js" />
     <Content Include="ngApp\Controllers\npViewController.js" />
+    <Content Include="ngApp\Views\darkNashvilleImage.jpg" />
     <Content Include="ngApp\Views\EventRegistration.html" />
     <Content Include="ngApp\Views\zEventDetail.html" />
     <Content Include="ngApp\Views\EventNew.html" />
@@ -399,7 +403,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="ngApp\Factories\" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 
     let vm = this;
 
-    vm.message = "Nash NonProfits";
+    vm.message = "Nash NonProfits and Other Resources";
 
     $scope.nonprofits;
 
