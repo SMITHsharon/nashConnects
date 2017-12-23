@@ -302,10 +302,14 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\darkNashvilleImage.jpeg" />
+    <Content Include="Images\nashSkyline.png" />
+    <Content Include="nashSkyline.png" />
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />
     <Content Include="ngApp\Controllers\eventListController.js" />
+    <Content Include="ngApp\Controllers\eventRegisterController.js" />
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />
     <Content Include="ngApp\Controllers\flListController.js" />
@@ -321,7 +325,9 @@
     <Content Include="ngApp\Controllers\npListController.js" />
     <Content Include="ngApp\Controllers\znpRegisterController.js" />
     <Content Include="ngApp\Controllers\npViewController.js" />
-    <Content Include="ngApp\Views\EventDetail.html" />
+    <Content Include="ngApp\Views\darkNashvilleImage.jpg" />
+    <Content Include="ngApp\Views\EventRegistration.html" />
+    <Content Include="ngApp\Views\zEventDetail.html" />
     <Content Include="ngApp\Views\EventNew.html" />
     <Content Include="ngApp\Views\EventsListAllNonProfits.html" />
     <Content Include="ngApp\Views\EventsListSingleNonProfit.html" />

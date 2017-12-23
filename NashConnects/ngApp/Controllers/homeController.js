@@ -10,7 +10,7 @@
     console.log("in Home Controller");
     let vm = this;
 
-    vm.message = "This is Home";
+    //vm.message = "This is Home";
 
     
 }

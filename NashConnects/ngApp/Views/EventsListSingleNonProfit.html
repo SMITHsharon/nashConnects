@@ -25,11 +25,11 @@
 
                                     <td>{{event.EventName}}</td>
                                     <td>{{event.Description}}</td>
-                                    <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mma'}}</td>
+                                    <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mmaZ'}}</td>
                                     <td>{{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
 
                                     <td>
-                                        <button class="button is-normal is-light" ng-click="register(nonprofit.id)">Register</button>
+                                        <button class="button is-normal is-light" ng-click="register(event.EventId)">Register for Event</button>
                                     </td>
                                 </tr>
                             </tbody>
