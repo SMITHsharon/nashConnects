@@ -11,12 +11,12 @@
     vm.message = "Subscribed to Newsletter";
 
     $scope.freelancers = [];
-    var listOfFreelancers = [];
 
-    var getFreelancerList = function () {
+    var getFreelancerList = () => {
         $http.get("/api/Freelancers/list/newsletter")
             .then((result) => {
                 var dataResults = result.data;
+                var listOfFreelancers = [];
 
                 if (dataResults.length > 0) {
                     Object.keys(dataResults).forEach((key) => {
@@ -26,7 +26,7 @@
                 }
                 $scope.freelancers = listOfFreelancers;
 
-            }).catch(function (error) {
+            }).catch((error) => {
                 console.log("error, listing all Freelancers :: ", error);
             });
     };

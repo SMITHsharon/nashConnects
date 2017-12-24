@@ -27,18 +27,21 @@ namespace NashConnects.Controllers
 
             var db = new ApplicationDbContext();
             var nonProfitList = db.NonProfits.Select(nonProfit => 
-            new {
-                    Id = nonProfit.Id,
-                    Name = nonProfit.Name,
-                    WebsiteURL = nonProfit.WebsiteURL,
-                    Description = nonProfit.Description,
-                    RecommendCount = nonProfit.RecommendCount,
-                    //Events = nonProfit.Events.
-                    Events = nonProfit.Events.Select(thisEvent => 
-                        new { thisEvent.EventId, thisEvent.EventName,
-                              thisEvent.StartDate, thisEvent.EndDate, thisEvent.Description
-                            })
-                }).ToList();
+                new {
+                        Id = nonProfit.Id,
+                        Name = nonProfit.Name,
+                        WebsiteURL = nonProfit.WebsiteURL,
+                        Description = nonProfit.Description,
+                        RecommendCount = nonProfit.RecommendCount,
+                        //Events = nonProfit.Events.
+                        Events = nonProfit.Events.Select(thisEvent => 
+                            new { thisEvent.EventId,
+                                  thisEvent.EventName,
+                                  thisEvent.StartDate,
+                                  thisEvent.EndDate,
+                                  thisEvent.Description
+                                })
+                 }).ToList();
 
             return Request.CreateResponse(HttpStatusCode.OK, nonProfitList);
         }
@@ -224,7 +227,7 @@ namespace NashConnects.Controllers
         // GET: api/NonProfits
         [HttpGet, Route("{nonprofitid}/events/list")]
         [ResponseType(typeof(Event))]
-        public IHttpActionResult ListEventForNonProfit(string nonprofitid)
+        public IHttpActionResult ListEventsForNonProfit(string nonprofitid)
         {
             var db = new ApplicationDbContext();
             
@@ -284,10 +287,17 @@ namespace NashConnects.Controllers
                 group np by np.Id into eventsByNonProfits
                 let eventsList = from npList in eventsByNonProfits
                                  select npList.Events
+                                 /*select npList.Events.Select(thisEvent => new
+                                                                   { thisEvent.EventName,
+                                                                     thisEvent.StartDate,
+                                                                     thisEvent.EndDate,
+                                                                     thisEvent.Description })
+                                 */
                 select new
                 {
                     nonProfitId = eventsByNonProfits.Key,
                     Events = eventsList
+                   
                 };
             // var q = context.Groups.Select(x => new { Group = x.Name, Count = x.Members.Count() } );
 

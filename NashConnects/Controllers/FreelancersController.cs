@@ -46,8 +46,14 @@ namespace NashConnects.Controllers
                         //Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
                     
                         Freelancers = freelancerGroup.Select(freelancer =>
-                            new { freelancer.Id, freelancer.FirstName, freelancer.LastName, freelancer.WebsiteURL,
-                                  freelancer.Description, freelancer.RecommendCount, freelancer.PublicReveal
+                            new {
+                                    freelancer.Id,
+                                    freelancer.FirstName,
+                                    freelancer.LastName,
+                                    freelancer.WebsiteURL,
+                                    freelancer.Description,
+                                    freelancer.RecommendCount,
+                                    freelancer.PublicReveal
                                 })
                     })
                     .ToList();
@@ -55,18 +61,27 @@ namespace NashConnects.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
         }
-        
-        
+
+
         // GET: api/Freelancers
         [HttpGet, Route("list/newsletter")]
         //public IQueryable<Freelancer> GetUsers()
-        public HttpResponseMessage GetAllFreelancersById()
+        public HttpResponseMessage GetAllFreelancersByIdForNewsletter()
         {
             var db = new ApplicationDbContext();
 
-            var freelancersById = db.Freelancers.ToList();
+            //var freelancersById = db.Freelancers.ToList();
+            var freelancersListById = db.Freelancers.Select(freelancer =>
+                new {
+                        freelancer.Id,
+                        freelancer.FirstName,
+                        freelancer.LastName,
+                        freelancer.Email,
+                        freelancer.WebsiteURL
+                    })
+                .ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK, freelancersById);
+            return Request.CreateResponse(HttpStatusCode.OK, freelancersListById);
         }
 
 

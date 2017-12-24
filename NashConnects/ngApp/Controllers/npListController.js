@@ -14,7 +14,7 @@
 
     $scope.nonprofits;
 
-    var getNonProfitList = function () {
+    var getNonProfitList = () => {
         $http.get("/api/NonProfits/list")
             .then(function (result) {
                 var dataResults = result.data;
@@ -26,10 +26,12 @@
                         listOfNonProfits.push(dataResults[key]);
                     });
                 }
+
                 $scope.nonprofits = listOfNonProfits;
                 console.log("listOfNonProfits :: ", listOfNonProfits);
                 console.log("listOfNonProfits[0].Id :: ", listOfNonProfits[0].Id);
-            }).catch(function (error) {
+
+            }).catch((error) => {
                 console.log("error, listing all NonProfits :: ", error);
             });
     };

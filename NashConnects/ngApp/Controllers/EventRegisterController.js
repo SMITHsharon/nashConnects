@@ -40,9 +40,11 @@
 
 
     // get Event info
+    //$http.get(`/api/NonProfits/${nonprofitId}/events/${eventId}`)
     $http.get(`/api/NonProfits/${nonprofitId}/events/${eventId}`)
         .then((eventResult) => {
             $scope.thisEvent = eventResult.data;
+            console.log("eventResult", eventResult);
             console.log("eventId :: ", eventId);
         })
         .catch((eventError) => {
