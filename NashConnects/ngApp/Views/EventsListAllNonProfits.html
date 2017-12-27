@@ -21,13 +21,13 @@
                         <table class="table is-hoverable" ng-repeat="group in eventGroups | filter: searchText">
                         
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="event in group.Events | filter:{PublicReveal:true} ">
                                     <th>
                                         <h2>{{group.NonProfitName}}</h2>
                                     </th>
                                 </tr>
 
-                                <tr ng-repeat="event in group.events">
+                                <tr ng-repeat="event in group.Events">
                                     <!-- filter out past dates -->
                                     <td>{{event.EventName}}</td>
                                     <td>{{event.Description}}</td>
