@@ -32,6 +32,7 @@
     $http.get("/api/Freelancers/current")
         .then((result) => {
             $scope.thisProfile = result.data;
+            console.log("getUser result.data :: ", result.data);
             userId = result.data.Id;
         })
         .catch((getUserError) => {

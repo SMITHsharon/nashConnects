@@ -50,7 +50,7 @@
             .then(function (result) {
                 sessionStorage.setItem('token', result.data.access_token);
                 $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
-                $location.path("/");
+                $location.path('/freelancers/list');
                 console.log("logged in", result);
 
                 vm.inProgress = false;

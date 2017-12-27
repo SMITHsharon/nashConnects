@@ -86,16 +86,42 @@ namespace NashConnects.Controllers
 
 
         // GET: api/Freelancers/current
-        [Authorize]
+        //[Authorize]
         [HttpGet, Route("current")]
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult GetCurrentFreelancer()
         {
-            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
+            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId()); 
+
             if (freelancer == null)
             {
                 return NotFound();
             }
+
+            /*
+            var query = from fields in freelancer
+                        select new thisFreelancer
+                        {
+                            Id = freelancer.Id,
+                            FirstName = freelancer.FirstName,
+                            LastName = freelancer.LastName,
+                            Email = freelancer.Email,
+                            WebsiteURL = freelancer.WebsiteURL
+                        }.ToList();
+            */
+
+            //Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
+            /*
+            freelancer = new 
+            {
+                freelancer.Id,
+                freelancer.FirstName,
+                freelancer.LastName,
+                freelancer.Email,
+                freelancer.WebsiteURL\
+            }.ToList();
+            */
+
 
             return Ok(freelancer);
         }
