@@ -241,7 +241,15 @@ namespace NashConnects.Controllers
             var eventList = new
             {
                 nonProfitName = nonProfit.Name,
-                Events = nonProfit.Events
+                //Events = nonProfit.Events.
+                Events = nonProfit.Events.Select(thisEvent =>
+                    new {
+                            thisEvent.EventId,
+                            thisEvent.EventName,
+                            thisEvent.StartDate,
+                            thisEvent.EndDate,
+                            thisEvent.Description
+                        })
             };
 
             return Ok(eventList);
