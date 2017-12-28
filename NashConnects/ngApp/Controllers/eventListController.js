@@ -33,9 +33,16 @@
                 .then((eventListResult) => {
                     eventListDataResult = eventListResult.data;
                     listOfEvents = eventListDataResult.Events;
-
-                    $scope.nonprofit = eventListDataResult.nonProfitName;
-                    $scope.events = listOfEvents;
+                    if (listOfEvents.length > 0)
+                    {
+                        $scope.nonprofit = eventListDataResult.nonProfitName;
+                        $scope.events = listOfEvents;
+                    }
+                    else // this NonProfit has no Events scheduled
+                    {
+                        alert(`No events are scheduled for ${eventListDataResult.nonProfitName}`);
+                        $location.url(`/nonprofits/list`)
+                    }
 
                 }).catch((eventsError) => {
                     console.error("error, listing NonProfit Events :: ", eventsError);
