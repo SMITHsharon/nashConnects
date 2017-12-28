@@ -280,6 +280,10 @@
     <Compile Include="Migrations\201712170220296_chgCalendarLinkField.Designer.cs">
       <DependentUpon>201712170220296_chgCalendarLinkField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712280106304_swapKeysFLRegEventsTable.cs" />
+    <Compile Include="Migrations\201712280106304_swapKeysFLRegEventsTable.Designer.cs">
+      <DependentUpon>201712280106304_swapKeysFLRegEventsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -441,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712170220296_chgCalendarLinkField.resx">
       <DependentUpon>201712170220296_chgCalendarLinkField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712280106304_swapKeysFLRegEventsTable.resx">
+      <DependentUpon>201712280106304_swapKeysFLRegEventsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

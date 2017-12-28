@@ -290,8 +290,18 @@ namespace NashConnects.Controllers
         {
             var db = new ApplicationDbContext();
 
+            var eventGroupingsDTO = db.NonProfits
+    .Select(np => new
+    {
+        NonProfitId = np.Id,
+        Events = np.Events
+    }
+    )
+    .GroupBy(dto => dto.NonProfitId).ToList();
+
+            /*
             var eventsByNonProfits = db.NonProfits
-                .GroupBy(NonProfit => NonProfit.Id)
+                .GroupBy(NonProfit => NonProfit.Name)
                 .Select(eventGroup =>
                 new
                 {
@@ -303,8 +313,22 @@ namespace NashConnects.Controllers
                         thisEvent.Description
                     })
                 });
+                */
 
-            return Ok(eventsByNonProfits);
+            /*
+            var eventsByNonProfits = db.NonProfits
+                .GroupBy(NonProfit => NonProfit.Id)
+                .Select(nonProfitGroup =>
+                new
+                {
+                    nonProfitGroupId = nonProfitGroup.Key.ToString(),
+                    nonProfitGroupName = nonProfitGroup.Select(thisNonProfit => thisNonProfit.Name),
+                    //Events = db.Events.Select(thisEvent => new
+                    Events = nonProfitGroup.Select(thisNonProfit => thisNonProfit.Events)
+                });
+            */
+
+            return Ok(eventGroupingsDTO);
         }
         
 

@@ -21,9 +21,9 @@
                         <table class="table is-hoverable" ng-repeat="group in eventGroups | filter: searchText">
                         
                             <tbody>
-                                <tr ng-repeat="event in group.Events | filter:{PublicReveal:true} ">
+                                <tr">
                                     <th>
-                                        <h2>{{group.NonProfitName}}</h2>
+                                        <h2>{{group.nonProfitGroupName}}</h2>
                                     </th>
                                 </tr>
 

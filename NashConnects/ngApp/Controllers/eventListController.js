@@ -38,8 +38,9 @@
                     $scope.nonprofit = eventListDataResult.nonProfitName;
                     var nonProfitId = eventListDataResult.Id;
                     var listOfEvents = eventListDataResult.Events;
+                    console.log("listOfEvents :: ", listOfEvents);
 
-                    $scope.eventGroups = listOfEvents;
+                    $scope.events = listOfEvents;
                 }).catch((eventsError) => {
                     console.log("error, listing NonProfit Events :: ", eventsError);
                 });
@@ -50,6 +51,7 @@
                 .then((eventListResult) => {
                     var eventListDataResult = eventListResult.data;
                     $scope.eventGroups = eventListDataResult;
+                    console.log("eventListDataResult :: ", eventListDataResult);
                     
                 }).catch((errorListResult) => {
                     console.error("error, listing All Events :: ", errorListResult);
