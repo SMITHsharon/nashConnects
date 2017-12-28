@@ -71,6 +71,45 @@ namespace NashConnects.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        // POST: api/Events/5
+        /*
+        [Authorize]
+        [HttpPost, Route("{eventId}/register/{freelancerId}")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult RegisgterFreelancerForEvent(int eventId, string freelancerId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var freelancer = db.Freelancers.Find(freelancerId);
+            var thisEvent = db.Events.Find(eventId);
+            freelancer.RegEvents.Add(thisEvent);
+            //thisEvent.Freelancers.Add(freelancer);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (!EventExists(thisEvent.EventId))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
+        */
+
+
         // POST: api/Events
         [ResponseType(typeof(Event))]
         public IHttpActionResult PostEvent(Event @event)

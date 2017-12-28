@@ -15,13 +15,11 @@
 
     var getFreelancerList = function () {
         $http.get("/api/Freelancers/list")
-            .then(function (result) {
+            .then((result) => {
                 var freelancerGroupings = result.data;
-                //console.table(freelancerGroupings);
-                
                 $scope.freelancerGroups = freelancerGroupings;
 
-            }).catch(function (error) {
+            }).catch((error) => {
                 console.error("error, listing all Freelancers :: ", error);
             });
     };

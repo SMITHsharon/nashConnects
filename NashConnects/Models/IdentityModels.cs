@@ -68,8 +68,8 @@ namespace NashConnects.Models
                         .WithMany(f => f.RegEvents)
                         .Map(ef =>
                             {
-                                ef.MapLeftKey("FLRegId");
-                                ef.MapRightKey("EventRegId");
+                                ef.MapLeftKey("EventRegId");
+                                ef.MapRightKey("FLRegId");
                                 ef.ToTable("FLRegEvents");
                             });
 

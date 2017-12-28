@@ -40,41 +40,88 @@ namespace NashConnects.Controllers
             // RETURNS FREELANCERS GROUPED BY CATEGORY
             var freelancersByCategory = db.Freelancers
                 .GroupBy(freelancer => freelancer.Category)
-                .Select(freelancerGroup => new
-                {
-                    CategoryName = freelancerGroup.Key.ToString(),
-                    Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
-                })
-                .ToList();
+                .Select(freelancerGroup => 
+                new {
+                        CategoryName = freelancerGroup.Key.ToString(),
+                        //Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+                    
+                        Freelancers = freelancerGroup.Select(freelancer =>
+                            new {
+                                    freelancer.Id,
+                                    freelancer.FirstName,
+                                    freelancer.LastName,
+                                    freelancer.WebsiteURL,
+                                    freelancer.Description,
+                                    freelancer.RecommendCount,
+                                    freelancer.PublicReveal
+                                })
+                    })
+                    .ToList();
+            
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancersByCategory);
         }
-        
-        
+
+
         // GET: api/Freelancers
         [HttpGet, Route("list/newsletter")]
         //public IQueryable<Freelancer> GetUsers()
-        public HttpResponseMessage GetAllFreelancersById()
+        public HttpResponseMessage GetAllFreelancersByIdForNewsletter()
         {
             var db = new ApplicationDbContext();
 
-            var freelancersById = db.Freelancers.ToList();
+            //var freelancersById = db.Freelancers.ToList();
+            var freelancersListById = db.Freelancers.Select(freelancer =>
+                new {
+                        freelancer.Id,
+                        freelancer.FirstName,
+                        freelancer.LastName,
+                        freelancer.Email,
+                        freelancer.WebsiteURL
+                    })
+                .ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK, freelancersById);
+            return Request.CreateResponse(HttpStatusCode.OK, freelancersListById);
         }
 
 
         // GET: api/Freelancers/current
-        [Authorize]
+        //[Authorize]
         [HttpGet, Route("current")]
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult GetCurrentFreelancer()
         {
-            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
+            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId()); 
+
             if (freelancer == null)
             {
                 return NotFound();
             }
+
+            /*
+            var query = from fields in freelancer
+                        select new thisFreelancer
+                        {
+                            Id = freelancer.Id,
+                            FirstName = freelancer.FirstName,
+                            LastName = freelancer.LastName,
+                            Email = freelancer.Email,
+                            WebsiteURL = freelancer.WebsiteURL
+                        }.ToList();
+            */
+
+            //Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
+            /*
+            freelancer = new 
+            {
+                freelancer.Id,
+                freelancer.FirstName,
+                freelancer.LastName,
+                freelancer.Email,
+                freelancer.WebsiteURL\
+            }.ToList();
+            */
+
 
             return Ok(freelancer);
         }
@@ -211,6 +258,7 @@ namespace NashConnects.Controllers
         }
 
 
+        
         // POST: api/Freelancers/5
         [Authorize]
         [HttpPost, Route("{freelancerId}/register/{eventId}")]
@@ -233,7 +281,7 @@ namespace NashConnects.Controllers
             }
             catch (DbUpdateException)
             {
-                if (FreelancerExists(freelancer.Id))
+                if (!FreelancerExists(freelancer.Id))
                 {
                     return Conflict();
                 }
@@ -245,6 +293,7 @@ namespace NashConnects.Controllers
 
             return Ok();
         }
+        
 
 
         // DELETE: api/Freelancers/5

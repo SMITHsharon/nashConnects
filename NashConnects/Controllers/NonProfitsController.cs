@@ -26,7 +26,22 @@ namespace NashConnects.Controllers
         {
 
             var db = new ApplicationDbContext();
-            var nonProfitList = db.NonProfits.ToList();
+            var nonProfitList = db.NonProfits.Select(nonProfit => 
+                new {
+                        Id = nonProfit.Id,
+                        Name = nonProfit.Name,
+                        WebsiteURL = nonProfit.WebsiteURL,
+                        Description = nonProfit.Description,
+                        RecommendCount = nonProfit.RecommendCount,
+                        //Events = nonProfit.Events.
+                        Events = nonProfit.Events.Select(thisEvent => 
+                            new { thisEvent.EventId,
+                                  thisEvent.EventName,
+                                  thisEvent.StartDate,
+                                  thisEvent.EndDate,
+                                  thisEvent.Description
+                                })
+                 }).ToList();
 
             return Request.CreateResponse(HttpStatusCode.OK, nonProfitList);
         }
@@ -212,7 +227,7 @@ namespace NashConnects.Controllers
         // GET: api/NonProfits
         [HttpGet, Route("{nonprofitid}/events/list")]
         [ResponseType(typeof(Event))]
-        public IHttpActionResult ListEventForNonProfit(string nonprofitid)
+        public IHttpActionResult ListEventsForNonProfit(string nonprofitid)
         {
             var db = new ApplicationDbContext();
             
@@ -226,7 +241,15 @@ namespace NashConnects.Controllers
             var eventList = new
             {
                 nonProfitName = nonProfit.Name,
-                Events = nonProfit.Events
+                //Events = nonProfit.Events
+                Events = nonProfit.Events.Select(thisEvent =>
+                    new {
+                            thisEvent.EventId,
+                            thisEvent.EventName,
+                            thisEvent.StartDate,
+                            thisEvent.EndDate,
+                            thisEvent.Description
+                        })
             };
 
             return Ok(eventList);
@@ -267,42 +290,46 @@ namespace NashConnects.Controllers
         {
             var db = new ApplicationDbContext();
 
-            var query = 
-                from np in db.NonProfits
-                group np by np.Id into eventsByNonProfits
-                let eventsList = from npList in eventsByNonProfits
-                                 select npList.Events
-                select new
+            var eventGroupingsDTO = db.NonProfits
+                .Select(np => new
                 {
-                    nonProfitId = eventsByNonProfits.Key,
-                    Events = eventsList
-                };
-            // var q = context.Groups.Select(x => new { Group = x.Name, Count = x.Members.Count() } );
+                    NonProfitId = np.Id,
+                    NonProfitName = np.Name,
+                    Events = np.Events
+                })
+                .GroupBy(dto => dto.NonProfitId)
+                .ToList();
 
             /*
-            var eventsByNonProfit = db.NonProfits.Select
-                    (from np in db.NonProfits
-                     join ev in db.Events 
-                     on np.Id equals ev.NonProfit_Id
-                     select
-                      (eventsList => new
-                      {
-                          nonProfitName = nonProfit.Name,
-                          Events = eventsList.Events
-                      }));
-            /*
-            var eventsByNonProfit =
-                from np in db.NonProfits
-                join eventsList in db.Events on np.Id equals eventsList.NonProfit_Id
-                select new
+            var eventsByNonProfits = db.NonProfits
+                .GroupBy(NonProfit => NonProfit.Name)
+                .Select(eventGroup =>
+                new
                 {
-                    nonProfitName = np.Name,
-                    Events = np.Events
-                };
+                    Events = db.Events.Select(thisEvent => new
+                    {
+                        thisEvent.EventName,
+                        thisEvent.StartDate,
+                        thisEvent.EndDate,
+                        thisEvent.Description
+                    })
+                });
+                */
+
+            /*
+            var eventsByNonProfits = db.NonProfits
+                .GroupBy(NonProfit => NonProfit.Id)
+                .Select(nonProfitGroup =>
+                new
+                {
+                    nonProfitGroupId = nonProfitGroup.Key.ToString(),
+                    nonProfitGroupName = nonProfitGroup.Select(thisNonProfit => thisNonProfit.Name),
+                    //Events = db.Events.Select(thisEvent => new
+                    Events = nonProfitGroup.Select(thisNonProfit => thisNonProfit.Events)
+                });
             */
 
-            return Ok(query);
-            //return Ok(eventsByNonProfits);
+            return Ok(eventGroupingsDTO);
         }
         
 
