@@ -291,13 +291,14 @@ namespace NashConnects.Controllers
             var db = new ApplicationDbContext();
 
             var eventGroupingsDTO = db.NonProfits
-    .Select(np => new
-    {
-        NonProfitId = np.Id,
-        Events = np.Events
-    }
-    )
-    .GroupBy(dto => dto.NonProfitId).ToList();
+                .Select(np => new
+                {
+                    NonProfitId = np.Id,
+                    NonProfitName = np.Name,
+                    Events = np.Events
+                })
+                .GroupBy(dto => dto.NonProfitId)
+                .ToList();
 
             /*
             var eventsByNonProfits = db.NonProfits

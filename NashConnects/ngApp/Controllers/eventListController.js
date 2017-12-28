@@ -15,8 +15,6 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in eventListController");
-
     let vm = this;
 
     vm.message = "Scheduled Events";
@@ -25,33 +23,37 @@
     $scope.events;
     $scope.eventGroups;
     var nonprofitId = $routeParams.nonprofitid;
-    console.log("routeParams :: ", $routeParams)
-    console.log("nonprofitId :: ", nonprofitId);
 
+    var eventListDataResult;
     listOfEvents = [];
 
     var getEventList = () => {
         if (nonprofitId !== undefined) { // get Event for This NonProfit
             $http.get(`/api/NonProfits/${nonprofitId}/events/list`)
                 .then((eventListResult) => {
-                    var eventListDataResult = eventListResult.data;
-                    $scope.nonprofit = eventListDataResult.nonProfitName;
-                    var nonProfitId = eventListDataResult.Id;
-                    var listOfEvents = eventListDataResult.Events;
-                    console.log("listOfEvents :: ", listOfEvents);
+                    eventListDataResult = eventListResult.data;
+                    listOfEvents = eventListDataResult.Events;
 
+                    $scope.nonprofit = eventListDataResult.nonProfitName;
                     $scope.events = listOfEvents;
+
                 }).catch((eventsError) => {
-                    console.log("error, listing NonProfit Events :: ", eventsError);
+                    console.error("error, listing NonProfit Events :: ", eventsError);
                 });
         }
         else // get Events for All NonProfits
         {
             $http.get("api/NonProfits/events/list")
                 .then((eventListResult) => {
-                    var eventListDataResult = eventListResult.data;
+                    eventListDataResult = eventListResult.data;
+
+                    for (var i = 0; i < eventListDataResult.length; i++)
+                    {
+                        var key = Object.keys(eventListDataResult[i])[0];
+                        eventListDataResult[i] = eventListDataResult[i][key];
+                    }
+
                     $scope.eventGroups = eventListDataResult;
-                    console.log("eventListDataResult :: ", eventListDataResult);
                     
                 }).catch((errorListResult) => {
                     console.error("error, listing All Events :: ", errorListResult);
