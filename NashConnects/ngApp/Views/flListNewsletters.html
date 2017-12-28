@@ -1,9 +1,11 @@
 ﻿<section class="hero is-fullheight" id="login">
     <div class="hero-body">
         <div class="container">
+            <!--
             <figure class="image login-logo">
-                <!--<img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />-->
+                <img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />
             </figure>
+            -->
 
             <div ng-show="error" class="notification is-danger">
                 {{error}}
@@ -12,7 +14,18 @@
 
             <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
+            <!--
+            <div class="panel-group">
+                <div class="panel panel-default" ng-repeat="freelancer in freelancers | filter:{Newsletter:true} | filter: searchText">
+                    <div class="panel-heading"><a ng-href="{{freelancer.WebsiteURL}}" target="_blank">{{freelancer.FirstName}} {{freelancer.LastName}}</a></div>
+                    <div class="panel-body">{{freelancer.Email}} | {{freelancer.WebsiteURL}}</div>
+                </div>
+            </div>
+            -->
+
+            
             <table class="table is-hoverable">
+                <tbody>
                     <tr>
                         <th>Subscriber</th>
                         <th></th>
@@ -28,7 +41,10 @@
                         <td></td>
                         <td>{{freelancer.WebsiteURL}}</td>
                     </tr>
+
+                </tbody>
             </table>
+            
 
         </div>
     </div>
