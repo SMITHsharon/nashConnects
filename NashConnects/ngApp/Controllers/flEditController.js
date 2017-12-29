@@ -13,16 +13,15 @@
     //let vm = this;
 
     $scope.message = "Freelance Profile";
-    let userid;
+
 
     $scope.thisProfile = {};
+    let userid;
 
     $http.get("/api/Freelancers/current")
-        .then(function (result) {
-//console.log("result.data", result.data);
+        .then((result) => {
             $scope.thisProfile = result.data;
             userid = result.data.Id;
-//console.log("userid :: ", userid);
         })
         .catch((error) => {
             console.log("getFreelancerProfile", error);
@@ -30,8 +29,9 @@
 
     
     $scope.editProfile = () => {
+
         let userProfile = $scope.thisProfile;
-//console.log("editing Profile; userid :: ", userid);
+
         $http.put(`/api/Freelancers/${userid}`,
             {
                 UserName: userProfile.UserName,

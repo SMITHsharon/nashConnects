@@ -310,6 +310,7 @@
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />
+    <Content Include="ngApp\Controllers\eventListRegisteredController.js" />
     <Content Include="ngApp\Controllers\eventListScheduledController.js" />
     <Content Include="ngApp\Controllers\eventRegisterController.js" />
     <Content Include="ngApp\Controllers\eventViewController.js" />
@@ -326,6 +327,7 @@
     <Content Include="ngApp\Views\EventRegistration.html" />
     <Content Include="ngApp\Views\EventNew.html" />
     <Content Include="ngApp\Views\EventsListAllNonProfits.html" />
+    <Content Include="ngApp\Views\EventsListRegistered.html" />
     <Content Include="ngApp\Views\EventsListSingleNonProfit.html" />
     <Content Include="ngApp\Views\flListNewsletters.html" />
     <Content Include="ngApp\Views\flProfile.html" />

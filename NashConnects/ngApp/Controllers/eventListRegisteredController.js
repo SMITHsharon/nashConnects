@@ -14,33 +14,39 @@
 
     vm.message = "Registered Events";
 
-    $scope.freelancer = {};
+   
     $scope.eventGroups;
-    $scope.userProfile = {};
-
     listOfEvents = [];
 
-   
+    $scope.freelancer = {};
+    let userid;
 
-    $http.get("/api/Freelancers/current")
-        .then(function (userProfile) {
-            console.log("userProfile.data", userProfile.data);
-            $scope.freelancer = userProfile.data;
-            userid = userProfile.data.Id;
-            listOfEvents = userProfile.data.RegEvents;
-            console.log("userid :: ", userid);
-            console.log("RegEvents :: ", listOfEvents);
-
-            $scope.events = listOfEvents;
-        })
-        .catch((error) => {
-            console.log("error, getting Freelancer Profile", error);
-        });
-
-    var getEventList = () => {
-
+    var getUser = () => {
+        $http.get("/api/Freelancers/current")
+            .then((result) => {
+                $scope.freelancer = result.data;
+                userid = result.data.Id;
+            })
+            .catch((error) => {
+                console.log("getFreelancerProfile", error);
+            });
     };
-    getEventList();
 
+   
+    var getEvents = (userid) => {
+        $http.get(`/api/Freelancers/${userid}/registeredEvents`)
+            .then((eventsResult) => {
+                console.log("eventsResult.data", eventsResult.data);
+                $scope.eventGroups = eventsResult.data.RegEvents;
+
+                //listOfEvents = userProfile.data.RegEvents;
+            })
+            .catch((error) => {
+                console.log("error, getting Registered Events", error);
+            });
+    };
+
+    getUser();
+    getEvents(userid);
 
 }]);

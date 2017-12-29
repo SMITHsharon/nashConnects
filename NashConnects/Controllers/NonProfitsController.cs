@@ -300,35 +300,6 @@ namespace NashConnects.Controllers
                 .GroupBy(dto => dto.NonProfitId)
                 .ToList();
 
-            /*
-            var eventsByNonProfits = db.NonProfits
-                .GroupBy(NonProfit => NonProfit.Name)
-                .Select(eventGroup =>
-                new
-                {
-                    Events = db.Events.Select(thisEvent => new
-                    {
-                        thisEvent.EventName,
-                        thisEvent.StartDate,
-                        thisEvent.EndDate,
-                        thisEvent.Description
-                    })
-                });
-                */
-
-            /*
-            var eventsByNonProfits = db.NonProfits
-                .GroupBy(NonProfit => NonProfit.Id)
-                .Select(nonProfitGroup =>
-                new
-                {
-                    nonProfitGroupId = nonProfitGroup.Key.ToString(),
-                    nonProfitGroupName = nonProfitGroup.Select(thisNonProfit => thisNonProfit.Name),
-                    //Events = db.Events.Select(thisEvent => new
-                    Events = nonProfitGroup.Select(thisNonProfit => thisNonProfit.Events)
-                });
-            */
-
             return Ok(eventGroupingsDTO);
         }
         
