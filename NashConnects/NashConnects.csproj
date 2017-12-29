@@ -310,7 +310,7 @@
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />
-    <Content Include="ngApp\Controllers\eventListController.js" />
+    <Content Include="ngApp\Controllers\eventListScheduledController.js" />
     <Content Include="ngApp\Controllers\eventRegisterController.js" />
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />

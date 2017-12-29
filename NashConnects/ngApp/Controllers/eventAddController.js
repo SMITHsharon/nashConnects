@@ -21,11 +21,9 @@
         console.log("getting nonProfit");
         $http.get(`/api/nonprofits/${nonprofitId}`)
             .then((getResult) => {
-                console.log("getResult.data", getResult.data);
-                var nonProfitName = getResult.data.Name;
-                console.log("nonProfitName = ", nonProfitName);
+
                 $scope.nonProfit = nonProfitName;
-                console.log("$scope.nonProfit :: ", $scope.nonProfit); 
+                $location.url(`/nonprofits/list`)
             })
             .catch((getError) => {
                 console.error("error on getThisNonProfit", getError);
