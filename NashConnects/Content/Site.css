@@ -3,8 +3,17 @@
     padding-bottom: 20px;
 }
 
-#logo {
+#logo img {
     margin-bottom: 0;
+    margin-top: 15px;
+}
+
+img.logo {
+        display: inline-block;
+        width: 50px;
+}
+
+.nav .dropdown {
     margin-top: 15px;
 }
 
