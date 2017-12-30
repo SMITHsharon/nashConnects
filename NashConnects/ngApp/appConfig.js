@@ -92,16 +92,23 @@
         })
         .when("/nonprofit/:nonprofitid/events/list",
         {
-            // for user to list Events
+            // for user to list Scheduled Events for Selected NonProfit
             templateUrl: "/ngApp/Views/EventsListSingleNonProfit.html",
-            controller: "eventListController",
+            controller: "eventListScheduledController",
             controllerAs: 'vm'
         })
-        .when("/events/list",
+        .when("/events/list/scheduled",
         {
-            // for user to list Events
+            // for user to list Scheduled Events for All NonProfits
             templateUrl: "/ngApp/Views/EventsListAllNonProfits.html",
-            controller: "eventListController",
+            controller: "eventListScheduledController",
+            controllerAs: 'vm'
+        })
+        .when("/events/list/registered",
+        {
+            // for user to list Events s/he has Registered For
+            templateUrl: "/ngApp/Views/EventsListRegistered.html",
+            controller: "eventListRegisteredController",
             controllerAs: 'vm'
         })
         .when("/nonprofit/:nonprofitid/event/:eventId/register",

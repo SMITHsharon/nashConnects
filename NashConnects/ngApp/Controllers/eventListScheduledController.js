@@ -1,4 +1,4 @@
-﻿app.controller("eventListController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
+﻿app.controller("eventListScheduledController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
 
     //.when("/nonprofit/{:id}/events/list`",
     //{
@@ -24,14 +24,13 @@
     $scope.eventGroups;
     var nonprofitId = $routeParams.nonprofitid;
 
-    var eventListDataResult;
     listOfEvents = [];
 
     var getEventList = () => {
         if (nonprofitId !== undefined) { // get Event for This NonProfit
             $http.get(`/api/NonProfits/${nonprofitId}/events/list`)
                 .then((eventListResult) => {
-                    eventListDataResult = eventListResult.data;
+                    var eventListDataResult = eventListResult.data;
                     listOfEvents = eventListDataResult.Events;
                     if (listOfEvents.length > 0)
                     {

@@ -27,16 +27,6 @@ namespace NashConnects.Controllers
         { 
             var db = new ApplicationDbContext();
 
-            //var freelancersByCategory = db.Freelancers.ToList();
-
-            // THIS GROUPS BY CATEGORY, BUT ONLY RETURNS FREELANCE IDs
-            /*
-            var freelancersByCategory = from f in db.Freelancers
-                                        group f.Id by f.Category into g
-                                        //select new { Category = g.Key, Id = g.ToList() };
-                                        select new { Category = g.Key, Freelancers = g.ToList() };
-            */
-
             // RETURNS FREELANCERS GROUPED BY CATEGORY
             var freelancersByCategory = db.Freelancers
                 .GroupBy(freelancer => freelancer.Category)
@@ -98,31 +88,6 @@ namespace NashConnects.Controllers
                 return NotFound();
             }
 
-            /*
-            var query = from fields in freelancer
-                        select new thisFreelancer
-                        {
-                            Id = freelancer.Id,
-                            FirstName = freelancer.FirstName,
-                            LastName = freelancer.LastName,
-                            Email = freelancer.Email,
-                            WebsiteURL = freelancer.WebsiteURL
-                        }.ToList();
-            */
-
-            //Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
-            /*
-            freelancer = new 
-            {
-                freelancer.Id,
-                freelancer.FirstName,
-                freelancer.LastName,
-                freelancer.Email,
-                freelancer.WebsiteURL\
-            }.ToList();
-            */
-
-
             return Ok(freelancer);
         }
 
@@ -139,6 +104,77 @@ namespace NashConnects.Controllers
             }
 
             return Ok(freelancer);
+        }
+
+
+        // GET: api/Freelancers/5/registeredEvents
+        //[Authorize]
+        [HttpGet, Route("{id}/registeredEvents")]
+        [ResponseType(typeof(Freelancer))]
+        public IHttpActionResult GetRegisteredEventsForFreelancerS()
+        {
+            Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
+
+            /*
+            var freelancerRegisteredEvents = 
+                (
+                from fl in db.Freelancers
+                //from np in db.NonProfits
+                select new 
+                {
+                    fl.Id,
+                    fl.FirstName,
+                    fl.LastName,
+                    fl.RegEvents,
+                    //np.Name
+                })
+                .Where(fl => fl.Id == freelancer.Id)
+                .ToList();
+            */
+
+            // HOW TO IDENTIFY THE NONPROFIT FOR EACH EVENT ???
+            /*
+            // RETURNS FREELANCERS GROUPED BY CATEGORY
+            var freelancersByCategory = db.Freelancers
+                .GroupBy(freelancer => freelancer.Category)
+                .Select(freelancerGroup =>
+                new {
+                    CategoryName = freelancerGroup.Key.ToString(),
+                    //Freelancers = freelancerGroup.Select(freelancer => freelancer).ToList()
+
+                    Freelancers = freelancerGroup.Select(freelancer =>
+                        new {
+                            freelancer.Id,
+                            freelancer.FirstName,
+                            freelancer.LastName,
+                            freelancer.WebsiteURL,
+                            freelancer.Description,
+                            freelancer.RecommendCount,
+                            freelancer.PublicReveal
+                        })
+                })
+                    .ToList();
+            */
+
+            /* RETURNS EVENTS GROUPS BY NONPROFIT
+            var eventGroupingsDTO = db.NonProfits
+               .Select(np => new
+               {
+                   NonProfitId = np.Id,
+                   NonProfitName = np.Name,
+                   Events = np.Events
+               })
+               .GroupBy(dto => dto.NonProfitId)
+               .ToList();
+            */
+
+            if (freelancer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(freelancer);
+            //return Ok(freelancerRegisteredEvents);
         }
 
 

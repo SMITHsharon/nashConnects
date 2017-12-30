@@ -25,11 +25,15 @@ namespace NashConnects.Models
 
         public enum FLCategory
         {
+           
             Artist,
             Florist,
+            [Display(Name = "Personal Trainer")]
             PersonalTrainer,
             Photographer,
+            [Display(Name = "Real Estate Agent")]
             RealEstateAgent,
+            [Display(Name = "Software Developer")]
             SoftwareDeveloper,
             Therapist,
             Writer
