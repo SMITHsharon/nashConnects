@@ -115,30 +115,24 @@ namespace NashConnects.Controllers
         {
             Freelancer freelancer = db.Freelancers.Find(User.Identity.GetUserId());
 
-            // HOW TO SELECT ONLY THE FREELANCER EVENTS FROM THIS SET ?
-            var eventGroupingsDTO = db.NonProfits
-               .Select(np => new
-               {
-                   NonProfitId = np.Id,
-                   NonProfitName = np.Name,
-                   Events = np.Events
-               })
-               .GroupBy(dto => dto.NonProfitId)
-               .ToList();
-
-
             /*
-            var eventGroupingsDTO = db.NonProfits
-               .Select(np => new
-               {
-                   NonProfitId = np.Id,
-                   NonProfitName = np.Name,
-                   Events = np.Events
-               })
-               .GroupBy(dto => dto.NonProfitId)
-               .ToList();
+            var freelancerRegisteredEvents = 
+                (
+                from fl in db.Freelancers
+                //from np in db.NonProfits
+                select new 
+                {
+                    fl.Id,
+                    fl.FirstName,
+                    fl.LastName,
+                    fl.RegEvents,
+                    //np.Name
+                })
+                .Where(fl => fl.Id == freelancer.Id)
+                .ToList();
             */
 
+            // HOW TO IDENTIFY THE NONPROFIT FOR EACH EVENT ???
             /*
             // RETURNS FREELANCERS GROUPED BY CATEGORY
             var freelancersByCategory = db.Freelancers
@@ -162,12 +156,25 @@ namespace NashConnects.Controllers
                     .ToList();
             */
 
+            /* RETURNS EVENTS GROUPS BY NONPROFIT
+            var eventGroupingsDTO = db.NonProfits
+               .Select(np => new
+               {
+                   NonProfitId = np.Id,
+                   NonProfitName = np.Name,
+                   Events = np.Events
+               })
+               .GroupBy(dto => dto.NonProfitId)
+               .ToList();
+            */
+
             if (freelancer == null)
             {
                 return NotFound();
             }
 
             return Ok(freelancer);
+            //return Ok(freelancerRegisteredEvents);
         }
 
 

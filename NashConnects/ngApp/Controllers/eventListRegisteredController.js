@@ -38,8 +38,6 @@
             .then((eventsResult) => {
                 console.log("eventsResult.data", eventsResult.data);
                 $scope.eventGroups = eventsResult.data.RegEvents;
-
-                //listOfEvents = userProfile.data.RegEvents;
             })
             .catch((error) => {
                 console.log("error, getting Registered Events", error);
