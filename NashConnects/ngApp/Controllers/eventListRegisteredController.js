@@ -36,7 +36,7 @@
     var getEvents = (userid) => {
         $http.get(`/api/Freelancers/${userid}/registeredEvents`)
             .then((eventsResult) => {
-                console.log("eventsResult.data", eventsResult.data);
+                //console.log("eventsResult.data", eventsResult.data);
                 $scope.eventGroups = eventsResult.data.RegEvents;
             })
             .catch((error) => {

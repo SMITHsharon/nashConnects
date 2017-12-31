@@ -53,6 +53,28 @@ namespace NashConnects.Controllers
         }
 
 
+        // GET: api/Freelancers/5/faves
+        [HttpGet, Route("{userid}/faves")]
+        //public IQueryable<Freelancer> GetUsers()
+        public HttpResponseMessage GetFreelancersFavesList(string userid)
+        {
+            var db = new ApplicationDbContext();
+
+            var freelancer = db.Freelancers.Find(userid);
+
+            //var freelancersById = db.Freelancers.ToList();
+            /*
+            var faveFreelancers = db.Freelancers.Select(freelancer =>
+                new {
+                    freelancer.FLFLRecommendations
+                })
+                .ToList();
+            */
+
+            return Request.CreateResponse(HttpStatusCode.OK, freelancer);
+        }
+
+
         // GET: api/Freelancers
         [HttpGet, Route("list/newsletter")]
         //public IQueryable<Freelancer> GetUsers()

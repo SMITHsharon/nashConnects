@@ -41,6 +41,13 @@
             controller: "flListController",
             controllerAs: 'vm'
         })
+        .when("/freelancers/faves/list",
+        {
+            //for user to view a list of Freelancers
+            templateUrl: "/ngApp/Views/flMyFaves.html",
+            controller: "flFavesController",
+            controllerAs: 'vm'
+        })
         .when("/freelancers/list/newsletter",
         {
             //for user to view a list of Freelancers
