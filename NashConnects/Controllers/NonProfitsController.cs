@@ -129,7 +129,7 @@ namespace NashConnects.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/NonProfits/5
+        // PUT: api/NonProfits/likes/S5
         //[Authorize]//
         [HttpPut, Route("likes/{id}")]
         [ResponseType(typeof(void))]
@@ -202,10 +202,10 @@ namespace NashConnects.Controllers
             }
 
             var nonProfit = db.NonProfits.Find(nonprofitid);
-            nonProfit.Events.Add(@event);
 
             try
             {
+                nonProfit.Events.Add(@event);
                 db.SaveChanges();
             }
             catch (DbUpdateException)

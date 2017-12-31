@@ -12,11 +12,14 @@
     vm.message = "Nash Freelancers";
 
     $scope.freelancerGroups = [];
+    let userProfile = {};
+    let userid;
 
     var getFreelancerList = function () {
         $http.get("/api/Freelancers/list")
             .then((result) => {
                 var freelancerGroupings = result.data;
+                console.log("freelancerGroupings :: ", freelancerGroupings);
                 $scope.freelancerGroups = freelancerGroupings;
 
             }).catch((error) => {
@@ -27,8 +30,41 @@
 
 
     $scope.recommend = (freelancerId) => {
-        console.log("in IncremntCount");
-        $http.put(`/api/Freelancers/likes/${freelancerId}`)
+        $http.get("/api/Freelancers/current")
+            .then((result) => {
+                $scope.thisProfile = result.data;
+                console.log("result.data.Id / userId :: ", result.data.Id);
+                console.log("freelancerId :: ", freelancerId);
+                userId = result.data.Id;
+
+                $http.put(`/api/Freelancers/likes/${freelancerId}`)
+                    .then((likesAddResult) => {
+                        console.log("likesAddResult", likesAddResult);
+                        //location.reload();
+                        //$scope.$apply();
+                        $http.post(`api/Freelancers/likes/${freelancerId}/${userId}`)
+                            .then((postLikesRelationshipResult) => {
+                                console.log("likes relationship posted");
+                            })
+                            .catch((error) => {
+                                console.log("error on posting Likes Relationship :: ", error);
+                            });
+                    })
+                    .catch((error) => {
+                        console.log("error on Likes count :: ", error);
+                    });
+            })
+            .catch((error) => {
+                console.log("getFreelancerProfile", error);
+            });
+    };
+    
+    /*
+    $scope.recommend = (freelancerId) => {
+        userId = getUserId();
+        
+        console.log("freelancerid :: ", freelancerId);
+        $http.put(`/api/Freelancers/likes/${freelancerId}/ ${userId}`)
             .then((likesAddResult) => {
                 //location.reload();
                 //$scope.$apply();
@@ -38,6 +74,7 @@
             });
         
     };
+    */
 
 }]);
 

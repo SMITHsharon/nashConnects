@@ -232,24 +232,23 @@ namespace NashConnects.Controllers
         }
 
 
-        // PUT: api/Freelancers/5
-        //[Authorize]//
-        [HttpPut, Route("likes/{id}")]
+        // PUT: api/Freelancers/likes/5
+        [Authorize]
+        [HttpPut, Route("likes/{likedId}")]
         [ResponseType(typeof(void))]
-        //public IHttpActionResult IncrementLikes(string id, Freelancer freelancer)
-        public IHttpActionResult IncrementLikes(string id)
+        public IHttpActionResult IncrementLikes(string likedId)
         {
-            var originalFreelancer = db.Freelancers.Find(id);
+            var likedFreelancer = db.Freelancers.Find(likedId);
 
             try
             {
-                originalFreelancer.RecommendCount = originalFreelancer.RecommendCount + 1;
+                likedFreelancer.RecommendCount = likedFreelancer.RecommendCount + 1;
 
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FreelancerExists(id))
+                if (!FreelancerExists(likedFreelancer.Id))
                 {
                     return NotFound();
                 }
@@ -260,6 +259,41 @@ namespace NashConnects.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+
+        // POST: api/Freelancers/likes/5/3
+        [Authorize]
+        [HttpPost, Route("likes/{likedId}/{userId}")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult AddLikesRelationship(string likedId, string userId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var likedFreelancer = db.Freelancers.Find(likedId);
+            var userFreelancer = db.Freelancers.Find(userId);
+
+            try
+            {
+                likedFreelancer.FLFLRecommendations.Add(userFreelancer);
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if ( (!FreelancerExists(likedFreelancer.Id)) || (!FreelancerExists(userFreelancer.Id)))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
         }
 
 
