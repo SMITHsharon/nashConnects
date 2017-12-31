@@ -2,7 +2,7 @@
 
     //.when("/freelancers/list",
     //{
-          //for user to view a list of Freelancers
+    //for user to view a list of Freelancers
     //    templateUrl: "/ngApp/Views/flList.html",
     //    controller:  "flListController",
     //    controllerAs: 'vm'
@@ -27,13 +27,33 @@
 
 
     $scope.recommend = (freelancerId) => {
+        console.log("in IncremntCount");
         $http.put(`/api/Freelancers/likes/${freelancerId}`)
             .then((likesAddResult) => {
-                location.reload();
+                //location.reload();
+                //$scope.$apply();
             })
             .catch((error) => {
                 console.log("error on Likes count :: ", error);
             });
+        
     };
 
 }]);
+
+/*
+.directive('myLikesDirective', function () {
+    return {
+        restrict: 'A', // A=Attribute; E=Element
+        scope: true,
+        link: function (scope, element, attrs) {
+
+            function incrementLikesCount() {
+                console.log("It worked!");
+            }
+
+            //templateURL: 
+        }
+    };
+});
+*/
