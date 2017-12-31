@@ -56,6 +56,19 @@ namespace NashConnects.Controllers
         // GET: api/Freelancers/5/peeps
         [HttpGet, Route("{userid}/peeps")]
         //public IQueryable<Freelancer> GetUsers()
+        public HttpResponseMessage GetFreelancersPeepsList(string userid)
+        {
+            var db = new ApplicationDbContext();
+
+            var freelancer = db.Freelancers.Find(userid);
+
+            return Request.CreateResponse(HttpStatusCode.OK, freelancer);
+        }
+
+
+        // GET: api/Freelancers/5/faves
+        [HttpGet, Route("{userid}/faves")]
+        //public IQueryable<Freelancer> GetUsers()
         public HttpResponseMessage GetFreelancersFavesList(string userid)
         {
             var db = new ApplicationDbContext();
@@ -63,13 +76,18 @@ namespace NashConnects.Controllers
             var freelancer = db.Freelancers.Find(userid);
 
             //var freelancersById = db.Freelancers.ToList();
+            
             /*
-            var faveFreelancers = db.Freelancers.Select(freelancer =>
+            var faveFreelancers = db.Freelancers.Select(fl =>
                 new {
-                    freelancer.FLFLRecommendations
+                    fl.Id,
+                    fl.FLFLRecommendations
                 })
+                .Where (fl => fl.Id == userid)
+                .Where(fl => fl.Freelancer_Id1 == userid) // how to get these records using second column as primary key ???
                 .ToList();
             */
+            
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancer);
         }
@@ -98,7 +116,7 @@ namespace NashConnects.Controllers
 
 
         // GET: api/Freelancers/current
-        //[Authorize]
+        [Authorize]
         [HttpGet, Route("current")]
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult GetCurrentFreelancer()
@@ -115,15 +133,18 @@ namespace NashConnects.Controllers
 
 
         // GET: api/Freelancers/5
+        [Authorize]
         [HttpGet, Route("{id}")]
         [ResponseType(typeof(Freelancer))]
-        public IHttpActionResult GetFreelancerById(string id)
+        public IHttpActionResult GetFreelancerById(string id) 
         {
             Freelancer freelancer = db.Freelancers.Find(id);
+            
             if (freelancer == null)
             {
                 return NotFound();
             }
+            
 
             return Ok(freelancer);
         }

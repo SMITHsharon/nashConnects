@@ -20,14 +20,13 @@ namespace NashConnects.Models
         public FLCategory? Category { get; set; }
 
         // list of other Freelancers who have recommended (Liked) This Freelancer
-        // < This Freelancer, FL Who Posts Like >
+        // < This Freelancer, POSTED LIKE TO THIS FREELANCER >
+        // for current user ::
+        // < myuserId / PEEPS >
+        // < FAVES / myuserid >
         public virtual List<Freelancer> FLFLRecommendations { get; set; }
         
         // list of NonProfit users who have recommended (Liked) This Freelancer
-        // < This Freelancer, POSTED LIKE TO THIS FREELANCER >
-        // for current user :: my 
-        // < PEEPS / myUserId >
-        // < myUserId / FAVES >
         public virtual List<NonProfit> NPRecommendations { get; set; }
         public virtual List<Event> RegEvents { get; set; }
 

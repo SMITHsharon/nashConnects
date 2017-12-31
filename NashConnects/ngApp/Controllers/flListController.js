@@ -2,7 +2,7 @@
 
     //.when("/freelancers/list",
     //{
-    //for user to view a list of Freelancers
+    //    for user to view a list of Freelancers
     //    templateUrl: "/ngApp/Views/flList.html",
     //    controller:  "flListController",
     //    controllerAs: 'vm'

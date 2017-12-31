@@ -43,14 +43,14 @@
         })
         .when("/freelancers/faves/list",
         {
-            //for user to view a list of Freelancers
+            //for user to view a list of Freelancers s/he has Liked
             templateUrl: "/ngApp/Views/flMyFaves.html",
             controller: "flFavesController",
             controllerAs: 'vm'
         })
         .when("/freelancers/peeps/list",
         {
-            //for user to view a list of Freelancers
+            //for user to view a list of Freelancers who have posted Likes to him/her
             templateUrl: "/ngApp/Views/flMypeeps.html",
             controller: "flPeepsController",
             controllerAs: 'vm'

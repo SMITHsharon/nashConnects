@@ -1,47 +1,40 @@
 ﻿app.controller("flPeepsController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
 
-    console.log("in flFavesController");
+    //.when("/freelancers/peeps/list",
+    //    {
+    //        for user to view a list of Freelancers who have posted Likes to him/her
+    //        templateUrl: "/ngApp/Views/flMypeeps.html",
+    //        controller:  "flPeepsController",
+    //        controllerAs: 'vm'
+    //    })
 
     let vm = this;
     vm.message = "Nash Peeps";
 
-    // peeps are Freelancers who have posted Likes to this Freelancers
-    $scope.peepGroups;
-    $scope.peepFreelancers;
-    $scope.freelancer = {};
+    // Peeps are Freelancers who have posted Likes to this Freelancers
+    // < myuserId / PEEPS >
 
+    $scope.likeGroups;
+    $scope.freelancer = {};
 
     var getPeepsList = () => {
         $http.get("/api/Freelancers/current")
             .then((profileResult) => {
-                console.log("profileResult :: ", profileResult);
                 $scope.freelancer = profileResult.data;
-                let userid = profileResult.data.Id
+                let userid = profileResult.data.Id;
 
                 $http.get(`/api/Freelancers/${userid}/peeps`)
                     .then((peepsResults) => {
-
-
-                        //let likesArray = peepsResults;
-                        console.log("userProfile :: ", peepsResults);
-                        console.log("userid :: ", userid);
-                        
-                        //$scope.faveGroups = peepsResults.data.FLFLRecommendations;
-                        $scope.peepGroups = peepsResults.data.FLFLRecommendations;
+                        $scope.likeGroups = peepsResults.data.FLFLRecommendations;
                     })
                     .catch((peepsError) => {
-                        console.log("error on getting Peeps list :: ", peepsError);
+                        console.error("error on getting Peeps list :: ", peepsError);
                     });
-
-                
-
-                //$scope.freelanceGroups = likesArray;
             })
             .catch((getUserProfileError) => {
-                console.log("error on getting user profile ::", error);
+                console.error("error on getting user profile ::", getUserProfileError);
             });
     };
     getPeepsList();
-
 
 }]);
