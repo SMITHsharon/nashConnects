@@ -53,8 +53,8 @@ namespace NashConnects.Controllers
         }
 
 
-        // GET: api/Freelancers/5/faves
-        [HttpGet, Route("{userid}/faves")]
+        // GET: api/Freelancers/5/peeps
+        [HttpGet, Route("{userid}/peeps")]
         //public IQueryable<Freelancer> GetUsers()
         public HttpResponseMessage GetFreelancersFavesList(string userid)
         {
