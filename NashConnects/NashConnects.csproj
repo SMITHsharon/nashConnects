@@ -315,6 +315,8 @@
     <Content Include="ngApp\Controllers\eventRegisterController.js" />
     <Content Include="ngApp\Controllers\eventViewController.js" />
     <Content Include="ngApp\Controllers\flEditController.js" />
+    <Content Include="ngApp\Controllers\flFavesController.js" />
+    <Content Include="ngApp\Controllers\flPeepsController.js" />
     <Content Include="ngApp\Controllers\flListController.js" />
     <Content Include="ngApp\Controllers\newsletterListController.js" />
     <Content Include="ngApp\Controllers\flViewController.js" />
@@ -330,6 +332,8 @@
     <Content Include="ngApp\Views\EventsListRegistered.html" />
     <Content Include="ngApp\Views\EventsListSingleNonProfit.html" />
     <Content Include="ngApp\Views\flListNewsletters.html" />
+    <Content Include="ngApp\Views\flMyFaves.html" />
+    <Content Include="ngApp\Views\flMyPeeps.html" />
     <Content Include="ngApp\Views\flProfile.html" />
     <Content Include="ngApp\Views\flList.html" />
     <Content Include="ngApp\Views\home.html" />
