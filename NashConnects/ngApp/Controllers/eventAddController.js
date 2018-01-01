@@ -8,7 +8,6 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in Add Event Controller");
     let vm = this;
 
     vm.message = "Add Event";
@@ -21,9 +20,9 @@
         console.log("getting nonProfit");
         $http.get(`/api/nonprofits/${nonprofitId}`)
             .then((getResult) => {
-
-                $scope.nonProfit = nonProfitName;
-                $location.url(`/nonprofits/list`)
+                console.log("getResult :: ", getResult);
+                $scope.nonProfit = getResult.data;
+                console.log("nonProfitName :: ", $scope.nonProfit);
             })
             .catch((getError) => {
                 console.error("error on getThisNonProfit", getError);

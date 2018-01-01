@@ -13,7 +13,8 @@
                         <!--
                         <h1>{{vm.message}}</h1>
                         -->
-                        <h2>{{nonProfit}}Add Event</h2>
+                        <h3>{{nonProfit.Name}}</h3>
+                        <h1>Add Event</h1>
                         <div class="field">
                             <p class="control has-icons-left">
                                 <input ng-model="addEvent.EventName" class="input" type="text" placeholder="event name">
@@ -39,7 +40,16 @@
                                 </div>
                         </div>
                         
-                        <div class="field">
+                        <div class="field" ng-hide="currentPath !== '/meal/add'">
+                            <p class="control has-icons-left">
+                                <input ng-model="addEvent.Description" class="input" type="text" placeholder="event description">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="field" ng-hide="currentPath !== '/event/add/:nonprofitid'">
                             <p class="control has-icons-left">
                                 <input ng-model="addEvent.Description" class="input" type="text" placeholder="event description">
                                 <span class="icon is-small is-left">

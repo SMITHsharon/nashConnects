@@ -17,7 +17,7 @@
 
                         <h2><em>{{nonprofit}}</em> Scheduled Events</h2>
 
-                        <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
+                        <input type="text" name="" class="searchBox" placeholder=" Search for ....." ng-model="searchText">
 
                         <table class="table is-hoverable">
                             <tbody>
@@ -29,7 +29,8 @@
                                     <td>{{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
 
                                     <td>
-                                        <button class="button is-normal is-light" ng-click="register(event.EventId)">Register for Event</button>
+                                        <button class="button is-normal is-primary" ng-click="register(event.EventId)">Register for Event</button>
+                                        <button class="button is-normal is-info" ng-click="edit(event.EventId)">Edit Event</button>
                                     </td>
                                 </tr>
                             </tbody>
