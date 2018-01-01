@@ -58,8 +58,8 @@
                         var key = Object.keys(eventListDataResult[i])[0];
                         eventListDataResult[i] = eventListDataResult[i][key];
                     }
-
                     $scope.eventGroups = eventListDataResult;
+                    console.log("$scope.eventGroups :: ", $scope.eventGroups);
                     
                 }).catch((errorListResult) => {
                     console.error("error, listing All Events :: ", errorListResult);

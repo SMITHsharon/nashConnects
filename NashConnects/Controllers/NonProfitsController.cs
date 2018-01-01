@@ -129,7 +129,7 @@ namespace NashConnects.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/NonProfits/likes/S5
+        // PUT: api/NonProfits/likes/5
         //[Authorize]//
         [HttpPut, Route("likes/{id}")]
         [ResponseType(typeof(void))]
@@ -241,6 +241,7 @@ namespace NashConnects.Controllers
             var eventList = new
             {
                 nonProfitName = nonProfit.Name,
+                nonProfitURL = nonProfit.WebsiteURL,
                 //Events = nonProfit.Events
                 Events = nonProfit.Events.Select(thisEvent =>
                     new {
@@ -295,6 +296,7 @@ namespace NashConnects.Controllers
                 {
                     NonProfitId = np.Id,
                     NonProfitName = np.Name,
+                    NonProfitURL = np.WebsiteURL,
                     Events = np.Events
                 })
                 .GroupBy(dto => dto.NonProfitId)

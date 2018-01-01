@@ -161,6 +161,18 @@
             
 }]);
 
+
+// defined filters
+app.filter('isAfter', function () {
+    return function (meals, dateAfter) {
+        // Using ES6 filter method
+        return meals.filter(function (meal) {
+            return moment(meal.mealDate).isAfter(dateAfter);
+        });
+    };
+});
+
+
 app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $location) {
 
     $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token") }

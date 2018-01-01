@@ -9,7 +9,6 @@
     //})
 
 
-    console.log("in Freelancers Edit Controller");
     //let vm = this;
 
     $scope.delProfile = false;

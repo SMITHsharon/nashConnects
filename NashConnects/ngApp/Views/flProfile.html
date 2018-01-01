@@ -53,11 +53,8 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <!--
-                                <input ng-model="thisProfile.Category" class="input" type="text" placeholder="DROPDOWN OF CATEGORIES">
-                                -->
-                                <select id="category" name="categories" type="number" ng-model="thisProfile.Category">
-                                    <!-- <optgroup label="Category 1"> -->
+                                <select id="category" name="Categories" type="number" ng-model="thisProfile.Category">
+                                        <option value=''>Category</option>
                                         <option value="0">Artist</option>
                                         <option value="1">Florist</option>
                                         <option value="2">Personal Trainer</option>
@@ -66,7 +63,6 @@
                                         <option value="5">Software Developer</option>
                                         <option value="6">Therapist</option>
                                         <option value="7">Writer</option>
-                                    <!-- </optgroup> -->
                                 </select>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
@@ -85,13 +81,13 @@
                         <form>
                             <div>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" name="Newsletter" ng-model="thisProfile.Newsletter" checked>
+                                    <input type="checkbox" name="Newsletter" ng-model="thisProfile.Newsletter">
                                     subscribe to our newsletter?
                                 </label>
                             </div>
                             <div>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" name="PublicReveal" ng-model="thisProfile.PublicReveal" checked>
+                                    <input type="checkbox" name="PublicReveal" ng-model="thisProfile.PublicReveal">
                                     make info public?
                                 </label>
                             </div>
