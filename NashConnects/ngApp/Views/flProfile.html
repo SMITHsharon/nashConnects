@@ -86,25 +86,20 @@
                             <div>
                                 <label class="checkbox-inline">
                                     <input type="checkbox" name="Newsletter" ng-model="thisProfile.Newsletter" checked>
-                                <!-- <input type="checkbox" id="subscribeNewsletter" name="Newsletter" value="subscribeNewsletter" ng-checked="thisProfile.Newsletter" checked -->
-                                <!-- <label for="subscribeNewsletter" ng-model="thisProfile.Newsletter">subscribe to our newsletter?</label> -->
                                     subscribe to our newsletter?
                                 </label>
                             </div>
                             <div>
                                 <label class="checkbox-inline">
                                     <input type="checkbox" name="PublicReveal" ng-model="thisProfile.PublicReveal" checked>
-                                    <!-- <input type="checkbox" id="makePublic" name="PublicReveal" value="makePublic" ng-checked="thisProfile.PublicReveal" checked> -->
-                                    <!-- <label for="makePublic" ng-model="thisProfile.PublicReveal">make info public?</label> -->
                                     make info public?
                                 </label>
                             </div>
                         </form>
-                            <div class="field">
-                                <button class="button is-primary is-normal" ng-click="editProfile()" ng-class="{'is-loading':inProgress}">Submit</button>
-                            <!-- </div>
-                        <div class="field"> -->
-                            <button class="button is-danger is-normal" ng-click="delete()" ng-class="{'is-loading':inProgress}">Delete Profile</button>
+
+                        <!-- <div class="field"> -->
+                            <button class="button is-primary is-normal" ng-click="editProfile()" ng-class="{'is-loading':inProgress}">Submit</button>
+                            <button class="button is-danger is-normal" ng-click="deleteProfile()" ng-class="{'is-loading':inProgress}">Delete Profile</button>
                         </div>
                     </div>
                 </div>

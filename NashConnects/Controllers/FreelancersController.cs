@@ -43,7 +43,8 @@ namespace NashConnects.Controllers
                                     freelancer.WebsiteURL,
                                     freelancer.Description,
                                     freelancer.RecommendCount,
-                                    freelancer.PublicReveal
+                                    freelancer.PublicReveal,
+                                    freelancer.Active
                                 })
                     })
                     .ToList();
@@ -221,9 +222,9 @@ namespace NashConnects.Controllers
         }
 
 
-        // PUT: api/Freelancers/5
+        // PUT: api/Freelancers/edit/5
         [Authorize]
-        [HttpPut, Route("{id}")]
+        [HttpPut, Route("edit/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutFreelancer(string id, Freelancer freelancer)
         {
@@ -292,6 +293,36 @@ namespace NashConnects.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!FreelancerExists(likedFreelancer.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+
+        // PUT: api/Freelancers/delete/5
+        [Authorize]
+        [HttpPut, Route("delete/{likedId}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult SetCurrentUserAsInactive(string likedId)
+        {
+            var activeFreelancer = db.Freelancers.Find(likedId);
+
+            try
+            {
+                activeFreelancer.Active = false;
+
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FreelancerExists(activeFreelancer.Id))
                 {
                     return NotFound();
                 }
@@ -409,6 +440,7 @@ namespace NashConnects.Controllers
         
 
 
+        // DELETS are handled by posting the record as Inactive
         // DELETE: api/Freelancers/5
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult DeleteFreelancer(string id)
