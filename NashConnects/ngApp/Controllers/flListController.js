@@ -37,11 +37,14 @@
                 console.log("freelancerId :: ", freelancerId);
                 userId = result.data.Id;
 
+                // increment the Likes count
                 $http.put(`/api/Freelancers/likes/${freelancerId}`)
                     .then((likesAddResult) => {
                         console.log("likesAddResult", likesAddResult);
                         //location.reload();
                         //$scope.$apply();
+
+                        // post the Likes relationship in the many-to-many table FLFLRecommendations
                         $http.post(`api/Freelancers/likes/${freelancerId}/${userId}`)
                             .then((postLikesRelationshipResult) => {
                                 console.log("likes relationship posted");

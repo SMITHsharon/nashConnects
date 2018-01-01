@@ -22,7 +22,7 @@
                         </th>
                     </tr>
 
-                    <tr ng-repeat="freelancer in group.Freelancers | filter:{PublicReveal:true} ">
+                    <tr ng-repeat="freelancer in group.Freelancers | filter:{Active:true} | filter:{PublicReveal:true} ">
                         <td>
                             <a ng-href="{{freelancer.WebsiteURL}}" target="_blank">
                                 <h3>{{freelancer.FirstName}} {{freelancer.LastName}}

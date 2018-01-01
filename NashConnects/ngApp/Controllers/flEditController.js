@@ -2,9 +2,9 @@
 
     //.when("/freelance/account,
     //{
-    //for user to edit Freelance profile
+    //    for user to edit Freelance profile
     //    templateUrl: "/ngApp/Views/flProfile.html",
-    //    controller: "flEditController",
+    //    controller:  "flEditController",
     //    controllerAs: 'vm'
     //})
 
@@ -12,8 +12,9 @@
     console.log("in Freelancers Edit Controller");
     //let vm = this;
 
-    $scope.message = "Freelance Profile";
+    $scope.delProfile = false;
 
+    $scope.message = "Freelance Profile";
 
     $scope.thisProfile = {};
     let userid;
@@ -32,7 +33,7 @@
 
         let userProfile = $scope.thisProfile;
 
-        $http.put(`/api/Freelancers/${userid}`,
+        $http.put(`/api/Freelancers/edit/${userid}`,
             {
                 UserName: userProfile.UserName,
                 FirstName: userProfile.FirstName,
@@ -47,12 +48,28 @@
                 Id: userid
             })
             .then((result) => {
-//console.log("editFreelanceProfile", result);
                 $location.path('/freelancers/list');
             })
             .catch((error) => {
                 console.log("editFreelanceProfile", error);
             });
-        };
+    };
+
+
+    $scope.deleteProfile = () => {
+
+        $http.put(`/api/Freelancers/delete/${userid}`)
+
+            .then((deleteResult) => {
+                console.log("marked freelancer as Inactive :: ", deleteResult);
+                $scope.delProfile = $scope.delProfile === false ? true : false;
+                // auto log out?
+                $location.path('/freelancers/list');
+
+            })
+            .catch((deleteError) => {
+                console.error("error on delete freelancer (marking inactive) :: ", deleteError);
+            });
+    };
         
 }]);
