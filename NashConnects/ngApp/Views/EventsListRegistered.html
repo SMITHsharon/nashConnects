@@ -17,7 +17,7 @@
                         <h1>{{vm.message}}</h1>
                         -->
 
-                        <h3><em>{{freelancer.FirstName}} {{freelancer.LastName}}</em> Registered Events</h3>
+                        <h1><em>{{freelancer.FirstName}} {{freelancer.LastName}}</em> Registered Events</h1>
 
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
@@ -25,11 +25,13 @@
                         <!-- <table class="table is-hoverable" ng-repeat="event in event.RegEvents | filter: searchText"> -->
 
                             <tbody>
+                                <!--
                                 <tr>
                                     <th>
                                         <h2>{{group.NonProfitName}}</h2>
                                     </th>
                                 </tr>
+                                -->
 
                                 <!-- <tr ng-repeat="event in group.Events"> -->
                                 <tr ng-repeat="event in eventGroups">
