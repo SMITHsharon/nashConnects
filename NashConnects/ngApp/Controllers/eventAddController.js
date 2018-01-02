@@ -1,4 +1,5 @@
-﻿app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
+﻿
+app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
 
     //.when("/event/add/:nonprofitid",
     //{
@@ -14,21 +15,19 @@
 
     $scope.addEvent;
     $scope.nonProfit;
-    var nonprofitId = $routeParams.nonprofitid;
+    var nonProfitId = $routeParams.nonprofitid;
 
-    let getThisNonProfit = (nonprofitId) => {
-        console.log("getting nonProfit");
-        $http.get(`/api/nonprofits/${nonprofitId}`)
+    let getThisNonProfit = (nonProfitId) => {
+        $http.get(`/api/nonprofits/${nonProfitId}`)
             .then((getResult) => {
                 console.log("getResult :: ", getResult);
                 $scope.nonProfit = getResult.data;
-                console.log("nonProfitName :: ", $scope.nonProfit);
             })
             .catch((getError) => {
                 console.error("error on getThisNonProfit", getError);
             }) 
     };
-    getThisNonProfit(nonprofitId);
+    getThisNonProfit(nonProfitId);
 
 
     $scope.postEvent = () => {

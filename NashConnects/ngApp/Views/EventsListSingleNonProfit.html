@@ -15,9 +15,9 @@
                         <h1>{{vm.message}}</h1>
                         -->
 
-                        <h2><em>{{nonprofit}}</em> Scheduled Events</h2>
+                        <h2><em>{{nonProfitName}}</em> Scheduled Events</h2>
 
-                        <input type="text" name="" class="searchBox" placeholder=" Search for ....." ng-model="searchText">
+                        <input type="text" name="" class="" placeholder=" Search for ....." ng-model="searchText">
 
                         <table class="table is-hoverable">
                             <tbody>
@@ -30,7 +30,7 @@
 
                                     <td>
                                         <button class="button is-normal is-primary" ng-click="register(event.EventId)">Register for Event</button>
-                                        <button class="button is-normal is-info" ng-click="edit(event.EventId)">Edit Event</button>
+                                        <button class="button is-normal is-info" ng-click="edit(event.EventId, nonProfitId)">Edit Event</button>
                                     </td>
                                 </tr>
                             </tbody>

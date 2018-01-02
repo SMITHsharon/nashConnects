@@ -40,6 +40,18 @@ input, searchBox {
     margin-bottom: 15px;
 }
 
+label.datetimeLabel {
+    display: block;
+    clear: left;
+}
+
+input.datetime {
+    display: block;
+    clear: left;
+    color: orangered;
+}
+
+
 /*
 #homeContainer {
     background-image: url("/Images/darkNashvilleImage.jpeg");

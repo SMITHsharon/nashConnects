@@ -240,6 +240,7 @@ namespace NashConnects.Controllers
 
             var eventList = new
             {
+                nonProfitId = nonProfit.Id,
                 nonProfitName = nonProfit.Name,
                 nonProfitURL = nonProfit.WebsiteURL,
                 //Events = nonProfit.Events
