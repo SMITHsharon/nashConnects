@@ -33,6 +33,13 @@
                                     <td>{{event.Description}}</td>
                                     <td>{{event.StartDate | date:'MM/dd/yyyy @ h:mma'}}</td>
                                     <td>{{event.EndDate | date:'MM/dd/yyyy @ h:mma'}}</td>
+
+                                    <td>
+                                        <button class="button is-normal is-primary" ng-click="register(event.EventId)">Register for Event</button>
+                                        <!--
+                                        <button class="button is-normal is-info" ng-click="edit(event.EventId, nonProfitId)">Edit Event</button>
+                                        -->
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
