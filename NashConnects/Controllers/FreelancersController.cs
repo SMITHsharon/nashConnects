@@ -76,8 +76,10 @@ namespace NashConnects.Controllers
 
             var freelancer = db.Freelancers.Find(userid);
 
+            // see ListEventsForNonProfit
+
             //var freelancersById = db.Freelancers.ToList();
-            
+
             /*
             var faveFreelancers = db.Freelancers.Select(fl =>
                 new {
@@ -88,7 +90,7 @@ namespace NashConnects.Controllers
                 .Where(fl => fl.Freelancer_Id1 == userid) // how to get these records using second column as primary key ???
                 .ToList();
             */
-            
+
 
             return Request.CreateResponse(HttpStatusCode.OK, freelancer);
         }

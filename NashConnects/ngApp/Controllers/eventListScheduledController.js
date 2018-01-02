@@ -2,14 +2,14 @@
 
     //.when("/nonprofit/{:id}/events/list`",
     //{
-          //for user to list Events
+          //for user to list Events for selected NonProfit
     //    templateUrl: "/ngApp/Views/EventsListSingleNonProfit.html",
     //    controller:  "eventListController",
     //    controllerAs: 'vm'
     //})
     //.when("/events/list",
     //{
-    //    //for user to list Events
+    //    //for user to list all Scheduled Events
     //    templateUrl: "/ngApp/Views/EventsListAllNonProfits.html",
     //    controller: "eventListController",
     //    controllerAs: 'vm'
@@ -19,7 +19,8 @@
 
     vm.message = "Scheduled Events";
 
-    $scope.nonprofit;
+    $scope.nonProfitId;
+    $scope.nonProfitName;
     $scope.events;
     $scope.eventGroups;
     var nonprofitId = $routeParams.nonprofitid;
@@ -34,7 +35,8 @@
                     listOfEvents = eventListDataResult.Events;
                     if (listOfEvents.length > 0)
                     {
-                        $scope.nonprofit = eventListDataResult.nonProfitName;
+                        $scope.nonprofitId = eventListDataResult.nonProfitId;
+                        $scope.nonProfitName = eventListDataResult.nonProfitName;
                         $scope.events = listOfEvents;
                     }
                     else // this NonProfit has no Events scheduled
@@ -71,7 +73,12 @@
 
     $scope.register = (eventId) => {
         console.log("passing nonprofitId, eventId :: ", nonprofitId, eventId);
-        $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/register`)
+        $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/register`);
+    }
+
+    $scope.edit = (eventId) => {
+        console.log("passing nonprofitId, eventId :: ", nonprofitId, eventId);
+        $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/edit`);
     }
 
 

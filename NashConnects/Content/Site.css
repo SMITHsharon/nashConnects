@@ -4,7 +4,7 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-h1, h2, h4 {
+h1, h2, h3, h4 {
     color: #a3376b;
 }
 
@@ -35,6 +35,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+input, searchBox {
+    margin-bottom: 15px;
+}
+
+label.datetimeLabel {
+    display: block;
+    clear: left;
+}
+
+input.datetime {
+    display: block;
+    clear: left;
+    color: orangered;
+}
+
 
 /*
 #homeContainer {

@@ -12,6 +12,7 @@ using NashConnects.Models;
 
 namespace NashConnects.Controllers
 {
+    [RoutePrefix("api/Events")]
     public class EventsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -23,11 +24,13 @@ namespace NashConnects.Controllers
         }
 
         // GET: api/Events/5
+        //[Authorize]
         [HttpGet, Route("{id}")]
         [ResponseType(typeof(Event))]
         public IHttpActionResult GetEventById(int id)
         {
             Event thisEvent = db.Events.Find(id);
+
             if (thisEvent == null)
             {
                 return NotFound();
@@ -54,6 +57,57 @@ namespace NashConnects.Controllers
 
             try
             {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EventExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // PUT: api/Events/edit/5
+        //[Authorize]
+        [HttpPut, Route("edit/{id}")]
+        [ResponseType(typeof(void))]
+        //public IHttpActionResult PutEvent(int id, Event @event)
+        public IHttpActionResult UpdateEvent(int id, Event thisEvent)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            /*
+            if (id != @event.EventId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(@event).State = EntityState.Modified;
+            */
+
+            if (id != thisEvent.EventId)
+            {
+                return BadRequest();
+            }
+
+            var originalEvent = db.Events.Find(id);
+            try
+            {
+                originalEvent.EventName = thisEvent.EventName;
+                originalEvent.Description = thisEvent.Description;
+                originalEvent.StartDate = originalEvent.StartDate;
+                originalEvent.EndDate = originalEvent.EndDate;
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)

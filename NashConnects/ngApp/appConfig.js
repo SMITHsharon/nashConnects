@@ -104,6 +104,13 @@
             controller: "eventAddController",
             controllerAs: 'vm'
         })
+        .when("/nonprofit/:nonprofitid/event/:eventid/edit",
+        {
+            // for NonProfit user to edit an Event
+            templateUrl: "/ngApp/Views/EventEdit.html",
+            controller: "eventEditController",
+            controllerAs: 'vm'
+        })
         .when("/nonprofit/:nonprofitid/events/list",
         {
             // for user to list Scheduled Events for Selected NonProfit

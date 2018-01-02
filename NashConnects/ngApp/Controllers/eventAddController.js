@@ -1,4 +1,5 @@
-﻿app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
+﻿
+app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
 
     //.when("/event/add/:nonprofitid",
     //{
@@ -8,33 +9,31 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in Add Event Controller");
     let vm = this;
 
     vm.message = "Add Event";
 
     $scope.addEvent;
     $scope.nonProfit;
-    var nonprofitId = $routeParams.nonprofitid;
+    var nonProfitId = $routeParams.nonprofitid;
 
-    let getThisNonProfit = (nonprofitId) => {
-        console.log("getting nonProfit");
-        $http.get(`/api/nonprofits/${nonprofitId}`)
+    let getThisNonProfit = (nonProfitId) => {
+        $http.get(`/api/nonprofits/${nonProfitId}`)
             .then((getResult) => {
-
-                $scope.nonProfit = nonProfitName;
-                $location.url(`/nonprofits/list`)
+                console.log("getResult :: ", getResult);
+                $scope.nonProfit = getResult.data;
             })
             .catch((getError) => {
                 console.error("error on getThisNonProfit", getError);
             }) 
     };
-    getThisNonProfit(nonprofitId);
+    getThisNonProfit(nonProfitId);
 
+    console.log("nonProfitId :: ", nonProfitId);
 
     $scope.postEvent = () => {
         {
-            $http.post(`/api/nonprofits/${nonprofitId}/addevent`,
+            $http.post(`/api/nonprofits/${nonProfitId}/addevent`,
                 {
                     EventName: $scope.addEvent.EventName,
                     StartDate: $scope.addEvent.StartDate,
@@ -43,7 +42,7 @@
                 })
                 .then(function (newEventResult) {
                     console.log(newEventResult);
-                    $location.url(`/nonprofit/${nonprofitId}/events/list`);
+                    $location.url(`/nonprofit/${nonProfitId}/events/list`);
                 }).catch(error => console.error("error, creating new event", error));
         }
     };
