@@ -28,8 +28,6 @@
                 }
 
                 $scope.nonprofits = listOfNonProfits;
-                console.log("listOfNonProfits :: ", listOfNonProfits);
-                console.log("listOfNonProfits[0].Id :: ", listOfNonProfits[0].Id);
 
             }).catch((error) => {
                 console.log("error, listing all NonProfits :: ", error);
@@ -55,7 +53,7 @@
 
     $scope.listEvents = (nonprofitId) => {
         $location.url(`/nonprofit/${nonprofitId}/events/list`)
-    }
+    };
     
 
 }]);

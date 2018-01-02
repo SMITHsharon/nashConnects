@@ -19,7 +19,6 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in authController");
     let vm = this;
 
     vm.loginmessage = "Sign In ...";
@@ -51,7 +50,6 @@
                 sessionStorage.setItem('token', result.data.access_token);
                 $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
                 $location.path('/freelancers/list');
-                console.log("logged in", result);
 
                 vm.inProgress = false;
             })
@@ -59,7 +57,7 @@
                 vm.error = result.data.error_description;
                 vm.inProgress = false;
             });
-    }
+    };
 
 
     vm.register = function () {
@@ -69,7 +67,7 @@
         console.log(vm.username, vm.password, vm.confirmpassword);
         vm.error = "";
         vm.inProgress = true;
-        
+
         $http({
             method: 'POST',
             url: "/api/Account/Register",
@@ -101,24 +99,23 @@
                 console.log("error in register :", result.data.Message);
                 vm.inProgress = false;
             });
-    }
+    };
 
     
     vm.logout = function () {
 
-        console.log("in logout function");
-
         console.log(vm.username);
         vm.error = "";
         vm.inProgress = true;
-        
+
         $http({
-                method: 'POST',
-                url: "/api/Account/Logout"
+            method: 'POST',
+            url: "/api/Account/Logout"
         })
 
         sessionStorage.removeItem('token');
 
         $location.path('/freelancers/list');
-        }
+    };
+
 }]);

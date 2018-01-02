@@ -60,7 +60,6 @@
         $http.put(`/api/Freelancers/delete/${userid}`)
 
             .then((deleteResult) => {
-                console.log("marked freelancer as Inactive :: ", deleteResult);
                 $scope.delProfile = $scope.delProfile === false ? true : false;
                 // auto log out?
                 $location.path('/freelancers/list');

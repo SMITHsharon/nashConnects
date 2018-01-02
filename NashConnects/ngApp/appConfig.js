@@ -1,7 +1,6 @@
 ﻿app.config(["$routeProvider", function ($routeProvider) {
-    console.log("in routeProvider");
     $routeProvider
-        .when("/",
+        .when("/home",
         {
             templateUrl: "/ngApp/Views/home.html",
             controller: "homeController",
@@ -20,20 +19,6 @@
             controller: "authController",
             controllerAs: 'vm'
         })
-        //.when("/nonprofit/register",
-        //{
-            // for user to register as NonProfit
-        //    templateUrl: "/ngApp/Views/npAccount.html",
-        //    controller: "npRegisterController",
-        //    controllerAs: 'vm'
-        //})
-        //.when("/nonprofit/approve",
-        //{
-        //    // reuse non-profit profile screen
-        //    //templateUrl: "/ngApp/Views/npAccount.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
         .when("/freelancers/list",
         {
             //for user to view a list of Freelancers
@@ -62,13 +47,6 @@
             controller: "newsletterListController",
             controllerAs: 'vm'
         })
-        //.when("/freelance/profile/:id",
-        //{
-            //for user to view a Freelance profile
-        //    templateUrl: "/ngApp/Views/flProfile.html",
-        //    controller: "flViewController",
-        //    controllerAs: 'vm'
-        //})
         .when("/nonprofits/list",
         {
             //for user to view a list of NonProfits
@@ -76,13 +54,6 @@
             controller: "npListController",
             controllerAs: 'vm'
         })
-        //.when("/nonprofit/profile/:id",
-        //{
-            //for user to view a NonProfit profile
-        //    templateUrl: "/ngApp/Views/npProfile.html",
-        //    controller: "npViewController",
-        //    controllerAs: 'vm'
-        //})
         .when("/freelance/account",
         {
             // for user to edit Freelance profile
@@ -139,25 +110,6 @@
             controller: "eventRegisterController",
             controllerAs: 'vm'
         })
-        //.when("/event/detail/:id",
-        //{
-        //    // for user to list Events
-        //    templateUrl: "/ngApp/Views/EventDetail.html",
-        //    controller: "eventViewController",
-        //    controllerAs: 'vm'
-        //})
-        //.when("/category/add",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
-        //.when("/category/edit/:id",
-        //{
-        //    //templateUrl: "/ngApp/Views/xxx.html",
-        //    //controller: "xxxController",
-        //    //controllerAs: 'vm'
-        //})
         .when("/logout",
         {
             templateUrl: "/ngApp/Views/logout.html",
@@ -182,7 +134,7 @@ app.filter('isAfter', function () {
 
 app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $location) {
 
-    $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token") }
+    $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token") };
 
     $rootScope.$on("$routeChangeStart", function (event, currRoute) {
         var anonymousPage = true;
@@ -202,4 +154,4 @@ app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $locat
 
     if (token)
         $http.defaults.headers.common["Authorization"] = `bearer ${token}`;
-}])
+}]);

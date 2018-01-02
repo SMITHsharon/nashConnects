@@ -4,14 +4,14 @@
     //{
           //for user to list Events for selected NonProfit
     //    templateUrl: "/ngApp/Views/EventsListSingleNonProfit.html",
-    //    controller:  "eventListController",
+    //    controller:  "eventListScheduledController",
     //    controllerAs: 'vm'
     //})
     //.when("/events/list",
     //{
     //    //for user to list all Scheduled Events
     //    templateUrl: "/ngApp/Views/EventsListAllNonProfits.html",
-    //    controller: "eventListController",
+    //    controller: "eventListScheduledController",
     //    controllerAs: 'vm'
     //})
 
@@ -61,7 +61,6 @@
                         eventListDataResult[i] = eventListDataResult[i][key];
                     }
                     $scope.eventGroups = eventListDataResult;
-                    console.log("$scope.eventGroups :: ", $scope.eventGroups);
                     
                 }).catch((errorListResult) => {
                     console.error("error, listing All Events :: ", errorListResult);
@@ -72,14 +71,12 @@
 
 
     $scope.register = (eventId) => {
-        console.log("passing nonprofitId, eventId :: ", nonprofitId, eventId);
         $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/register`);
-    }
+    };
 
     $scope.edit = (eventId) => {
-        console.log("passing nonprofitId, eventId :: ", nonprofitId, eventId);
         $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/edit`);
-    }
+    };
 
 
 }]);

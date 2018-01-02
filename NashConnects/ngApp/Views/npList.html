@@ -4,10 +4,11 @@
             <div class="columns is-centered">
                 <div class="column is-10 is-10-mobile">
                     <div class="box has-text-centered">
-                        <!-- <figure class="image login-logo"> 
-                            <img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />
+
+                        <figure class="headerImage image login-logo">
+                            <img src="/content/images/darkNashvilleImage.jpeg" alt="logo" class="is-square is-128x128" />
                         </figure>
-                        -->
+                        
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
@@ -29,8 +30,10 @@
                                     </td>
 
                                     <td>
-                                        <button class="button is-normal is-light" ng-click="postEvent(nonprofit.Id)">Post Event</button>
-                                        <button class="button is-normal is-light" ng-click="listEvents(nonprofit.Id)">List Events</button>
+                                        <button class="button is-primary is-light" ng-click="listEvents(nonprofit.Id)">List Events</button>
+                                    </td>
+                                    <td>
+                                        <button class="button is-primary is-light" ng-click="postEvent(nonprofit.Id)">Post Event</button>
                                     </td>
                                 </tr>
                             </tbody>

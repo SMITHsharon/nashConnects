@@ -18,6 +18,14 @@ img.logo {
         width: 50px;
 }
 
+figure.headerImage {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
 .nav .dropdown {
     margin-top: 15px;
 }
