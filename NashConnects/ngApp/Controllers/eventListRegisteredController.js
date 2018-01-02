@@ -1,7 +1,5 @@
 ﻿app.controller("eventListRegisteredController", ["$routeParams", "$scope", "$http", "$location", function ($routeParams, $scope, $http, $location) {
 
-    console.log("in eventListRegisteredController");
-
     //.when("/events/list/registered",
     //    {
     //        // for user to list Events s/he has Registered For
@@ -36,7 +34,6 @@
     var getEvents = (userid) => {
         $http.get(`/api/Freelancers/${userid}/registeredEvents`)
             .then((eventsResult) => {
-                //console.log("eventsResult.data", eventsResult.data);
                 $scope.eventGroups = eventsResult.data.RegEvents;
             })
             .catch((error) => {

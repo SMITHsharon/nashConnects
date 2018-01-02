@@ -19,7 +19,6 @@
         $http.get("/api/Freelancers/list")
             .then((result) => {
                 var freelancerGroupings = result.data;
-                console.log("freelancerGroupings :: ", freelancerGroupings);
                 $scope.freelancerGroups = freelancerGroupings;
 
             }).catch((error) => {
@@ -33,21 +32,18 @@
         $http.get("/api/Freelancers/current")
             .then((result) => {
                 $scope.thisProfile = result.data;
-                console.log("result.data.Id / userId :: ", result.data.Id);
-                console.log("freelancerId :: ", freelancerId);
                 userId = result.data.Id;
 
                 // increment the Likes count
                 $http.put(`/api/Freelancers/likes/${freelancerId}`)
                     .then((likesAddResult) => {
-                        console.log("likesAddResult", likesAddResult);
                         //location.reload();
                         //$scope.$apply();
 
                         // post the Likes relationship in the many-to-many table FLFLRecommendations
                         $http.post(`api/Freelancers/likes/${freelancerId}/${userId}`)
                             .then((postLikesRelationshipResult) => {
-                                console.log("likes relationship posted");
+
                             })
                             .catch((error) => {
                                 console.log("error on posting Likes Relationship :: ", error);

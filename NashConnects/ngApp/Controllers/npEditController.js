@@ -8,7 +8,6 @@
     //    controllerAs: 'vm'
     //})
 
-    console.log("in NonProfits Edit Controller");
     //let vm = this;
 
     $scope.message = "Non-Profit Profile";

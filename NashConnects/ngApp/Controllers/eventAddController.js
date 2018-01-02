@@ -20,7 +20,6 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
     let getThisNonProfit = (nonProfitId) => {
         $http.get(`/api/nonprofits/${nonProfitId}`)
             .then((getResult) => {
-                console.log("getResult :: ", getResult);
                 $scope.nonProfit = getResult.data;
             })
             .catch((getError) => {
@@ -29,22 +28,20 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
     };
     getThisNonProfit(nonProfitId);
 
-    console.log("nonProfitId :: ", nonProfitId);
-
     $scope.postEvent = () => {
-        {
-            $http.post(`/api/nonprofits/${nonProfitId}/addevent`,
-                {
-                    EventName: $scope.addEvent.EventName,
-                    StartDate: $scope.addEvent.StartDate,
-                    EndDate: $scope.addEvent.EndDate,
-                    Description: $scope.addEvent.Description
-                })
-                .then(function (newEventResult) {
-                    console.log(newEventResult);
-                    $location.url(`/nonprofit/${nonProfitId}/events/list`);
-                }).catch(error => console.error("error, creating new event", error));
-        }
+
+        $http.post(`/api/nonprofits/${nonProfitId}/addevent`,
+            {
+                EventName: $scope.addEvent.EventName,
+                StartDate: $scope.addEvent.StartDate,
+                EndDate: $scope.addEvent.EndDate,
+                Description: $scope.addEvent.Description
+            })
+            .then(function (newEventResult) {
+                $location.url(`/nonprofit/${nonProfitId}/events/list`);
+                    
+            }).catch(error => console.error("error, creating new event", error));
+        
     };
 
 }]);
