@@ -134,7 +134,7 @@ app.filter('isAfter', function () {
 
 app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $location) {
 
-    $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token") };
+    $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token"); };
 
     $rootScope.$on("$routeChangeStart", function (event, currRoute) {
         var anonymousPage = true;

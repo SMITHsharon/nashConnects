@@ -63,7 +63,9 @@ namespace NashConnects.Controllers
 
             var freelancer = db.Freelancers.Find(userid);
 
-            return Request.CreateResponse(HttpStatusCode.OK, freelancer);
+            var freelancerPeepsList = freelancer.FLFLRecommendations;
+
+            return Request.CreateResponse(HttpStatusCode.OK, freelancerPeepsList);
         }
 
 
