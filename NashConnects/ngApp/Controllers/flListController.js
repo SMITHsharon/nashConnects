@@ -28,20 +28,20 @@
     getFreelancerList();
 
 
-    $scope.recommend = (freelancerId) => {
+    $scope.recommend = (freelancer) => {
         $http.get("/api/Freelancers/current")
             .then((result) => {
                 $scope.thisProfile = result.data;
                 userId = result.data.Id;
-
+                freelancer.RecommendCount += 1;
                 // increment the Likes count
-                $http.put(`/api/Freelancers/likes/${freelancerId}`)
+                $http.put(`/api/Freelancers/likes/${freelancer.Id}`)
                     .then((likesAddResult) => {
                         //location.reload();
                         //$scope.$apply();
 
                         // post the Likes relationship in the many-to-many table FLFLRecommendations
-                        $http.post(`api/Freelancers/likes/${freelancerId}/${userId}`)
+                        $http.post(`api/Freelancers/likes/${freelancer.Id}/${userId}`)
                             .then((postLikesRelationshipResult) => {
 
                             })

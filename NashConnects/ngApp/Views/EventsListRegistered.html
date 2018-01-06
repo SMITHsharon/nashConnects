@@ -34,7 +34,7 @@
                                 -->
 
                                 <!-- <tr ng-repeat="event in group.Events"> -->
-                                <tr ng-repeat="event in eventGroups">
+                                <tr ng-repeat="event in eventGroups | filter: searchText">
                                     <!-- filter out past dates -->
                                     <td>{{event.EventName}}</td>
                                     <td>{{event.Description}}</td>

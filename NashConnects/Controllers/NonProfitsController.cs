@@ -248,8 +248,10 @@ namespace NashConnects.Controllers
                     new {
                             thisEvent.EventId,
                             thisEvent.EventName,
-                            thisEvent.StartDate,
-                            thisEvent.EndDate,
+                            //thisEvent.StartDate,
+                            //thisEvent.EndDate,
+                            StartDate = thisEvent.StartDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm"),
+                            EndDate = thisEvent.EndDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm"),
                             thisEvent.Description
                         })
             };
@@ -292,13 +294,22 @@ namespace NashConnects.Controllers
         {
             var db = new ApplicationDbContext();
 
-            var eventGroupingsDTO = db.NonProfits
+            var eventGroupingsDTO = db.NonProfits.ToList()
                 .Select(np => new
                 {
                     NonProfitId = np.Id,
                     NonProfitName = np.Name,
                     NonProfitURL = np.WebsiteURL,
-                    Events = np.Events
+                    Events = np.Events.Select(x =>
+                    new {
+                        x.Description,
+                        x.EventName,
+                        x.EventId,
+                        //StartDate = x.StartDate.ToString("MM/dd/yyyy @ H:mm"),
+                        StartDate = x.StartDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm"),
+                        EndDate = x.EndDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm"),
+                        //EndDate = x.EndDate.ToString("MM/dd/yyyy @ H:mm"),
+                    })
                 })
                 .GroupBy(dto => dto.NonProfitId)
                 .ToList();

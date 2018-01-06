@@ -33,6 +33,7 @@
                 .then((eventListResult) => {
                     var eventListDataResult = eventListResult.data;
                     listOfEvents = eventListDataResult.Events;
+                    console.log("listOfEvents :: ", listOfEvents);
                     if (listOfEvents.length > 0)
                     {
                         $scope.nonprofitId = eventListDataResult.nonProfitId;
@@ -42,7 +43,7 @@
                     else // this NonProfit has no Events scheduled
                     {
                         alert(`No events are scheduled for ${eventListDataResult.nonProfitName}`);
-                        $location.url(`/nonprofits/list`)
+                        $location.url(`/nonprofits/list`);
                     }
 
                 }).catch((eventsError) => {
