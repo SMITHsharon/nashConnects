@@ -57,39 +57,6 @@
                 console.log("getFreelancerProfile", error);
             });
     };
-    
-    /*
-    $scope.recommend = (freelancerId) => {
-        userId = getUserId();
-        
-        console.log("freelancerid :: ", freelancerId);
-        $http.put(`/api/Freelancers/likes/${freelancerId}/ ${userId}`)
-            .then((likesAddResult) => {
-                //location.reload();
-                //$scope.$apply();
-            })
-            .catch((error) => {
-                console.log("error on Likes count :: ", error);
-            });
-        
-    };
-    */
+
 
 }]);
-
-/*
-.directive('myLikesDirective', function () {
-    return {
-        restrict: 'A', // A=Attribute; E=Element
-        scope: true,
-        link: function (scope, element, attrs) {
-
-            function incrementLikesCount() {
-                console.log("It worked!");
-            }
-
-            //templateURL: 
-        }
-    };
-});
-*/
