@@ -10,6 +10,8 @@
 
     //let vm = this;
 
+    $scope.delProfile = false;
+
     $scope.message = "Non-Profit Profile";
     let userid;
 
@@ -27,7 +29,7 @@
 
     $scope.editProfile = () => {
         let userProfile = $scope.thisProfile;
-        $http.put(`/api/Nonprofits/${userid}`,
+        $http.put(`/api/NonProfits/${userid}`,
             {
                 UserName: userProfile.UserName,
                 FirstName: userProfile.FirstName,
@@ -41,11 +43,27 @@
                 Id: userid
             })
             .then((result) => {
-                $location.path('/nonprofits/list');
+                $location.path('/NonProfits/list');
             })
             .catch((error) => {
                 console.log("editNonProfitProfile", error);
             });
     };
+
+
+    $scope.deleteProfile = () => {
+
+        $http.put(`api/Nonprofits/delete/${userid}`)
+
+            .then((result) => {
+                $scope.delProfile = $scope.delProfile === false ? true : false;
+                // auto log out?
+                $location.path('/nonprofits/list');
+            })
+            .catch((deleteError) => {
+                console.error("error on deleting profile", deleteError);
+            });
+    };
+
 
 }]);

@@ -306,7 +306,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Images\darkNashvilleImage.jpeg" />
     <Content Include="Content\Images\nashSkyline.png" />
-    <Content Include="nashSkyline.png" />
     <Content Include="ngApp\app.js" />
     <Content Include="ngApp\appConfig.js" />
     <Content Include="ngApp\Controllers\eventAddController.js" />

@@ -275,36 +275,6 @@ namespace NashConnects.Controllers
         }
 
 
-        // PUT: api/Freelancers/delete/5
-        [Authorize]
-        [HttpPut, Route("delete/{likedId}")]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult SetCurrentUserAsInactive(string likedId)
-        {
-            var activeFreelancer = db.Freelancers.Find(likedId);
-
-            try
-            {
-                activeFreelancer.Active = false;
-
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FreelancerExists(activeFreelancer.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-
         // POST: api/Freelancers/likes/5/3
         [Authorize]
         [HttpPost, Route("likes/{likedId}/{userId}")]
@@ -409,7 +379,7 @@ namespace NashConnects.Controllers
         
 
 
-        // DELETS are handled by posting the record as Inactive
+        // DELETES are handled by posting the record as Inactive
         // DELETE: api/Freelancers/5
         [ResponseType(typeof(Freelancer))]
         public IHttpActionResult DeleteFreelancer(string id)
@@ -425,6 +395,37 @@ namespace NashConnects.Controllers
 
             return Ok(freelancer);
         }
+
+
+        // PUT: api/Freelancers/delete/5
+        [Authorize]
+        [HttpPut, Route("delete/{likedId}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult SetCurrentUserAsInactive(string likedId)
+        {
+            var activeFreelancer = db.Freelancers.Find(likedId);
+
+            try
+            {
+                activeFreelancer.Active = false;
+
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FreelancerExists(activeFreelancer.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

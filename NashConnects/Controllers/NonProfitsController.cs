@@ -33,6 +33,7 @@ namespace NashConnects.Controllers
                         WebsiteURL = nonProfit.WebsiteURL,
                         Description = nonProfit.Description,
                         RecommendCount = nonProfit.RecommendCount,
+                        Active = nonProfit.Active,
                         //Events = nonProfit.Events.
                         Events = nonProfit.Events.Select(thisEvent => 
                             new { thisEvent.EventId,
@@ -243,6 +244,7 @@ namespace NashConnects.Controllers
                 nonProfitId = nonProfit.Id,
                 nonProfitName = nonProfit.Name,
                 nonProfitURL = nonProfit.WebsiteURL,
+                nonProfitActive = nonProfit.Active,
                 //Events = nonProfit.Events
                 Events = nonProfit.Events.Select(thisEvent =>
                     new {
@@ -300,6 +302,7 @@ namespace NashConnects.Controllers
                     NonProfitId = np.Id,
                     NonProfitName = np.Name,
                     NonProfitURL = np.WebsiteURL,
+                    NonProfitActive = np.Active,
                     Events = np.Events.Select(x =>
                     new {
                         x.Description,
@@ -316,9 +319,9 @@ namespace NashConnects.Controllers
 
             return Ok(eventGroupingsDTO);
         }
-        
 
 
+        // DELETES are handled by posting the record as Inactive
         // DELETE: api/NonProfits/5
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult DeleteNonProfit(string id)
@@ -334,6 +337,37 @@ namespace NashConnects.Controllers
 
             return Ok(nonProfit);
         }
+
+
+        // PUT: api/NonProfits/delete/5
+        [Authorize]
+        [HttpPut, Route("delete/{likedId}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult SetCurrentUserAsInactive(string likedId)
+        {
+            var activeNonProfit = db.NonProfits.Find(likedId);
+
+            try
+            {
+                activeNonProfit.Active = false;
+
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!NonProfitExists(activeNonProfit.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
 
         protected override void Dispose(bool disposing)
         {
