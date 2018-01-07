@@ -18,7 +18,7 @@
                         <input type="text" name="" placeholder="Search for ....." ng-model="searchText">
 
                         
-                        <table class="table is-hoverable" ng-repeat="group in eventGroups | filter: searchText">
+                        <table class="table is-hoverable" ng-repeat="group in eventGroups | filter:{NonProfitActive:true} | filter: searchText">
                         
                             <tbody>
                                 <tr>
