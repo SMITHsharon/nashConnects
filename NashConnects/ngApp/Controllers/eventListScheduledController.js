@@ -75,7 +75,7 @@
         $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/register`);
     };
 
-    $scope.edit = (eventId) => {
+    $scope.editEvent = (eventId) => {
         $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/edit`);
     };
 

@@ -42,13 +42,14 @@
             .then((getResult) => {
                 userid = getResult.data.Id;
                 nonprofit.RecommendCount += 1;
+                
                 $http.put(`/api/NonProfits/likes/${nonprofit.Id}`)
-                     /*
-                     // posts the Likes relationship in the many-to-many table NPNPRecommendations
-                     // not information anyone wd really keep up w
-                     // more likely :: FL <=> NP relationships
-                     // to track, need to differentiate diff types of users
                     .then((likesAddResult) => {
+                        /*
+                        // posts the Likes relationship in the many-to-many table NPNPRecommendations
+                        // not information anyone wd really keep up w
+                        // more likely :: FL <=> NP relationships
+                        // to track, need to differentiate diff types of users
                         $http.post(`api/NonProfits/likes/${nonprofit.Id}/${userid}`)
                             .then((postLikesRelationshipResult) => {
                             })
