@@ -13,6 +13,7 @@
     vm.message = "Nash NonProfits and Other Resources";
 
     $scope.nonprofits;
+    let userid;
 
     var getNonProfitList = () => {
         $http.get("/api/NonProfits/list")
@@ -36,17 +37,35 @@
     getNonProfitList();
 
 
-    $scope.recommend = (nonprofitId) => {
-
-        non
-
-        $http.put(`/api/NonProfits/likes/${nonprofitId}`)
-            .then((likesAddResult) => {
-                location.reload();
+    $scope.recommend = (nonprofit) => {
+        $http.get("api/NonProfits/current")
+            .then((getResult) => {
+                userid = getResult.data.Id;
+                nonprofit.RecommendCount += 1;
+                $http.put(`/api/NonProfits/likes/${nonprofit.Id}`)
+                     /*
+                     // posts the Likes relationship in the many-to-many table NPNPRecommendations
+                     // not information anyone wd really keep up w
+                     // more likely :: FL <=> NP relationships
+                     // to track, need to differentiate diff types of users
+                    .then((likesAddResult) => {
+                        $http.post(`api/NonProfits/likes/${nonprofit.Id}/${userid}`)
+                            .then((postLikesRelationshipResult) => {
+                            })
+                            .catch((error) => {
+                                console.error("error on posting nonProfit Likes relationship ", error);
+                            });
+                    */
+                    })
+                    .catch((error) => {
+                        console.log("error on Likes count :: ", error);
+                    });
             })
-            .catch((error) => {
-                console.log("error on Likes count :: ", error);
+            .catch((getError) => {
+                console.error("error getting NonProfit profile :: ", getError);
             });
+
+       
     };
 
     

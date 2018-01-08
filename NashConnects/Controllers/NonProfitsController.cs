@@ -160,6 +160,41 @@ namespace NashConnects.Controllers
         }
 
 
+        // POST: api/NonProfits/likes/5/3
+        [Authorize]
+        [HttpPost, Route("likes/{likedId}/{userId}")]
+        [ResponseType(typeof(Event))]
+        public IHttpActionResult AddLikesRelationship(string likedId, string userId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var likedNonProfit = db.NonProfits.Find(likedId);
+            var userNonProfit = db.NonProfits.Find(userId);
+
+            try
+            {
+                likedNonProfit.NPNPRecommndations.Add(userNonProfit);
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if ((!NonProfitExists(likedNonProfit.Id)) || (!NonProfitExists(userNonProfit.Id)))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
+
+
         // POST: api/NonProfits
         [ResponseType(typeof(NonProfit))]
         public IHttpActionResult PostNonProfit(NonProfit nonProfit)
