@@ -31,17 +31,15 @@
     $scope.recommend = (freelancer) => {
         $http.get("/api/Freelancers/current")
             .then((result) => {
-                $scope.thisProfile = result.data;
-                userId = result.data.Id;
+               // $scope.thisProfile = result.data;
+                userid = result.data.Id;
                 freelancer.RecommendCount += 1;
                 // increment the Likes count
                 $http.put(`/api/Freelancers/likes/${freelancer.Id}`)
                     .then((likesAddResult) => {
-                        //location.reload();
-                        //$scope.$apply();
 
                         // post the Likes relationship in the many-to-many table FLFLRecommendations
-                        $http.post(`api/Freelancers/likes/${freelancer.Id}/${userId}`)
+                        $http.post(`api/Freelancers/likes/${freelancer.Id}/${userid}`)
                             .then((postLikesRelationshipResult) => {
 
                             })
@@ -57,39 +55,6 @@
                 console.log("getFreelancerProfile", error);
             });
     };
-    
-    /*
-    $scope.recommend = (freelancerId) => {
-        userId = getUserId();
-        
-        console.log("freelancerid :: ", freelancerId);
-        $http.put(`/api/Freelancers/likes/${freelancerId}/ ${userId}`)
-            .then((likesAddResult) => {
-                //location.reload();
-                //$scope.$apply();
-            })
-            .catch((error) => {
-                console.log("error on Likes count :: ", error);
-            });
-        
-    };
-    */
+
 
 }]);
-
-/*
-.directive('myLikesDirective', function () {
-    return {
-        restrict: 'A', // A=Attribute; E=Element
-        scope: true,
-        link: function (scope, element, attrs) {
-
-            function incrementLikesCount() {
-                console.log("It worked!");
-            }
-
-            //templateURL: 
-        }
-    };
-});
-*/
