@@ -16,6 +16,7 @@
     $scope.nonProfit;
     var nonProfitId = $routeParams.nonprofitid;
     var eventId = $routeParams.eventid;
+    var thisEvent = {};
 
     let getThisNonProfit = (nonProfitId) => {
         $http.get(`api/nonprofits/${nonProfitId}`)
@@ -24,7 +25,10 @@
 
                 $http.get(`api/Events/${eventId}`)
                     .then((eventResult) => {
+                        console.log("eventResult :: ", eventResult);
                         $scope.editEvent = eventResult.data;
+                        //thisEvent = eventResult.data;
+                        console.log("$scope.editEvent.data :: ", $scope.editEvent.data);
 
                     })
                     .catch((eventError) => {

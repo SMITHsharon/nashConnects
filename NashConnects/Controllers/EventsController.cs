@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NashConnects.Models;
+using System.Globalization;
 
 namespace NashConnects.Controllers
 {
@@ -25,18 +26,30 @@ namespace NashConnects.Controllers
 
         // GET: api/Events/5
         //[Authorize]
-        [HttpGet, Route("{id}")]
+        [HttpGet, Route("{eventId}")]
         [ResponseType(typeof(Event))]
-        public IHttpActionResult GetEventById(int id)
+        public IHttpActionResult GetEventById(int eventId)
         {
-            Event thisEvent = db.Events.Find(id);
+            var db = new ApplicationDbContext();
+
+            Event thisEvent = db.Events.Find(eventId);
 
             if (thisEvent == null)
             {
                 return NotFound();
             }
 
-            return Ok(thisEvent);
+            var returnThisEvent = new
+            {
+                EventId = thisEvent.EventId,
+                EventName = thisEvent.EventName,
+                Description = thisEvent.Description,
+                StartDate = thisEvent.StartDate,
+                EndDate = thisEvent.EndDate
+            };
+
+            return Ok(returnThisEvent);
+            //return Ok(thisEvent);
         }
 
         // PUT: api/Events/5

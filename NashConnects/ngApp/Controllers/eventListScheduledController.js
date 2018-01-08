@@ -33,7 +33,6 @@
                 .then((eventListResult) => {
                     var eventListDataResult = eventListResult.data;
                     listOfEvents = eventListDataResult.Events;
-                    console.log("listOfEvents :: ", listOfEvents);
                     if (listOfEvents.length > 0)
                     {
                         $scope.nonprofitId = eventListDataResult.nonProfitId;
@@ -76,6 +75,8 @@
     };
 
     $scope.editEvent = (eventId) => {
+        console.log("eventId :: ", eventId);
+        console.log("nonprofitId :: ", nonprofitId);
         $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/edit`);
     };
 
