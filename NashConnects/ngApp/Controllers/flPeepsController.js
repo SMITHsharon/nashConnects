@@ -8,8 +8,7 @@
     //        controllerAs: 'vm'
     //    })
 
-    console.log("in PeepsController");
-    let vm = this;
+     let vm = this;
     vm.message = "Nash Peeps";
 
     // Peeps are Freelancers who have posted Likes to this Freelancers
@@ -23,14 +22,9 @@
             .then((profileResult) => {
                 $scope.freelancer = profileResult.data;
                 let userid = profileResult.data.Id;
-                console.log("userid :: ", userid);
 
                 $http.get(`/api/Freelancers/${userid}/peeps`)
                     .then((peepsResults) => {
-                        console.log("peepsResults :: ", peepsResults);
-                        console.log("peepsResults.data :: ", peepsResults.data);
-                        //console.log("peepsResults.data.FLFLRecommendations :: ", peepsResults.data.FLFLRecommendations);
-                        //$scope.likeGroups = peepsResults.data.FLFLRecommendations;
                         $scope.likeGroups = peepsResults.data;
                     })
                     .catch((peepsError) => {

@@ -37,6 +37,9 @@
 
 
     $scope.recommend = (nonprofitId) => {
+
+        non
+
         $http.put(`/api/NonProfits/likes/${nonprofitId}`)
             .then((likesAddResult) => {
                 location.reload();
