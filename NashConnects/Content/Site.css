@@ -59,6 +59,14 @@ input.datetime {
     color: orangered;
 }
 
+button.addEvent {
+    margin-top: 20px;
+}
+
+button.listEvents {
+    margin-top: 17px;
+}
+
 
 /*
 #homeContainer {

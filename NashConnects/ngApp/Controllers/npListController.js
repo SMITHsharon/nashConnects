@@ -69,10 +69,6 @@
        
     };
 
-    
-    $scope.postEvent = (nonprofitId) => {
-        $location.url(`/event/add/${nonprofitId}`);
-    };
 
     $scope.listEvents = (nonprofitId) => {
         $location.url(`/nonprofit/${nonprofitId}/events/list`)

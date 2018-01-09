@@ -16,10 +16,13 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
     $scope.addEvent;
     $scope.nonProfit;
     var nonProfitId = $routeParams.nonprofitid;
+    
 
     let getThisNonProfit = (nonProfitId) => {
+        console.log("nonProfitId :: ", nonProfitId);
         $http.get(`/api/nonprofits/${nonProfitId}`)
             .then((getResult) => {
+                console.log("getResult.data :: ", getResult.data);
                 $scope.nonProfit = getResult.data;
             })
             .catch((getError) => {
@@ -27,6 +30,7 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
             }) 
     };
     getThisNonProfit(nonProfitId);
+
 
     $scope.postEvent = () => {
 
