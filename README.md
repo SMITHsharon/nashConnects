@@ -5,7 +5,7 @@
 This app is designed to facilitate freelance professionals connecting with each other, and tapping into local nonprofit and other resources.
 
 #### Home Page on Launch 
-![nashConnects on Launch](https://raw.githubusercontent.com/SMITHsharon/commonMealsApp/master/screens/Common%20Meals%20App%20Login%20Register.png)
+![nashConnects on Launch](https://raw.githubusercontent.com/SMITHsharon/nashConnects/master/NashConnects/Content/Images/nashConnectsList.png)
 
 
 ### Technologies Used
