@@ -4,11 +4,7 @@
             <div class="columns is-centered">
                 <div class="column is-10 is-10-mobile">
                     <div class="box has-text-centered">
-                        <!--
-                    <figure class="image login-logo">
-                        <img src="/Content/img/logo-new.png" alt="logo" class="is-square is-128x128" />
-                    </figure>
-                    -->
+
                         <div ng-show="error" class="notification is-danger">
                             {{error}}
                         </div>
@@ -24,6 +20,12 @@
                                 <tr>
                                     <th>
                                         <a ng-href="{{group.NonProfitURL}}" target="_blank"><h3>{{group.NonProfitName}}</h3></a>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>
+                                        <button class="button is-light addEvent" ng-click="postEvent(group.NonProfitId)">Add Event</button>
                                     </th>
                                 </tr>
                                 <tr>

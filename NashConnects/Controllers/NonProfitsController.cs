@@ -344,9 +344,9 @@ namespace NashConnects.Controllers
                         x.EventName,
                         x.EventId,
                         //StartDate = x.StartDate.ToString("MM/dd/yyyy @ H:mm"),
+                        //StartDate = x.StartDate.ToString("MM/dd/yyyy @ H:mm"),
                         StartDate = x.StartDate.ToLocalTime().ToString("MM/dd/yyyy @h:mm tt"),
                         EndDate = x.EndDate.ToLocalTime().ToString("MM/dd/yyyy @h:mm tt"),
-                        //EndDate = x.EndDate.ToString("MM/dd/yyyy @ H:mm"),
                     })
                 })
                 .GroupBy(dto => dto.NonProfitId)

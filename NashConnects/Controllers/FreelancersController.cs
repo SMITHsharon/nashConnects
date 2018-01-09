@@ -180,8 +180,8 @@ namespace NashConnects.Controllers
                         thisEvent.EventName,
                         //thisEvent.StartDate,
                         //thisEvent.EndDate,
-                        StartDate = thisEvent.StartDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm"),
-                        EndDate = thisEvent.EndDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm"),
+                        StartDate = thisEvent.StartDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm tt"),
+                        EndDate = thisEvent.EndDate.ToLocalTime().ToString("MM/dd/yyyy @ h:mm tt"),
                         thisEvent.Description
                     })
             };

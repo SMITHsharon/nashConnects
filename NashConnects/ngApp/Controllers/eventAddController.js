@@ -16,6 +16,7 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
     $scope.addEvent;
     $scope.nonProfit;
     var nonProfitId = $routeParams.nonprofitid;
+    
 
     let getThisNonProfit = (nonProfitId) => {
         $http.get(`/api/nonprofits/${nonProfitId}`)
@@ -27,6 +28,7 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
             }) 
     };
     getThisNonProfit(nonProfitId);
+
 
     $scope.postEvent = () => {
 

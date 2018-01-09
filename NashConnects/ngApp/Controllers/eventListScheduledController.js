@@ -35,7 +35,7 @@
                     listOfEvents = eventListDataResult.Events;
                     if (listOfEvents.length > 0)
                     {
-                        $scope.nonprofitId = eventListDataResult.nonProfitId;
+                        $scope.nonProfitId = eventListDataResult.nonProfitId;
                         $scope.nonProfitName = eventListDataResult.nonProfitName;
                         $scope.events = listOfEvents;
                     }
@@ -73,6 +73,12 @@
     $scope.register = (eventId) => {
         $location.url(`/nonprofit/${nonprofitId}/event/${eventId}/register`);
     };
+
+
+    $scope.postEvent = (nonprofitId) => {
+        $location.url(`/event/add/${nonprofitId}`);
+    };
+
 
     $scope.editEvent = (eventId) => {
         console.log("eventId :: ", eventId);
