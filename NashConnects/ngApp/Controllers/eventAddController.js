@@ -19,10 +19,8 @@ app.controller("eventAddController", ["$routeParams", "$scope", "$http", "$locat
     
 
     let getThisNonProfit = (nonProfitId) => {
-        console.log("nonProfitId :: ", nonProfitId);
         $http.get(`/api/nonprofits/${nonProfitId}`)
             .then((getResult) => {
-                console.log("getResult.data :: ", getResult.data);
                 $scope.nonProfit = getResult.data;
             })
             .catch((getError) => {

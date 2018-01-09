@@ -75,6 +75,11 @@
     };
 
 
+    $scope.postEvent = (nonprofitId) => {
+        $location.url(`/event/add/${nonprofitId}`);
+    };
+
+
     $scope.editEvent = (eventId) => {
         console.log("eventId :: ", eventId);
         console.log("nonprofitId :: ", nonprofitId);
