@@ -116,12 +116,14 @@
             controller: "authController",
             controllerAs: 'vm'
         })
-        .otherwise("/freelancers/list");
+        .otherwise("/home");
             
 }]);
 
 
 // defined filters
+/* copied from CommonMealsApp
+/* for filtering out past dates
 app.filter('isAfter', function () {
     return function (meals, dateAfter) {
         // Using ES6 filter method
@@ -130,6 +132,7 @@ app.filter('isAfter', function () {
         });
     };
 });
+*/
 
 
 app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $location) {
